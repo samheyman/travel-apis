@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block head %}
+<!-- Map box code -->
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+<script src='//api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js' charset='utf-8'></script>
+
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
+<style>
+    #map { position:absolute; top:0; bottom:0; width:80%; }
+</style>
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+		<h1>Travel Insights</h1>
+		<div id='map'></div>
+		<div class='overlay'>
+    	<button id='replay'>Replay</button>
+		</div>
+	</div>
+</div>
+
+<script>
+
+// LHR
+var origin = [135.461389,34.4775];
+//var origin = [-94.581213, 39.099912];
+// Washington DC
+var destination = [-80.032, 38.913];
+//var origin = [44.200203, 33.627089];
+
+function toDegrees (angle) {
+    return angle * 180 / Math.PI;;
+}
+
+function toRadians(angle) {
+    return angle * Math.PI / 180;
+};
+
+function getBearing(origin, destination) {
+    // lattitude origin
+    theta_a = toRadians(origin[1]);
+    // longitude origin
+    L_a = toRadians(origin[0]);
+    // lattitude destination
+    theta_b = toRadians(destination[1]);
+    // longitude destination
+    L_b = toRadians(destination[0]);
+    // delta L
+    delta_L = L_b - L_a;
+    // x = cos θb * sin ∆L
+    var x = Math.cos(theta_b)*Math.sin(delta_L);
+    // y = cos θa * sin θb – sin θa * cos θb * cos ∆L
+    var y = Math.cos(theta_a) * Math.sin(theta_b) - Math.sin(theta_a) * Math.cos(theta_b) * Math.cos(delta_L);
+    return toDegrees(Math.atan2(x,y));
+}
+
+var bearing = getBearing(origin, destination);
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtaGV5bWFuIiwiYSI6ImNpc2l6NWN4ODAwMjUydHJuMnBpZ3V4eG4ifQ.NgP2zfSjWhIFVG36qbFzeg';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [10,50],
+    zoom: 2
+});
+
+// A simple line from origin to destination.
+var route = {
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "geometry": {
+            "type": "LineString",
+            "coordinates": [
+                origin,
+                destination
+            ]
+        }
+    }]
+};
+
+// A single point that animates along the route.
+// Coordinates are initially set to origin.
+var point = {
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": origin
+        },
+    }]
+};
+
+// Calculate the distance in kilometers between route start/end point.
+var lineDistance = turf.lineDistance(route.features[0], 'kilometers');
+
+var arc = [];
+
+// Draw an arc between the `origin` & `destination` of the two points
+for (var i = 0; i < lineDistance; i++) {
+    var segment = turf.along(route.features[0], i / 1000 * lineDistance, 'kilometers');
+    arc.push(segment.geometry.coordinates);
+}
+
+// Update the route with calculated arc coordinates
+route.features[0].geometry.coordinates = arc;
+
+// Used to increment the value of the point measurement against the route.
+var counter = 0;
+
+map.on('load', function () {
+
+
+    // Add a source and layer displaying a point which will be animated in a circle.
+    map.addSource('route', {
+        "type": "geojson",
+        "data": route
+    });
+
+    map.addSource('point', {
+        "type": "geojson",
+        "data": point
+    });
+
+    map.addLayer({
+        "id": "route",
+        "source": "route",
+        "type": "line",
+        "paint": {
+            "line-width": 2,
+            "line-color": "#007cbf"
+        }
+    });
+
+    map.addLayer({
+        "id": "drone-glow",
+        "type": "circle",
+        "source": "point",
+        "paint": {
+            "circle-radius": 40,
+            "circle-color": "#fff",
+            "circle-opacity": 0.1
+        }
+    });
+
+    map.addLayer({
+        "id": "point",
+        "source": "point",
+        "type": "symbol",
+        "layout": {
+            "icon-image": "airport-15",
+            "icon-rotation-alignment": "map"
+        }
+    });
+
+    function animate() {
+        if (counter % 100 == 0 ) {
+            bearing = getBearing(route.features[0].geometry.coordinates[counter], destination);
+        }
+        // Update point geometry to a new position based on counter denoting
+        // the index to access the arc.
+        point.features[0].geometry.coordinates = route.features[0].geometry.coordinates[counter];
+        //point.features[0].bearing = point.features[0].bearing[counter] + 200;
+        // Update the source with this new data.
+        map.getSource('point').setData(point);
+        map.setLayoutProperty('point', 'icon-rotate', bearing);
+        // Request the next frame of animation so long as destination has not
+        // been reached.
+        if (point.features[0].geometry.coordinates[0] !== destination[0]) {
+            requestAnimationFrame(animate);
+        }
+        map.setCenter(point.features[0].geometry.coordinates);
+        counter = counter + 1;
+    }
+
+    document.getElementById('replay').addEventListener('click', function() {
+        // Set the coordinates of the original point back to origin
+        point.features[0].geometry.coordinates = origin;
+
+        // Update the source layer
+        map.getSource('point').setData(point);
+
+        // Reset the counter
+        counter = 0;
+
+        // Restart the animation.
+        animate(counter);
+    });
+
+    // Start the animation.
+
+    animate();
+});
+</script>
+
+{% endblock main %}

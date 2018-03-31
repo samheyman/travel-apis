@@ -1,0 +1,256 @@
+{
+"data": [
+    {
+        "type": "flight-offer",
+        "id": "12345",
+        "offerItems": [
+            {
+                "services": [
+                    {
+                        "segments": [
+                            {
+                                "carrierCode": "DL",
+                                "number": "212",
+                                "aircraft": {
+                                    "code": "318"
+                                },
+                                "operating": {
+                                    "carrierCode": "DL",
+                                    "number": "212"
+                                },
+                                "duration": "PT2H10M",
+                                "stops": [
+                                    {
+                                        "iataCode": "JFK",
+                                        "newAircraft": {
+                                            "code": "318"
+                                        },
+                                        "duration": "PT2H10M",
+                                        "arrivalAt": "2017-10-23T20:00:00+02:00",
+                                        "departureAt": "2017-10-23T20:00:00+02:00"
+                                    }
+                                ],
+                                "pricingDetailPerAdult": {
+                                    "travelClass": "PREMIUM_ECONOMY",
+                                    "fareClass": "L",
+                                    "availability": 9,
+                                    "fareBasis": "LLX27NCE"
+                                },
+                                "pricingDetailPerInfant": {
+                                    "travelClass": "PREMIUM_ECONOMY",
+                                    "fareClass": "L",
+                                    "availability": 9,
+                                    "fareBasis": "LLX27NCE"
+                                },
+                                "pricingDetailPerChild": {
+                                    "travelClass": "PREMIUM_ECONOMY",
+                                    "fareClass": "L",
+                                    "availability": 9,
+                                    "fareBasis": "LLX27NCE"
+                                },
+                                "pricingDetailPerSenior": {
+                                    "travelClass": "PREMIUM_ECONOMY",
+                                    "fareClass": "L",
+                                    "availability": 9,
+                                    "fareBasis": "LLX27NCE"
+                                }
+                            }
+                        ],
+                        "price": {
+                            "total": "932.70",
+                            "base": "632.70",
+                            "fees": [
+                                {
+                                    "amount": "332.70",
+                                    "type": "ticketing"
+                                }
+                            ],
+                            "taxes": [
+                                {
+                                    "amount": "332.70",
+                                    "code": "MX"
+                                }
+                            ]
+                        },
+                        "pricePerAdult": {
+                            "total": "932.70",
+                            "base": "632.70",
+                            "fees": [
+                                {
+                                    "amount": "332.70",
+                                    "type": "ticketing"
+                                }
+                            ],
+                            "taxes": [
+                                {
+                                    "amount": "332.70",
+                                    "code": "MX"
+                                }
+                            ]
+                        },
+                        "pricePerInfant": {
+                            "total": "932.70",
+                            "base": "632.70",
+                            "fees": [
+                                {
+                                    "amount": "332.70",
+                                    "type": "ticketing"
+                                }
+                            ],
+                            "taxes": [
+                                {
+                                    "amount": "332.70",
+                                    "code": "MX"
+                                }
+                            ]
+                        },
+                        "pricePerChild": {
+                            "total": "932.70",
+                            "base": "632.70",
+                            "fees": [
+                                {
+                                    "amount": "332.70",
+                                    "type": "ticketing"
+                                }
+                            ],
+                            "taxes": [
+                                {
+                                    "amount": "332.70",
+                                    "code": "MX"
+                                }
+                            ]
+                        },
+                        "pricePerSenior": {
+                            "total": "932.70",
+                            "base": "632.70",
+                            "fees": [
+                                {
+                                    "amount": "332.70",
+                                    "type": "ticketing"
+                                }
+                            ],
+                            "taxes": [
+                                {
+                                    "amount": "332.70",
+                                    "code": "MX"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "price": {
+                    "total": "932.70",
+                    "base": "632.70",
+                    "fees": [
+                        {
+                            "amount": "332.70",
+                            "type": "ticketing"
+                        }
+                    ],
+                    "taxes": [
+                        {
+                            "amount": "332.70",
+                            "code": "MX"
+                        }
+                    ]
+                },
+                "pricePerAdult": {
+                    "total": "932.70",
+                    "base": "632.70",
+                    "fees": [
+                        {
+                            "amount": "332.70",
+                            "type": "ticketing"
+                        }
+                    ],
+                    "taxes": [
+                        {
+                            "amount": "332.70",
+                            "code": "MX"
+                        }
+                    ]
+                },
+                "pricePerInfant": {
+                    "total": "932.70",
+                    "base": "632.70",
+                    "fees": [
+                        {
+                            "amount": "332.70",
+                            "type": "ticketing"
+                        }
+                    ],
+                    "taxes": [
+                        {
+                            "amount": "332.70",
+                            "code": "MX"
+                        }
+                    ]
+                },
+                "pricePerChild": {
+                    "total": "932.70",
+                    "base": "632.70",
+                    "fees": [
+                        {
+                            "amount": "332.70",
+                            "type": "ticketing"
+                        }
+                    ],
+                    "taxes": [
+                        {
+                            "amount": "332.70",
+                            "code": "MX"
+                        }
+                    ]
+                },
+                "pricePerSenior": {
+                    "total": "932.70",
+                    "base": "632.70",
+                    "fees": [
+                        {
+                            "amount": "332.70",
+                            "type": "ticketing"
+                        }
+                    ],
+                    "taxes": [
+                        {
+                            "amount": "332.70",
+                            "code": "MX"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+],
+"dictionaries": {
+    "carriers": {
+        "AT": "ROYAL AIR MAROC"
+    },
+    "currencies": {
+        "EUR": "EURO"
+    },
+    "aircrafts": {
+        "788": "BOEING 787-8",
+        "E90": "EMBRAER 190"
+    },
+    "locations": {
+        "EWR": {
+            "subType": "AIRPORT",
+            "detailedName": "NEWARK LIBERTY INTL"
+        },
+        "AMS": {
+            "subType": "CITY",
+            "detailedName": "AMSTERDAM"
+        }
+    }
+},
+"meta": {
+    "links": {
+        "self": "https://test.api.amadeus.com/v1/flight-offers?origin=NCE&destination=PAR&departureDate=2017-12-31&adults=1&travelClass=BUSINESS&nonStop=true"
+    },
+    "currency": "EUR",
+    "defaults": {
+        "nonStop": false
+    }
+}
+}

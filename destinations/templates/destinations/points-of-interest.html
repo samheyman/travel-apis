@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block head %}
+<!-- Map box code -->
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+<script src='//api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js' charset='utf-8'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
+<style>
+  #map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80%;
+  }
+</style>
+{% endblock %}
+
+{% block main %}
+
+<ol class="breadcrumb" style="padding-left:60px">
+  <li><a href="{% url 'home' %}">Home</a></li>
+  <li><a href="{% url 'destinations' %}">Destinations</a></li>
+  <li class="active">Points of Interest</li>
+</ol>
+
+<div class="container">
+  <div class="row">
+
+    <h1>Points of Interest</h1>
+
+    <hr>
+    <form>
+      {% csrf_token %}
+      <label for="{{ form.location.id_location }}">Location: </label>
+      {{ form.location }}
+      <button type="submit" class="" style="position:relative;top:0;">Search</button>
+    </form>
+    <hr>
+    <p>{{ result.points_of_interest|length }} points of interest in {{ location }}</p>
+    <pre>{{ result.points_of_interest }}</pre>
+
+    <table>
+      {% for poi in result.points_of_interest %}
+      <tr>
+        <td><img src="{{ poi.main_image }}" alt="{{ poi.title}}"/></td>
+        <td><a href="{{ poi.details.wiki_page_link}}" target="_blank">{{ poi.title}}</a>
+            <p>{{ poi.details.description}}</p>
+            <p>City grade: {{ poi.grades.city_grade }}<br/>YapQ grade: {{poi.grades.yapq_grade}}</p>
+            <p>Lat/lng: {{poi.location.latitude}}, {{poi.location.longitude}} 
+              (<a href="{{ poi.location.google_maps_link }}" target="_blank">view on Google maps</a>)
+            </p>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    
+    {% endblock %}

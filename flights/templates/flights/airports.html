@@ -1,0 +1,151 @@
+{% extends 'base.html' %} {% block head %}
+<!-- Map box code -->
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+<script src='//api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js' charset='utf-8'></script>
+
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
+<style>
+  #map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80%;
+  }
+</style>
+{% endblock %}
+
+{% block main %}
+
+<ol class="breadcrumb" style="padding-left:60px">
+  <li><a href="{% url 'flights' %}">Flights</a></li>
+  <li class="active">Relevant airports</li>
+</ol>
+
+<script type="text/javascript">
+  var airports = [];
+
+  function Airport(name, lat, lng) {
+    this.type = "Feature";
+    this.geometry = {};
+    this.geometry.type = "Point";
+    this.geometry.coordinates = [lng, lat];
+    this.properties = {};
+    this.properties.title = name;
+  }
+</script>
+<div class="container">
+  <div class="row">
+
+    <h1>Relevant airports</h1>
+
+    <hr>
+    <form>
+      {% csrf_token %}
+      <label for="{{ form.location.id_location }}">Location: </label>
+      {{ form.location }}
+      <button type="submit" class="" style="position:relative;top:0;">Search</button>
+    </form>
+    <hr>
+    <p>{{ result.data|length }} airports within a 500km radius of {{ location }} (Lat {{lat}}, Lng {{lng}})</p>
+    <!-- <pre>{{ result.data }}</pre> -->
+
+    {% for item in result.data %}
+    <script type="text/javascript">
+      airports.push(new Airport("{{ item.name }}", {{ item.geoCode.latitude }}, {{ item.geoCode.longitude }}));
+    </script>
+    {% endfor %}
+
+    <div class="row">
+      <div id='map' style='position:relative;width: 100%; height: 700px;'></div>
+      <div class='overlay'>
+      </div>
+    </div>
+
+    <script>
+      var latitude = {{ lat }};
+      var longitude = {{ lng }};
+
+      if ( latitude === 0 || longitude === 0) {
+        alert("Geocoding unsuccessful. Please try again.");
+      }
+      var city = new mapboxgl.LngLat(longitude, latitude);
+      mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtaGV5bWFuIiwiYSI6ImNpc2l6NWN4ODAwMjUydHJuMnBpZ3V4eG4ifQ.NgP2zfSjWhIFVG36qbFzeg';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: city,
+        zoom: 5
+      });
+      var createGeoJSONCircle = function(center, radiusInKm, points) {
+        if (!points) points = 64;
+
+        var coords = {
+          latitude: latitude,
+          longitude: longitude
+        };
+
+        var km = radiusInKm;
+
+        var ret = [];
+        var distanceX = km / (111.320 * Math.cos(coords.latitude * Math.PI / 180));
+        var distanceY = km / 110.574;
+
+        var theta, x, y;
+        for (var i = 0; i < points; i++) {
+          theta = (i / points) * (2 * Math.PI);
+          x = distanceX * Math.cos(theta);
+          y = distanceY * Math.sin(theta);
+
+          ret.push([coords.longitude + x, coords.latitude + y]);
+        }
+        ret.push(ret[0]);
+
+        return {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [ret]
+              }
+            }]
+          }
+        };
+      };
+      map.on('load', function() {
+        map.addLayer({
+          "id": "airports",
+          "type": "symbol",
+          "source": {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": airports,
+            },
+          },
+          "layout": {
+            "icon-image": "airport-15",
+            "text-field": "{title}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-offset": [0, 0.6],
+            "text-anchor": "top"
+          }
+        });
+        map.addSource("polygon", createGeoJSONCircle([longitude, latitude], 500));
+
+        map.addLayer({
+          "id": "polygon",
+          "type": "fill",
+          "source": "polygon",
+          "layout": {},
+          "paint": {
+            "fill-color": "blue",
+            "fill-opacity": 0.2
+          }
+        });
+      });
+    </script>
+    {% endblock %}

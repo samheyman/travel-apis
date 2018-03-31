@@ -1,0 +1,3799 @@
+{
+    "data": [
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1281448776",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T22:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T09:40:00+01:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "4379",
+                                        "aircraft": {
+                                            "code": "346"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "4379"
+                                        },
+                                        "duration": "0DT6H40M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "V",
+                                        "availability": 9,
+                                        "fareBasis": "VHJX91M2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "238.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "238.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1329974304",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "C",
+                                            "at": "2018-06-25T18:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LIS",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T05:45:00+01:00"
+                                        },
+                                        "carrierCode": "TP",
+                                        "number": "218",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "TP",
+                                            "number": "218"
+                                        },
+                                        "duration": "0DT6H25M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "U",
+                                        "availability": 9,
+                                        "fareBasis": "UUSDSI0E"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "LIS",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T10:05:00+01:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "2",
+                                            "at": "2018-06-26T12:45:00+01:00"
+                                        },
+                                        "carrierCode": "TP",
+                                        "number": "366",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "TP",
+                                            "number": "366"
+                                        },
+                                        "duration": "0DT2H40M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "U",
+                                        "availability": 9,
+                                        "fareBasis": "UUSDSI0E"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "238.28",
+                        "totalTaxes": "173.28"
+                    },
+                    "pricePerAdult": {
+                        "total": "238.28",
+                        "totalTaxes": "173.28"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-428960396",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T11:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T12:25:00-04:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "3093",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "3093"
+                                        },
+                                        "duration": "0DT1H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "O",
+                                        "availability": 9,
+                                        "fareBasis": "OHHX91M2"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T20:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T08:45:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "138",
+                                        "aircraft": {
+                                            "code": "346"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "138"
+                                        },
+                                        "duration": "0DT7H15M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "O",
+                                        "availability": 9,
+                                        "fareBasis": "OHHX91M2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1315879289",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T20:45:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T05:45:00Z"
+                                        },
+                                        "carrierCode": "FI",
+                                        "number": "632",
+                                        "aircraft": {
+                                            "code": "76W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "FI",
+                                            "number": "632"
+                                        },
+                                        "duration": "0DT5H0M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "S",
+                                        "availability": 9,
+                                        "fareBasis": "SQO2LT"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T07:45:00Z"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LGW",
+                                            "terminal": "N",
+                                            "at": "2018-06-26T11:45:00+01:00"
+                                        },
+                                        "carrierCode": "FI",
+                                        "number": "470",
+                                        "aircraft": {
+                                            "code": "75W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "FI",
+                                            "number": "470"
+                                        },
+                                        "duration": "0DT3H0M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "S",
+                                        "availability": 9,
+                                        "fareBasis": "SQO2LT"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "241.91",
+                        "totalTaxes": "85.91"
+                    },
+                    "pricePerAdult": {
+                        "total": "241.91",
+                        "totalTaxes": "85.91"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1797382283",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T20:25:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "4",
+                                            "at": "2018-06-26T08:05:00+01:00"
+                                        },
+                                        "carrierCode": "6X",
+                                        "number": "214",
+                                        "aircraft": {
+                                            "code": "777"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "6X",
+                                            "number": "214"
+                                        },
+                                        "duration": "0DT6H40M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "Y",
+                                        "availability": 9,
+                                        "fareBasis": "YIF"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "3519.33",
+                        "totalTaxes": "19.33"
+                    },
+                    "pricePerAdult": {
+                        "total": "3519.33",
+                        "totalTaxes": "19.33"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1858004376",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "at": "2018-06-25T21:40:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "STN",
+                                            "at": "2018-06-26T09:30:00+01:00"
+                                        },
+                                        "carrierCode": "H1",
+                                        "number": "1932",
+                                        "aircraft": {
+                                            "code": "32S"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "PF",
+                                            "number": "1932"
+                                        },
+                                        "duration": "0DT6H50M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "R",
+                                        "availability": 9,
+                                        "fareBasis": "ROW70S"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "268.33",
+                        "totalTaxes": "42.33"
+                    },
+                    "pricePerAdult": {
+                        "total": "268.33",
+                        "totalTaxes": "42.33"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1905123048",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "C",
+                                            "at": "2018-06-25T18:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LIS",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T05:45:00+01:00"
+                                        },
+                                        "carrierCode": "TP",
+                                        "number": "218",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "TP",
+                                            "number": "218"
+                                        },
+                                        "duration": "0DT6H25M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "A",
+                                        "availability": 9,
+                                        "fareBasis": "AUSDSI0E"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "LIS",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T07:00:00+01:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LCY",
+                                            "at": "2018-06-26T09:40:00+01:00"
+                                        },
+                                        "carrierCode": "TP",
+                                        "number": "344",
+                                        "aircraft": {
+                                            "code": "E90"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "NI",
+                                            "number": "344"
+                                        },
+                                        "duration": "0DT2H40M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "A",
+                                        "availability": 4,
+                                        "fareBasis": "AUSDSI0E"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "380.28",
+                        "totalTaxes": "173.28"
+                    },
+                    "pricePerAdult": {
+                        "total": "380.28",
+                        "totalTaxes": "173.28"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1406192373",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T21:45:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "5",
+                                            "at": "2018-06-26T09:15:00+01:00"
+                                        },
+                                        "carrierCode": "IB",
+                                        "number": "4732",
+                                        "aircraft": {
+                                            "code": "777"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "BA",
+                                            "number": "4732"
+                                        },
+                                        "duration": "0DT6H30M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "Y",
+                                        "availability": 9,
+                                        "fareBasis": "Y1N0C9S1"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "2233.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "2233.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-475104498",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T14:15:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "YYZ",
+                                            "terminal": "3",
+                                            "at": "2018-06-25T16:21:00-04:00"
+                                        },
+                                        "carrierCode": "WS",
+                                        "number": "3605",
+                                        "aircraft": {
+                                            "code": "DH4"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "WS",
+                                            "number": "3605"
+                                        },
+                                        "duration": "0DT2H6M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "X",
+                                        "availability": 1,
+                                        "fareBasis": "XS03S"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "YYZ",
+                                            "terminal": "3",
+                                            "at": "2018-06-25T20:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LGW",
+                                            "terminal": "N",
+                                            "at": "2018-06-26T08:50:00+01:00"
+                                        },
+                                        "carrierCode": "WS",
+                                        "number": "3",
+                                        "aircraft": {
+                                            "code": "76W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "WS",
+                                            "number": "3"
+                                        },
+                                        "duration": "0DT7H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "X",
+                                        "availability": 7,
+                                        "fareBasis": "XS03S"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "254.88",
+                        "totalTaxes": "31.88"
+                    },
+                    "pricePerAdult": {
+                        "total": "254.88",
+                        "totalTaxes": "31.88"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--487635313",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T11:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T12:25:00-04:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "3093",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "3093"
+                                        },
+                                        "duration": "0DT1H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "O",
+                                        "availability": 9,
+                                        "fareBasis": "OHHX91M2"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T19:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T07:20:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "46",
+                                        "aircraft": {
+                                            "code": "333"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "46"
+                                        },
+                                        "duration": "0DT7H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "O",
+                                        "availability": 9,
+                                        "fareBasis": "OHHX91M2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-202920731",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "C",
+                                            "at": "2018-06-25T18:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LIS",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T05:45:00+01:00"
+                                        },
+                                        "carrierCode": "TP",
+                                        "number": "218",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "TP",
+                                            "number": "218"
+                                        },
+                                        "duration": "0DT6H25M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "E",
+                                        "availability": 9,
+                                        "fareBasis": "EUSDSI0E"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "LIS",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T12:55:00+01:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LGW",
+                                            "terminal": "S",
+                                            "at": "2018-06-26T15:35:00+01:00"
+                                        },
+                                        "carrierCode": "TP",
+                                        "number": "342",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "TP",
+                                            "number": "342"
+                                        },
+                                        "duration": "0DT2H40M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "E",
+                                        "availability": 9,
+                                        "fareBasis": "EUSDSI0E"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "218.28",
+                        "totalTaxes": "173.28"
+                    },
+                    "pricePerAdult": {
+                        "total": "218.28",
+                        "totalTaxes": "173.28"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--797397279",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T17:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T18:41:00-04:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "2369",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "2369"
+                                        },
+                                        "duration": "0DT1H36M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T19:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T07:50:00+01:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "401",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "401"
+                                        },
+                                        "duration": "0DT7H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-825888690",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T22:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "CDG",
+                                            "terminal": "2E",
+                                            "at": "2018-06-26T11:00:00+02:00"
+                                        },
+                                        "carrierCode": "AF",
+                                        "number": "321",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "AF",
+                                            "number": "321"
+                                        },
+                                        "duration": "0DT6H55M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "V",
+                                        "availability": 9,
+                                        "fareBasis": "VHHX91B2"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "CDG",
+                                            "at": "2018-06-26T13:55:00+02:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "at": "2018-06-26T16:10:00+01:00"
+                                        },
+                                        "carrierCode": "AF",
+                                        "number": "4127",
+                                        "aircraft": {
+                                            "code": "E90"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "AF",
+                                            "number": "4127"
+                                        },
+                                        "duration": "0DT3H15M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "L",
+                                        "availability": 9,
+                                        "fareBasis": "VHHX91B2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "284.61",
+                        "totalTaxes": "204.61"
+                    },
+                    "pricePerAdult": {
+                        "total": "284.61",
+                        "totalTaxes": "204.61"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-2136408101",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T19:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T20:54:00-04:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "4654",
+                                        "aircraft": {
+                                            "code": "CR9"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "4654"
+                                        },
+                                        "duration": "0DT1H34M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T22:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T10:15:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "154",
+                                        "aircraft": {
+                                            "code": "333"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "154"
+                                        },
+                                        "duration": "0DT7H15M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1801358118",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T19:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T20:54:00-04:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "3471",
+                                        "aircraft": {
+                                            "code": "CR9"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "3471"
+                                        },
+                                        "duration": "0DT1H34M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T22:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T10:15:00+01:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "4359",
+                                        "aircraft": {
+                                            "code": "333"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "4359"
+                                        },
+                                        "duration": "0DT7H15M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1205185032",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T17:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T18:41:00-04:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "2715",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "2715"
+                                        },
+                                        "duration": "0DT1H36M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T20:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T08:45:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "138",
+                                        "aircraft": {
+                                            "code": "346"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "138"
+                                        },
+                                        "duration": "0DT7H15M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-120805510",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T21:45:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "5",
+                                            "at": "2018-06-26T09:15:00+01:00"
+                                        },
+                                        "carrierCode": "AA",
+                                        "number": "6200",
+                                        "aircraft": {
+                                            "code": "777"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "BA",
+                                            "number": "6200"
+                                        },
+                                        "duration": "0DT6H30M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "Y",
+                                        "availability": 7,
+                                        "fareBasis": "Y1N0C9S1"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "2225.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "2225.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--441267098",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T19:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T20:54:00-04:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "3471",
+                                        "aircraft": {
+                                            "code": "CR9"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "3471"
+                                        },
+                                        "duration": "0DT1H34M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T22:45:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T10:50:00+01:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "402",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "402"
+                                        },
+                                        "duration": "0DT7H5M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--528133220",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "C",
+                                            "at": "2018-06-25T18:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LIS",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T05:45:00+01:00"
+                                        },
+                                        "carrierCode": "TP",
+                                        "number": "218",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "TP",
+                                            "number": "218"
+                                        },
+                                        "duration": "0DT6H25M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "E",
+                                        "availability": 9,
+                                        "fareBasis": "EUSDSI0E"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "LIS",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T07:05:00+01:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LGW",
+                                            "terminal": "S",
+                                            "at": "2018-06-26T09:45:00+01:00"
+                                        },
+                                        "carrierCode": "TP",
+                                        "number": "336",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "TP",
+                                            "number": "336"
+                                        },
+                                        "duration": "0DT2H40M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "E",
+                                        "availability": 9,
+                                        "fareBasis": "EUSDSI0E"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "218.28",
+                        "totalTaxes": "173.28"
+                    },
+                    "pricePerAdult": {
+                        "total": "218.28",
+                        "totalTaxes": "173.28"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1752563440",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T19:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T20:54:00-04:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "4654",
+                                        "aircraft": {
+                                            "code": "CR9"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "4654"
+                                        },
+                                        "duration": "0DT1H34M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T22:45:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T10:50:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "5403",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "5403"
+                                        },
+                                        "duration": "0DT7H5M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1335380732",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T17:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T18:41:00-04:00"
+                                        },
+                                        "carrierCode": "KL",
+                                        "number": "5967",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "5967"
+                                        },
+                                        "duration": "0DT1H36M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T19:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T07:50:00+01:00"
+                                        },
+                                        "carrierCode": "KL",
+                                        "number": "6103",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "6103"
+                                        },
+                                        "duration": "0DT7H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1143104167",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T09:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T10:20:00-04:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "4658",
+                                        "aircraft": {
+                                            "code": "CR9"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "4658"
+                                        },
+                                        "duration": "0DT1H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "O",
+                                        "availability": 9,
+                                        "fareBasis": "OHHX91M2"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T18:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T06:25:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "4",
+                                        "aircraft": {
+                                            "code": "333"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "4"
+                                        },
+                                        "duration": "0DT7H25M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "O",
+                                        "availability": 9,
+                                        "fareBasis": "OHHX91M2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1336160087",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T20:45:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T05:45:00Z"
+                                        },
+                                        "carrierCode": "FI",
+                                        "number": "632",
+                                        "aircraft": {
+                                            "code": "76W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "FI",
+                                            "number": "632"
+                                        },
+                                        "duration": "0DT5H0M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "L",
+                                        "availability": 9,
+                                        "fareBasis": "LQO3ECON"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T07:40:00Z"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "2",
+                                            "at": "2018-06-26T11:45:00+01:00"
+                                        },
+                                        "carrierCode": "FI",
+                                        "number": "450",
+                                        "aircraft": {
+                                            "code": "76W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "FI",
+                                            "number": "450"
+                                        },
+                                        "duration": "0DT3H5M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "L",
+                                        "availability": 9,
+                                        "fareBasis": "LQO3ECON"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "356.91",
+                        "totalTaxes": "85.91"
+                    },
+                    "pricePerAdult": {
+                        "total": "356.91",
+                        "totalTaxes": "85.91"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1862676603",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T06:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T07:21:00-04:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "2471",
+                                        "aircraft": {
+                                            "code": "717"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "2471"
+                                        },
+                                        "duration": "0DT1H21M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T08:15:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-25T20:10:00+01:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "4371",
+                                        "aircraft": {
+                                            "code": "346"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "4371"
+                                        },
+                                        "duration": "0DT6H55M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1173605410",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T15:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T17:00:00-04:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "3478",
+                                        "aircraft": {
+                                            "code": "CR9"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "3478"
+                                        },
+                                        "duration": "0DT1H30M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T18:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T06:25:00+01:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "4373",
+                                        "aircraft": {
+                                            "code": "333"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "4373"
+                                        },
+                                        "duration": "0DT7H25M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1855268910",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T15:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T17:00:00-04:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "3478",
+                                        "aircraft": {
+                                            "code": "CR9"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "3478"
+                                        },
+                                        "duration": "0DT1H30M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T19:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T07:20:00+01:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "4375",
+                                        "aircraft": {
+                                            "code": "333"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "4375"
+                                        },
+                                        "duration": "0DT7H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--226062505",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T19:24:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T07:05:00+01:00"
+                                        },
+                                        "carrierCode": "KL",
+                                        "number": "6186",
+                                        "aircraft": {
+                                            "code": "76W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "6186"
+                                        },
+                                        "duration": "0DT6H41M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "V",
+                                        "availability": 4,
+                                        "fareBasis": "VHHX91B2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1950209786",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T15:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T17:00:00-04:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "4656",
+                                        "aircraft": {
+                                            "code": "CR9"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "4656"
+                                        },
+                                        "duration": "0DT1H30M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 7,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T18:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T06:25:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "4",
+                                        "aircraft": {
+                                            "code": "333"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "4"
+                                        },
+                                        "duration": "0DT7H25M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-107814626",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T22:10:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "FCO",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T12:10:00+02:00"
+                                        },
+                                        "carrierCode": "AZ",
+                                        "number": "615",
+                                        "aircraft": {
+                                            "code": "330"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "AZ",
+                                            "number": "615"
+                                        },
+                                        "duration": "0DT8H0M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 7,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "FCO",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T14:15:00+02:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "4",
+                                            "at": "2018-06-26T16:05:00+01:00"
+                                        },
+                                        "carrierCode": "AZ",
+                                        "number": "204",
+                                        "aircraft": {
+                                            "code": "321"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "AZ",
+                                            "number": "204"
+                                        },
+                                        "duration": "0DT2H50M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 7,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1789.96",
+                        "totalTaxes": "161.96"
+                    },
+                    "pricePerAdult": {
+                        "total": "1789.96",
+                        "totalTaxes": "161.96"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--249570452",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T16:49:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "AMS",
+                                            "at": "2018-06-26T05:50:00+02:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "256",
+                                        "aircraft": {
+                                            "code": "333"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "256"
+                                        },
+                                        "duration": "0DT7H1M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "V",
+                                        "availability": 9,
+                                        "fareBasis": "VHJX91M2"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "AMS",
+                                            "at": "2018-06-26T07:05:00+02:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LCY",
+                                            "at": "2018-06-26T07:15:00+01:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "9285",
+                                        "aircraft": {
+                                            "code": "E90"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "KL",
+                                            "number": "9285"
+                                        },
+                                        "duration": "0DT1H10M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "V",
+                                        "availability": 9,
+                                        "fareBasis": "VHJX91M2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "265.95",
+                        "totalTaxes": "155.95"
+                    },
+                    "pricePerAdult": {
+                        "total": "265.95",
+                        "totalTaxes": "155.95"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1601123017",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T11:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T12:25:00-04:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "3093",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "3093"
+                                        },
+                                        "duration": "0DT1H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "O",
+                                        "availability": 9,
+                                        "fareBasis": "OHHX91M2"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T18:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T06:25:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "4",
+                                        "aircraft": {
+                                            "code": "333"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "4"
+                                        },
+                                        "duration": "0DT7H25M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "O",
+                                        "availability": 9,
+                                        "fareBasis": "OHHX91M2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1826958688",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T06:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T07:21:00-04:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "3094",
+                                        "aircraft": {
+                                            "code": "717"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "3094"
+                                        },
+                                        "duration": "0DT1H21M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 7,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T08:15:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-25T20:10:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "26",
+                                        "aircraft": {
+                                            "code": "346"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "26"
+                                        },
+                                        "duration": "0DT6H55M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--782409327",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T19:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T04:35:00Z"
+                                        },
+                                        "carrierCode": "WW",
+                                        "number": "126",
+                                        "aircraft": {
+                                            "code": "321"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "WW",
+                                            "number": "126"
+                                        },
+                                        "duration": "0DT5H35M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "Q",
+                                        "availability": 9,
+                                        "fareBasis": "QWOWPVO"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T06:10:00Z"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LGW",
+                                            "terminal": "S",
+                                            "at": "2018-06-26T10:25:00+01:00"
+                                        },
+                                        "carrierCode": "WW",
+                                        "number": "810",
+                                        "aircraft": {
+                                            "code": "321"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "WW",
+                                            "number": "810"
+                                        },
+                                        "duration": "0DT3H15M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "Q",
+                                        "availability": 9,
+                                        "fareBasis": "QWOWPVO"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "342.64",
+                        "totalTaxes": "97.64"
+                    },
+                    "pricePerAdult": {
+                        "total": "342.64",
+                        "totalTaxes": "97.64"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-997183156",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T17:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "YHZ",
+                                            "at": "2018-06-25T19:49:00-03:00"
+                                        },
+                                        "carrierCode": "WS",
+                                        "number": "3713",
+                                        "aircraft": {
+                                            "code": "DH4"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "WS",
+                                            "number": "3713"
+                                        },
+                                        "duration": "0DT1H44M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "P",
+                                        "availability": 5,
+                                        "fareBasis": "PSSH"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "YHZ",
+                                            "at": "2018-06-25T22:35:00-03:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LGW",
+                                            "terminal": "N",
+                                            "at": "2018-06-26T08:21:00+01:00"
+                                        },
+                                        "carrierCode": "WS",
+                                        "number": "24",
+                                        "aircraft": {
+                                            "code": "7M8"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "WS",
+                                            "number": "24"
+                                        },
+                                        "duration": "0DT5H46M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "P",
+                                        "availability": 7,
+                                        "fareBasis": "PSSH"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "358.04",
+                        "totalTaxes": "29.04"
+                    },
+                    "pricePerAdult": {
+                        "total": "358.04",
+                        "totalTaxes": "29.04"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1247707117",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T17:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T18:41:00-04:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "2715",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "2715"
+                                        },
+                                        "duration": "0DT1H36M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 7,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T19:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T07:50:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "5401",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "5401"
+                                        },
+                                        "duration": "0DT7H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-528082198",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T21:45:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "5",
+                                            "at": "2018-06-26T09:15:00+01:00"
+                                        },
+                                        "carrierCode": "AY",
+                                        "number": "5502",
+                                        "aircraft": {
+                                            "code": "777"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "BA",
+                                            "number": "5502"
+                                        },
+                                        "duration": "0DT6H30M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "Y",
+                                        "availability": 9,
+                                        "fareBasis": "Y1N0C9S1"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "2225.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "2225.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1728705243",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T19:24:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T07:05:00+01:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "58",
+                                        "aircraft": {
+                                            "code": "76W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "58"
+                                        },
+                                        "duration": "0DT6H41M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "E",
+                                        "availability": 7,
+                                        "fareBasis": "VHHX91B2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "218.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1044506627",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T21:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T06:30:00Z"
+                                        },
+                                        "carrierCode": "FI",
+                                        "number": "630",
+                                        "aircraft": {
+                                            "code": "75W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "FI",
+                                            "number": "630"
+                                        },
+                                        "duration": "0DT5H0M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "L",
+                                        "availability": 9,
+                                        "fareBasis": "LQO3ECON"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T07:40:00Z"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "2",
+                                            "at": "2018-06-26T11:45:00+01:00"
+                                        },
+                                        "carrierCode": "FI",
+                                        "number": "450",
+                                        "aircraft": {
+                                            "code": "76W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "FI",
+                                            "number": "450"
+                                        },
+                                        "duration": "0DT3H5M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "L",
+                                        "availability": 9,
+                                        "fareBasis": "LQO3ECON"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "356.91",
+                        "totalTaxes": "85.91"
+                    },
+                    "pricePerAdult": {
+                        "total": "356.91",
+                        "totalTaxes": "85.91"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-594357947",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T21:45:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "5",
+                                            "at": "2018-06-26T09:15:00+01:00"
+                                        },
+                                        "carrierCode": "BA",
+                                        "number": "202",
+                                        "aircraft": {
+                                            "code": "777"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "BA",
+                                            "number": "202"
+                                        },
+                                        "duration": "0DT6H30M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "Y",
+                                        "availability": 9,
+                                        "fareBasis": "Y1N0C9S1"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "2233.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "2233.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1871619409",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T19:24:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T07:05:00+01:00"
+                                        },
+                                        "carrierCode": "VS",
+                                        "number": "4012",
+                                        "aircraft": {
+                                            "code": "76W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "4012"
+                                        },
+                                        "duration": "0DT6H41M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--317220397",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "C",
+                                            "at": "2018-06-25T18:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LIS",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T05:45:00+01:00"
+                                        },
+                                        "carrierCode": "TP",
+                                        "number": "218",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "TP",
+                                            "number": "218"
+                                        },
+                                        "duration": "0DT6H25M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "E",
+                                        "availability": 9,
+                                        "fareBasis": "EUSDSI0E"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "LIS",
+                                            "terminal": "1",
+                                            "at": "2018-06-26T07:35:00+01:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "2",
+                                            "at": "2018-06-26T10:20:00+01:00"
+                                        },
+                                        "carrierCode": "TP",
+                                        "number": "374",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "TP",
+                                            "number": "374"
+                                        },
+                                        "duration": "0DT2H45M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "E",
+                                        "availability": 9,
+                                        "fareBasis": "EUSDSI0E"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "218.28",
+                        "totalTaxes": "173.28"
+                    },
+                    "pricePerAdult": {
+                        "total": "218.28",
+                        "totalTaxes": "173.28"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1607532749",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T21:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T06:30:00Z"
+                                        },
+                                        "carrierCode": "FI",
+                                        "number": "630",
+                                        "aircraft": {
+                                            "code": "75W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "FI",
+                                            "number": "630"
+                                        },
+                                        "duration": "0DT5H0M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "S",
+                                        "availability": 9,
+                                        "fareBasis": "SQO2LT"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T07:45:00Z"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LGW",
+                                            "terminal": "N",
+                                            "at": "2018-06-26T11:45:00+01:00"
+                                        },
+                                        "carrierCode": "FI",
+                                        "number": "470",
+                                        "aircraft": {
+                                            "code": "75W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "FI",
+                                            "number": "470"
+                                        },
+                                        "duration": "0DT3H0M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "S",
+                                        "availability": 9,
+                                        "fareBasis": "SQO2LT"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "241.91",
+                        "totalTaxes": "85.91"
+                    },
+                    "pricePerAdult": {
+                        "total": "241.91",
+                        "totalTaxes": "85.91"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1646952539",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T20:35:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LGW",
+                                            "terminal": "S",
+                                            "at": "2018-06-26T07:55:00+01:00"
+                                        },
+                                        "carrierCode": "DY",
+                                        "number": "7148",
+                                        "aircraft": {
+                                            "code": "789"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DI",
+                                            "number": "7148"
+                                        },
+                                        "duration": "0DT6H20M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "T",
+                                        "availability": 9,
+                                        "fareBasis": "TSRGB"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "223.97",
+                        "totalTaxes": "22.97"
+                    },
+                    "pricePerAdult": {
+                        "total": "223.97",
+                        "totalTaxes": "22.97"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1056449929",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T19:24:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T07:05:00+01:00"
+                                        },
+                                        "carrierCode": "AF",
+                                        "number": "3567",
+                                        "aircraft": {
+                                            "code": "76W"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "3567"
+                                        },
+                                        "duration": "0DT6H41M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--394014742",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T22:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "CDG",
+                                            "terminal": "2E",
+                                            "at": "2018-06-26T11:00:00+02:00"
+                                        },
+                                        "carrierCode": "AF",
+                                        "number": "321",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "AF",
+                                            "number": "321"
+                                        },
+                                        "duration": "0DT6H55M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "V",
+                                        "availability": 9,
+                                        "fareBasis": "VHHX91B2"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "CDG",
+                                            "terminal": "2E",
+                                            "at": "2018-06-26T18:15:00+02:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "4",
+                                            "at": "2018-06-26T18:30:00+01:00"
+                                        },
+                                        "carrierCode": "AF",
+                                        "number": "1080",
+                                        "aircraft": {
+                                            "code": "318"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "AF",
+                                            "number": "1080"
+                                        },
+                                        "duration": "0DT1H15M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "L",
+                                        "availability": 9,
+                                        "fareBasis": "VHHX91B2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "284.61",
+                        "totalTaxes": "204.61"
+                    },
+                    "pricePerAdult": {
+                        "total": "284.61",
+                        "totalTaxes": "204.61"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--595753146",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T19:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T20:54:00-04:00"
+                                        },
+                                        "carrierCode": "KL",
+                                        "number": "6475",
+                                        "aircraft": {
+                                            "code": "CR9"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "6475"
+                                        },
+                                        "duration": "0DT1H34M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T22:45:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T10:50:00+01:00"
+                                        },
+                                        "carrierCode": "KL",
+                                        "number": "6101",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "6101"
+                                        },
+                                        "duration": "0DT7H5M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-737006051",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T19:20:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T20:54:00-04:00"
+                                        },
+                                        "carrierCode": "AF",
+                                        "number": "8512",
+                                        "aircraft": {
+                                            "code": "CR9"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "8512"
+                                        },
+                                        "duration": "0DT1H34M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T22:45:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T10:50:00+01:00"
+                                        },
+                                        "carrierCode": "AF",
+                                        "number": "3662",
+                                        "aircraft": {
+                                            "code": "332"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "3662"
+                                        },
+                                        "duration": "0DT7H5M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--2062010051",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T19:00:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T04:35:00Z"
+                                        },
+                                        "carrierCode": "WW",
+                                        "number": "126",
+                                        "aircraft": {
+                                            "code": "321"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "WW",
+                                            "number": "126"
+                                        },
+                                        "duration": "0DT5H35M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "Q",
+                                        "availability": 9,
+                                        "fareBasis": "QWOWPO"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "KEF",
+                                            "at": "2018-06-26T12:05:00Z"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "STN",
+                                            "at": "2018-06-26T16:15:00+01:00"
+                                        },
+                                        "carrierCode": "WW",
+                                        "number": "826",
+                                        "aircraft": {
+                                            "code": "321"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "WW",
+                                            "number": "826"
+                                        },
+                                        "duration": "0DT3H10M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "S",
+                                        "availability": 1,
+                                        "fareBasis": "SWOWP"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "336.64",
+                        "totalTaxes": "97.64"
+                    },
+                    "pricePerAdult": {
+                        "total": "336.64",
+                        "totalTaxes": "97.64"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513--1940280380",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "A",
+                                            "at": "2018-06-25T17:05:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T18:41:00-04:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "2369",
+                                        "aircraft": {
+                                            "code": "319"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "DL",
+                                            "number": "2369"
+                                        },
+                                        "duration": "0DT1H36M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                },
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "JFK",
+                                            "terminal": "4",
+                                            "at": "2018-06-25T20:30:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "3",
+                                            "at": "2018-06-26T08:45:00+01:00"
+                                        },
+                                        "carrierCode": "DL",
+                                        "number": "4412",
+                                        "aircraft": {
+                                            "code": "346"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "VS",
+                                            "number": "4412"
+                                        },
+                                        "duration": "0DT7H15M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "B",
+                                        "availability": 9,
+                                        "fareBasis": "BFFWUS"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "1761.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "1521455341513-1225706182",
+            "offerItems": [
+                {
+                    "services": [
+                        {
+                            "segments": [
+                                {
+                                    "flightSegment": {
+                                        "departure": {
+                                            "iataCode": "BOS",
+                                            "terminal": "E",
+                                            "at": "2018-06-25T22:50:00-04:00"
+                                        },
+                                        "arrival": {
+                                            "iataCode": "LHR",
+                                            "terminal": "5",
+                                            "at": "2018-06-26T10:20:00+01:00"
+                                        },
+                                        "carrierCode": "AY",
+                                        "number": "5414",
+                                        "aircraft": {
+                                            "code": "777"
+                                        },
+                                        "operating": {
+                                            "carrierCode": "BA",
+                                            "number": "5414"
+                                        },
+                                        "duration": "0DT6H30M"
+                                    },
+                                    "pricingDetailPerAdult": {
+                                        "travelClass": "ECONOMY",
+                                        "fareClass": "Y",
+                                        "availability": 9,
+                                        "fareBasis": "Y1N0C9S1"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "price": {
+                        "total": "2225.26",
+                        "totalTaxes": "144.26"
+                    },
+                    "pricePerAdult": {
+                        "total": "2225.26",
+                        "totalTaxes": "144.26"
+                    }
+                }
+            ]
+        }
+    ],
+    "dictionaries": {
+        "carriers": {
+            "AA": "AMERICAN AIRLINES",
+            "WW": "WOW AIR",
+            "KL": "KLM ROYAL DUTCH AIRLINES",
+            "6X": "AMADEUS SIX",
+            "FI": "ICELANDAIR",
+            "AF": "AIR FRANCE",
+            "DI": "NORWEGIAN AIR UK",
+            "DL": "DELTA AIR LINES",
+            "H1": "HAHN AIR SYSTEMS",
+            "DY": "NORWEGIAN AIR SHUTTLE",
+            "PF": "PRIMERA AIR SCANDINAVIA",
+            "AY": "FINNAIR",
+            "AZ": "ALITALIA S.P.A. IN A.S",
+            "IB": "IBERIA",
+            "NI": "PORTUGALIA",
+            "TP": "TAP PORTUGAL",
+            "WS": "WESTJET",
+            "VS": "VIRGIN ATLANTIC",
+            "BA": "BRITISH AIRWAYS"
+        },
+        "currencies": {
+            "EUR": "EURO"
+        },
+        "aircraft": {
+            "318": "AIRBUS INDUSTRIE A318",
+            "319": "AIRBUS INDUSTRIE A319",
+            "321": "AIRBUS INDUSTRIE A321",
+            "330": "AIRBUS INDUSTRIE A330",
+            "332": "AIRBUS INDUSTRIE A330-200",
+            "333": "AIRBUS INDUSTRIE A330-300",
+            "346": "AIRBUS INDUSTRIE A340-600",
+            "717": "BOEING 717",
+            "777": "BOEING 777-200/300",
+            "789": "BOEING 787-9",
+            "7M8": "BOEING 737 MAX 8",
+            "CR9": "CANADAIR REGIONAL JET 900",
+            "DH4": "DE HAVILLAND DHC-8 400 SERIES",
+            "32S": "AIRBUS INDUSTRIE A318/A319/A320/A321",
+            "76W": "BOEING 767-300",
+            "75W": "BOEING 757-200",
+            "E90": "EMBRAER 190"
+        },
+        "locations": {
+            "LCY": {
+                "subType": "AIRPORT",
+                "detailedName": "LONDON CITY APT"
+            },
+            "AMS": {
+                "subType": "AIRPORT",
+                "detailedName": "SCHIPHOL AIRPORT"
+            },
+            "BOS": {
+                "subType": "AIRPORT",
+                "detailedName": "EDWARD L LOGAN INTL"
+            },
+            "CDG": {
+                "subType": "AIRPORT",
+                "detailedName": "CHARLES DE GAULLE"
+            },
+            "YHZ": {
+                "subType": "AIRPORT",
+                "detailedName": "STANFIELD INTL"
+            },
+            "STN": {
+                "subType": "AIRPORT",
+                "detailedName": "STANSTED"
+            },
+            "KEF": {
+                "subType": "AIRPORT",
+                "detailedName": "KEFLAVIK INTL"
+            },
+            "JFK": {
+                "subType": "AIRPORT",
+                "detailedName": "JOHN F KENNEDY INTL"
+            },
+            "FCO": {
+                "subType": "AIRPORT",
+                "detailedName": "FIUMICINO"
+            },
+            "LHR": {
+                "subType": "AIRPORT",
+                "detailedName": "HEATHROW"
+            },
+            "LIS": {
+                "subType": "AIRPORT",
+                "detailedName": "AIRPORT"
+            },
+            "YYZ": {
+                "subType": "AIRPORT",
+                "detailedName": "LESTER B. PEARSON INTL"
+            },
+            "LGW": {
+                "subType": "AIRPORT",
+                "detailedName": "GATWICK"
+            }
+        }
+    },
+    "meta": {
+        "links": {
+            "self": "https://test.api.amadeus.com/v1/shopping/flight-offers?origin=BOS&destination=LON&departureDate=2018-06-25&adults=1&nonStop=false"
+        },
+        "currency": "EUR",
+        "defaults": {
+            "nonStop": false
+        }
+    }
+}

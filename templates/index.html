@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+
+    <h1>Travel APIs</h1>
+
+    <ul>
+      <li><a href="{% url 'flights' %}">Flights</a></li>
+      <li><a href="{% url 'hotels' %}">Hotels</a></li>
+      <li><a href="{% url 'destinations' %}">Destinations</a></li>
+      <li>NDC</li>
+      <li>Loyaly programs</li>
+      <li>Airports</li>
+    </ul>
+
+  </div>
+
+</div>
+{% endblock %}

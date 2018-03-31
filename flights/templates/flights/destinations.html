@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<!-- D3 charts -->
+<script src="{% static 'js/d3/d3.min.js' %}"></script>
+<link href="{% static 'css/c3.css' %}" rel="stylesheet">
+<script src="{% static 'js/d3/c3.min.js' %}"></script>
+{% endblock %}
+
+{% block main %}
+
+    <ol class="breadcrumb" style="padding-left:60px">
+      <li><a href="{% url 'flights' %}">Flights</a></li>
+      <li class="active">Popular destinations</li>
+    </ol>
+
+    <!-- Results -->
+    <div class="container">
+
+      <form>
+        {% csrf_token %}
+        <label for="{{ form.airport.id_airport }}">Origin airport (IATA code): </label>
+        {{ form.airport }}
+        <button type="submit" class="" style="position:relative;top:0;">Search</button>
+      </form>
+      <hr>
+      <div class="row">
+        <h2>Popular destinations from <span class="destinations-results">{{ airport }}</span></h2>
+       <!-- Search form -->
+        <div class="col-md-4">
+          <h4>Searches (interest)</h4>
+          <p>Top destinations users in <span class="destinations-results">{{ market }}</span> have <em>searched for</em> from <span class="destinations-results">{{ airport }}</span>, based on total search numbers.</p><br/>
+          <div id="destinations_most_searched_chart"></div>
+        </div>
+
+        <div class="col-md-4">
+          <h4>Travelled (actual)</h4>
+          <p>Top destinations users in <span class="destinations-results">{{ market }}</span> have <em>travelled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of check-ins and normalized to a range 0-1.</p>
+          <div id="destinations_most_travelled_chart"></div>
+        </div>
+        <div class="col-md-4">
+          <h4>Bookings (intent)</h4>
+          <p>Top destinations users have <em>travelled to</em> from <span class="destinations-results">{{ most_travelled_data.origin }}</span>, based on total number of bookings (including cancellations) and normalized to a range 0-1.</p>
+          <div id="destinations_most_travelled_chart"></div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+         var most_searched_data_xs = {{ most_searched_data.xs|safe }};
+         var most_searched_data_values = {{ most_searched_data.searches|safe }};
+        //  var most_travelled_data_xs = {{ most_travelled_data.xs|safe }};
+        //  var most_travelled_data_values = {{ most_travelled_data.bookings|safe }};
+      </script>
+      <script type="text/javascript" src="{% static 'js/d3/destinations.js' %}"></script>
+      <script>
+      load_charts();
+      </script>
+
+    </div>
+{% endblock main %}

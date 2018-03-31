@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block main %}
+<ol class="breadcrumb" style="padding-left:60px">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li class="active">Hotels</li>
+</ol>
+
+
+<div class="container">
+
+<section class="doc-additional-content doc-method-section">
+    <h1>Hotels API Test Harness</h1>
+    <div id="testharnessresult">
+        <form name="searchquery" class="form-container">
+            <div class="float-left">
+                <label for="apikey" id="apikey_label">Api Key <span data-toggle="tooltip" class="test-harness-hint-button glyphicon glyphicon-question-sign" title="To request an API key please contact us via our partners site at partners.skyscanner.net/contact"></span></label>
+                <input type="text" name="apikey" id="apikey" value="Your API key" class="query-input apikey" />
+            </div>
+            <div class="cb">
+                <div class="float-left test-hareness-autosuggest-wrap">
+                    <label for="entity">Where <span data-toggle="tooltip" class="test-harness-hint-button glyphicon glyphicon-question-sign" title="27544008 is London's ID. The Autosuggest Service is used to let users type free text and get the place ID."></span></label>
+                    <input class="query-input test-harness-autosuggest" type="text" name="entity" id="entity" value="London (27544008)"/>
+                </div>
+                <div class="float-left date-picker form-group datepicker-container">
+	                <label for="checkindate">Check-in</label>
+	                <div class="input-group date">
+					    <input type="text" class="form-control" name="checkindate" id="checkindate" value="2017-09-21">
+					    <span class="input-group-addon">
+					        <i class="glyphicon glyphicon-th"></i>
+					    </span>
+					</div>
+				</div>
+				<div class="float-left date-picker form-group datepicker-container">
+	                <label for="checkoutdate">Check-out</label>
+	                <div class="input-group date">
+					    <input type="text" class="form-control" name="checkoutdate" id="checkoutdate" value="2017-09-23">
+					    <span class="input-group-addon">
+					        <i class="glyphicon glyphicon-th"></i>
+					    </span>
+					</div>
+				</div>
+                <!-- <div class="float-left"><label for="checkindate">Check-in</label><input class="query-input" type="text" name="checkindate" id="checkindate" value=""/></div>
+                <div class="float-left"><label for="checkoutdate">Check-out</label><input class="query-input" type="text" name="checkoutdate" id="checkoutdate" value=""/></div> -->
+                <div class="float-left market">
+                    <div class="float-left"><label for="market">Market</label><input class="query-input" type="text" name="market" id="market" value="UK"/></div>
+                    <div class="float-left"><label for="locale">Locale</label><input class="query-input" type="text" name="locale" id="locale" value="en-GB"/></div>
+                    <div class="float-left"><label for="currency">Currency</label><input class="query-input" type="text" name="currency" id="currency" value="GBP"/></div>
+                </div>
+                <div class="float-left passengers">
+                    <div class="float-left"><label for="adults">Adults</label><input class="query-input" type="text" name="adults" id="adults" value="2"/></div>
+                    <div class="float-left"><label for="rooms">Rooms</label><input class="query-input" type="text" name="rooms" id="rooms" value="1"/></div>
+                </div>
+                <div class="float-left image-limit">
+                    <label for="imageLimit">
+                        Image limit
+                        <span data-toggle="tooltip" class="test-harness-hint-button glyphicon glyphicon-question-sign" title="The number of images per hotel to get - the allowed values are between 1 and 50. If not specified, 1 image per hotel will be returned."></span>
+                    </label>
+                    <select name="imageLimit" id="imageLimit">
+                        <option value=""></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5" selected>5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                        <option value="49">49</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="float-left">
+                    <label for="deviceType">Device type <span data-toggle="tooltip" class=" glyphicon glyphicon-question-sign" title="You need to add a request header to the call. The format is 'x-user-agent: <device>;B2B' where <device> can be D for desktop, T for tablet, M for mobile and N if you are not able to detect the device type."></span></label>
+                    <select name="deviceType" id="deviceType">
+                        <option value="D">Desktop (D)</option>
+                        <option value="T">Tablet (T)</option>
+                        <option value="M">Mobile (M)</option>
+                        <option value="N">Not sure (N)</option>
+                    </select>
+            </div>
+            <div class="float-left">
+                <label for="enhancers">Additional info (enhancers) <span data-toggle="tooltip" class=" glyphicon glyphicon-question-sign" title="Enhancers allow you to specify additional information to be returned (e.g. images)."></span></label>
+                <div id="enhancers-options">
+                    <input name="enhancers_images" class="enhancers" type="checkbox" value="images" checked> Images<br/>
+                    <input name="enhancers_amenities" class="enhancers" type="checkbox" value="amenities" checked> Amenities<br/>
+                    <input name="enhancers_location" class="enhancers" type="checkbox" value="location"> Location<br/>
+                    <input name="enhancers_price_slider" class="enhancers" type="checkbox" value="price_slider"> Price slider<br/>
+                    <input name="enhancers_filters" class="enhancers" type="checkbox" value="filters"> Filters<br/>
+                </div>
+                <!-- <select multiple="multiple" name="enhancers" id="enhancers">
+                    <option value="images">Images</option>
+                    <option value="amenities">Amenities</option>
+                    <option value="location">Location</option>
+                    <option value="price_slider">Price slider</option>
+                    <option value="filters">Filters</option>
+                </select> -->
+            </div>
+            <div class="cb pricing-test-actions" style="position: relative;clear: both;">
+                <input type="submit" value="Find Hotels" id="btn-call" class="btn"/>
+                <span id="hourglass"><img src='/static/img/ajax-loader.gif'/></span>
+                <ul class="test-harness-progress" id="progress"></ul>
+            </div>
+            <div id="errors"></div>
+            <div id="results"></div>
+        </form>
+        </div>
+</section>
+
+<pre id="repro-url"></pre>
+
+<div class="errors"></div>
+
+<div id="testharnessresult" class="results">
+    <div class="test-harness-tabs">
+        <ul class="nav nav-tabs">
+            <li><a id="preview-data-tab" href="#preview" data-toggle="tab">Preview</a></li>
+            <li><a id="raw-data-tab" href="#raw" data-toggle="tab">Raw</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="preview">
+                <table id="resultstable"></table>
+            </div>
+            <div class="tab-pane" id="raw">
+                <pre contenteditable id="rawDataTemplate" class='language-javascript'></pre>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+
+</div>
+{% endblock main %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+    
+    
+
+    <!-- Results -->
+    <div class="container">
+      <div class="row">
+       <!-- Search form -->
+        <div class="col-md-8 " id="browse-test-harness"> 
+          <span>{{ flights.Itineraries|length }} results</span>
+          <table class="table table-bordered table-hover table-striped" id="permissions-table">
+              <thead>
+                <tr>
+                  <td></td>
+                  <td>Outbound</td>
+                  <td>Inbound</td>
+                  <td>Stops</td>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for itinerary in flights.Itineraries %}
+                      <tr>  
+                              <td>
+                                  {{forloop.counter}}
+                              </td>
+                              
+                              
+                                  {% for leg in flights.Legs %}
+                                    {% if leg.Id == itinerary.OutboundLegId %}
+
+                                        {% if leg.SegmentIds|length == 1 %}
+                                        <td style="background-color: #fff">Direct</td>
+
+                                        {% else %}
+                                        <td style="background-color: #999">{{ leg.SegmentIds|length }} segments</td>                                    
+                                        {% endif %}
+
+
+                                    {% endif %}
+                                  {%  endfor %}
+                              
+                                  {% for leg in flights.Legs %}
+                                    {% if leg.Id = itinerary.InboundLegId %}
+                                       {% if leg.SegmentIds|length == 1 %}
+                                        <td style="background-color: #fff">Direct</td>
+
+                                        {% else %}
+                                        <td style="background-color: #999">{{ leg.SegmentIds|length }} stop</td>                                    
+                                        {% endif %}
+                                    {% endif %}
+                                  {%  endfor %}
+                              
+                              
+                              
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+        </div>
+      </div>
+          
+    </div>
+
+
+    
+{% endblock main %}
+
+

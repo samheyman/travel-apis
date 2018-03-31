@@ -1,0 +1,109 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+h1 {
+	margin-top: 0;
+    padding: 40px 0 20px 0;
+	font-size: 32px;
+    font-weight: normal;
+    width: 100%;
+	line-height: 1.1;
+	font-family: "source_sans_prolight",Arial,Helvetica,sans-serif;
+}
+
+h3 {
+	margin:30px 0 20px 0;
+}
+
+h4 {
+	margin:30px 0 20px 0;
+}
+
+h3:before {
+	background-image: url('/static/img/plane.png');
+	background-size: 30px 30px;
+    display: inline-block;
+    width: 30px; 
+    height: 30px;
+    content:"";
+    position: relative;
+    top:7px;
+    margin-right: 10px;
+}
+
+a.api-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+#destinations-form {
+  padding-top: 20px;
+}
+
+.logo {
+	margin-left:-15px;
+	height:50px;
+	float:left;
+}
+
+#specific, #inspire {
+	float:left;
+	height: 60px;
+	margin: 0px 15px 0 0px;
+}
+
+.panel {
+	
+}
+
+.panel-footer {
+	text-align: center;
+	font-weight: bold;
+}
+
+.results {
+	border: 1px solid #dfdfdf;
+	border-radius: 3px;
+	padding: 7px 0;
+}
+
+span.destinations-results {
+  color: #999;
+}
+
+pre {
+	border: none;
+}
+
+table {
+  border-collapse: inherit;
+  border: 1px solid #DFDFDF;
+  border-radius: 3px;
+  width: 100%;
+  clear: both;
+  line-height: 20px;
+  font-size: 12px;
+}
+
+table td {
+  background-color: white;
+  border-top-color: white;
+  border-bottom: 1px solid #DFDFDF;
+  color: #555;
+  padding: 10px 7px;
+  vertical-align: top;
+}
+
+table th {
+  font-size: 14px;
+  text-shadow: rgba(255, 255, 255, 0.796875) 0px 1px 0px;
+  font-weight: normal;
+  padding: 7px 7px 8px 7px;
+  text-align: left;
+  line-height: 1.3em;
+  border-bottom: 1px solid #DFDFDF;
+  color: black;
+}

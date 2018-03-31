@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+
+    <ol class="breadcrumb" style="padding-left:60px">
+      <li><a href="{% url 'flights' %}">Flights</a></li>
+      <li class="active">Amadeus Flight low-fare search</li>
+    </ol>
+
+    <!-- Results -->
+    <div class="container">
+
+
+
+      <div class="row">
+       <!-- Search form -->
+        <div class="col-md-12 " id="browse-test-harness">
+          <pre>{{ quotes.1.itineraries.0.outbound.flights }}</pre>
+          <h2>{{ quotes|length }} Results for '{{ from }}' to '{{ to }}'</h2>
+          <br>
+      <!--  -->
+<br>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="routes">
+      <table class="table table-bordered table-hover table-striped" id="permissions-table">
+        <thead>
+          <tr>
+            <td colspan="3"></td>
+            <td colspan="4">Outbound leg</td>
+            <td colspan="4">Inbound leg</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Itineraries</td>
+            <td>Price</td>
+            <td>Stopovers</td>
+            <td>Departure</td>
+            <td>Carrier</td>
+            <td>Booking code</td>
+            <td>Stopovers</td>
+            <td>Departure</td>
+            <td>Carrier</td>
+            <td>Booking code</td>
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for quote in quotes %}
+                <tr>
+                        <td>
+                            {{forloop.counter}}
+                        </td>
+
+                        <td>
+                            {{ quote.itineraries|length }}
+                        </td>
+
+
+                        <td>
+                            {{ quote.fare.total_price }}
+                        </td>
+
+                        <td>
+                        {% for itinerary in quote.itineraries %}
+
+                          {% if itinerary.outbound.flights|length > 1 %}
+                                {{ itinerary.outbound.flights|length|add:-1 }} stop ({{ itinerary.outbound.flights.0.destination.airport}})<br>
+                          {% else %}
+                              Direct<br>
+                          {% endif %}
+
+                        {% endfor %}
+                        </td>
+                        <td>
+                        {% for itinerary in quote.itineraries %}
+
+                            {{ itinerary.outbound.flights.0.departs_at }}<br>
+
+                        {% endfor %}
+                        </td>
+                        <td>
+                        {% for itinerary in quote.itineraries %}
+
+                            {% for flight in itinerary.outbound.flights %}
+                              {{ flight.marketing_airline }} ({{ flight.flight_number }})
+                            {% endfor %}
+                            <br>
+                        {% endfor%}
+                        </td>
+                        <td>
+                            {% for itinerary in quote.itineraries %}
+
+                                {% for flight in itinerary.outbound.flights %}
+                                  {{ flight.booking_info.booking_code }}
+                                {% endfor %}
+                                <br>
+                            {% endfor%}
+                        </td>
+                        <td>
+                            {% for itinerary in quote.itineraries %}
+
+                              {% if itinerary.inbound.flights|length > 1 %}
+                                    {{ itinerary.inbound.flights|length|add:-1 }} stop ({{ itinerary.inbound.flights.0.destination.airport}})<br>
+                              {% else %}
+                                  Direct<br>
+                              {% endif %}
+
+                            {% endfor %}
+                            </td>
+                            <td>
+                            {% for itinerary in quote.itineraries %}
+
+                                {{ itinerary.inbound.flights.0.departs_at }}<br>
+
+                            {% endfor %}
+                            </td>
+                            <td>
+                            {% for itinerary in quote.itineraries %}
+
+                                {% for flight in itinerary.inbound.flights %}
+                                  {{ flight.marketing_airline }} ({{ flight.flight_number }})
+                                {% endfor %}
+                                <br>
+                            {% endfor%}
+                            </td>
+                            <td>
+                                {% for itinerary in quote.itineraries %}
+
+                                    {% for flight in itinerary.inbound.flights %}
+                                      {{ flight.booking_info.booking_code }}
+                                    {% endfor %}
+                                    <br>
+                                {% endfor%}
+                            </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+
+
+  </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div><pre>{{ flights }}</pre></div>
+
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+        </script>
+{% endblock main %}

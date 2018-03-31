@@ -1,0 +1,425 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+
+    <ol class="breadcrumb" style="padding-left:60px">
+      <li><a href="{% url 'flights' %}">Flights</a></li>
+      <li class="active">{{ api_service }}</li>
+    </ol>
+
+    <!-- Results -->
+    <div class="container">
+
+
+
+      <div class="row">
+       <!-- Search form -->
+        <div class="col-md-12 " id="browse-test-harness">
+          <h2>{{ api_service }}: {{ quotes|length }} Quotes for '{{ from }}' to '{{ to }}'</h2>
+          <br>
+<!--  -->          <a href="{{ repro_url }}" target="_blank"><pre>{{ repro_url }}</pre></a>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" >
+    <a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab">Quotes</a></li>
+  <li role="presentation" class="active">
+    <a href="#routes" aria-controls="routes" role="tab" data-toggle="tab">Routes</a></li>
+  <li role="presentation">
+    <a href="#dates" aria-controls="dates" role="tab" data-toggle="tab">Dates</a></li>
+  <li role="presentation">
+    <a href="#calendar" aria-controls="calendar" role="tab" data-toggle="tab">Calendar</a></li>
+</ul>
+
+<br>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane " id="quotes">
+
+      <p>{{ quotes|length }} Quotes</p>
+      <table class="table table-bordered table-hover table-striped" id="permissions-table">
+          <thead>
+            <tr>
+              <td colspan="4"></td>
+
+              <td colspan="3">Outbound Leg</td>
+              <td colspan="3">Inbound Leg</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Quote ID</td>
+              <td>Stops</td>
+              <td>Price</td>
+              <td>Date</td>
+              <td>Origin</td>
+              <td>Destination</td>
+              <td>Date</td>
+              <td>Origin</td>
+              <td>Destination</td>
+
+            </tr>
+          </thead>
+          <tbody>
+
+              {% for quote in quotes %}
+                  <tr>
+                          <td>
+                              {{forloop.counter}}
+                          </td>
+                          <td>
+                              {{ quote.QuoteId }}
+                          </td>
+                          <td>
+                              {% if quote.Direct %}
+                              Direct
+                              {% else %}
+                              1 or more stops
+                              {% endif %}
+                          </td>
+                          <td>
+                            £{{ quote.MinPrice }}
+                          </td>
+
+                          {% if quote.OutboundLeg.OriginId  %}
+                          <td>{{ quote.OutboundLeg.DepartureDate|slice:"0:10" }}</td>
+                          {% else %}
+                          <td>-</td>
+                          {% endif %}
+
+                          {% if quote.OutboundLeg.OriginId %}
+                          {% for place in response.Places %}
+                          {% if quote.OutboundLeg.OriginId == place.PlaceId %}
+                          <td>{{ place.IataCode }}</td>
+                          {% endif %}
+                          {% endfor %}
+                          {% else %}
+                          <td>-</td>
+                          {% endif %}
+
+                          {% if quote.OutboundLeg.DestinationId %}
+                          {% for place in response.Places %}
+                          {% if quote.OutboundLeg.DestinationId == place.PlaceId %}
+                          <td>{{ place.IataCode }}</td>
+                          {% endif %}
+                          {% endfor %}
+                          {% else %}
+                          <td>-</td>
+                          {% endif %}
+
+                          {% if quote.InboundLeg.OriginId %}
+                          <td>{{ quote.InboundLeg.DepartureDate|slice:"0:10" }}</td>
+                          {% else %}
+                          <td>-</td>
+                          {% endif %}
+
+                          {% if quote.InboundLeg.OriginId %}
+                          {% for place in response.Places %}
+                          {% if quote.InboundLeg.OriginId == place.PlaceId %}
+                          <td>{{ place.IataCode }}</td>
+                          {% endif %}
+                          {% endfor %}
+                          {% else %}
+                          <td>-</td>
+                          {% endif %}
+
+                          {% if quote.InboundLeg.DestinationId %}
+                          {% for place in response.Places %}
+                          {% if quote.InboundLeg.DestinationId == place.PlaceId %}
+                          <td>{{ place.IataCode }}</td>
+                          {% endif %}
+                          {% endfor %}
+                          {% else %}
+                          <td>-</td>
+                          {% endif %}
+
+
+
+                              <!-- {% for leg in flights.Outboundleg %}
+                                {% if leg.Id == quote.OutboundLegId %}
+
+                                    {% if leg.SegmentIds|length == 1 %}
+                                    <td style="background-color: #fff">Direct</td>
+
+                                    {% else %}
+                                    <td style="background-color: #999">{{ leg.SegmentIds|length }} segments</td>
+                                    {% endif %}
+
+
+                                {% endif %}
+                              {%  endfor %} -->
+
+                              <!-- {% for leg in flights.Legs %}
+                                {% if leg.Id == itinerary.InboundLegId %}
+                                   {% if leg.SegmentIds|length == 1 %}
+                                    <td style="background-color: #fff">Direct</td>
+
+                                    {% else %}
+                                    <td style="background-color: #999">{{ leg.SegmentIds|length }} stop</td>
+                                    {% endif %}
+                                {% endif %}
+                              {%  endfor %} -->
+
+
+
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+    </div>
+
+    <div role="tabpanel" class="tab-pane active" id="routes">
+      <p>{{ routes|length }} routes found</p>
+      <table class="table table-bordered table-hover table-striped" id="permissions-table">
+        <thead>
+          <tr>
+            <td></td>
+            <td>Origin</td>
+            <td>Destination</td>
+            <td>Price</td>
+            <td>QuoteIDs</td>
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for route in routes %}
+                <tr>
+                        <td>
+                            {{forloop.counter}}
+                        </td>
+
+                        {% if route.OriginId %}
+                          {% for place in response.Places %}
+                            {% if route.OriginId == place.PlaceId %}
+                              <td>{{ place.Name }} ({{ place.SkyscannerCode }})</td>
+                            {% endif %}
+                          {% endfor %}
+                        {% else %}
+                          <td>-</td>
+                        {% endif %}
+
+                        {% if route.DestinationId %}
+                          {% for place in response.Places %}
+                            {% if route.DestinationId == place.PlaceId %}
+                              <td>{{ place.Name }} ({{ place.SkyscannerCode }})</td>
+                            {% endif %}
+                          {% endfor %}
+                        {% else %}
+                          <td>-</td>
+                        {% endif %}
+
+                        <td>
+                            {{ route.Price }}
+                        </td>
+                        <td>
+                            {% for id in route.QuoteIds %}
+                            <a href="#" data-toggle="popover" data-content="{{ id }}" data-original-title="Quote info">
+                              {{ id }}
+                            </a>
+                            {% endfor %}
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="dates">
+      <p>{{ outboundDates|length }} Outbound quotes, {{ inboundDates|length }} Inbound quotes</p>
+      <div class="col-md-6">
+      <table class="table table-bordered table-hover table-striped" id="permissions-table">
+          <thead>
+            <tr>
+              <td colspan="4">Outbound Leg</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Partial Date</td>
+              <td>Price</td>
+              <td>Quotes (red quotes are one way)</td>
+            </tr>
+          </thead>
+          <tbody>
+              {% for date in outboundDates %}
+                  <tr>
+                          <td>
+                              {{forloop.counter}}
+                          </td>
+                          <td>
+                              {{ date.PartialDate }}
+                          </td>
+                          <td>
+                              {{ date.Price }}
+                          </td>
+                          <td>
+                              {% for quoteId in date.QuoteIds%}
+                                {% for quote in quotes %}
+                                  {% if quote.QuoteId|stringformat:"s" == quoteId|stringformat:"s" %}
+                                    {% if not quote.InboundLeg and quote.OutboundLeg %}
+                                      <span style="color:red">{{ quote.QuoteId }}</span>
+                                    {% elif quote.InboundLeg and not quote.OutboundLeg %}
+                                      <span style="color:red">{{ quote.QuoteId }}</span>
+                                    {% else %}
+                                      <span>{{ quote.QuoteId }}</span>
+                                    {% endif %}
+                                  {% endif %}
+                                {% endfor %}
+                              {% endfor %}
+                          </td>
+
+
+                          </tr>
+              {% endfor %}
+              {% for date in dates.InboundDates %}
+                  <tr>
+                          <td>
+                              {{forloop.counter}}
+                          </td>
+                          <td>
+                              {{ date.PartialDate }}
+                          </td>
+                          <td>
+                              {{ date.Price }}
+                          </td>
+                          <td>
+                              {% for quoteId in date.QuoteIds%}
+                                {% for quote in quotes %}
+                                  {% if quote.QuoteId|stringformat:"s" == quoteId|stringformat:"s" %}
+                                    {% if not quote.InboundLeg and quote.OutboundLeg %}
+                                      <span style="color:red">{{ quote.QuoteId }}</span>
+                                    {% elif quote.InboundLeg and not quote.OutboundLeg %}
+                                      <span style="color:red">{{ quote.QuoteId }}</span>
+                                    {% else %}
+                                      <span>{{ quote.QuoteId }}</span>
+                                    {% endif %}
+                                  {% endif %}
+                                {% endfor %}
+                              {% endfor %}
+                          </td>
+
+
+                          </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      </div>
+      <div class="col-md-6">
+      <table class="table table-bordered table-hover table-striped" id="permissions-table">
+          <thead>
+            <tr>
+              <td colspan="4">Inbound Leg</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Partial Date</td>
+              <td>Price</td>
+              <td>Quotes (red quotes are one way)</td>
+            </tr>
+          </thead>
+          <tbody>
+              {% for date in inboundDates %}
+                  <tr>
+                          <td>
+                              {{forloop.counter}}
+                          </td>
+                          <td>
+                              {{ date.PartialDate }}
+                          </td>
+                          <td>
+                              {{ date.Price }}
+                          </td>
+                          <td>
+                              {% for quoteId in date.QuoteIds%}
+                                {% for quote in quotes %}
+                                  {% if quote.QuoteId|stringformat:"s" == quoteId|stringformat:"s" %}
+                                    {% if not quote.InboundLeg and quote.OutboundLeg %}
+                                      {% if date.Price|stringformat:"s" == quote.MinPrice|stringformat:"s" %}
+                                      <span style="color:red;font-weight: bold;text-decoration: underline;">
+                                      <a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab">{{ quote.QuoteId }}</a>
+                                      </span>
+                                      {% else %}
+                                      <span style="color:red">
+                                      <a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab">{{ quote.QuoteId }}</a>
+                                      </span>
+                                      {% endif %}
+                                    {% elif quote.InboundLeg and not quote.OutboundLeg %}
+                                      {% if date.Price|stringformat:"s" == quote.MinPrice|stringformat:"s" %}
+                                      <span style="color:red;font-weight: bold;text-decoration: underline;">
+                                      <a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab">{{ quote.QuoteId }}</a>
+                                      </span>
+                                      {% else %}
+                                      <span style="color:red">
+                                      <a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab">{{ quote.QuoteId }}</a>
+                                      </span>
+                                      {% endif %}
+                                    {% else %}
+                                      {% if date.Price|stringformat:"s" == quote.MinPrice|stringformat:"s" %}
+                                      <span style="font-weight: bold;text-decoration: underline;">
+                                      <a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab">{{ quote.QuoteId }}</a>
+                                      </span>
+                                      {% else %}
+                                      <a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab">{{ quote.QuoteId }}</a>
+                                      {% endif %}
+                                    {% endif %}
+                                  {% endif %}
+                                {% endfor %}
+                              {% endfor %}
+                          </td>
+
+
+                          </tr>
+              {% endfor %}
+              {% for date in dates.InboundDates %}
+                  <tr>
+                          <td>
+                              {{forloop.counter}}
+                          </td>
+                          <td>
+                              {{ date.PartialDate }}
+                          </td>
+                          <td>
+                              {{ date.Price }}
+                          </td>
+                          <td>
+                              {% for quoteId in date.QuoteIds%}
+                                {% for quote in quotes %}
+                                  {% if quote.QuoteId|stringformat:"s" == quoteId|stringformat:"s" %}
+                                    {% if not quote.InboundLeg and quote.OutboundLeg %}
+                                      <span style="color:red">{{ quote.QuoteId }}</span>
+                                    {% elif quote.InboundLeg and not quote.OutboundLeg %}
+                                      <span style="color:red">{{ quote.QuoteId }}</span>
+                                    {% else %}
+                                      <span>{{ quote.QuoteId }}</span>
+                                    {% endif %}
+                                  {% endif %}
+                                {% endfor %}
+                              {% endfor %}
+                          </td>
+
+
+                          </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      </div>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="calendar">
+      <p>{{ dates|length }} dates</p>
+    </div>
+
+  </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div><pre>{{ flights }}</pre></div>
+
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+        </script>
+{% endblock main %}
