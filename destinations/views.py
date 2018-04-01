@@ -7,6 +7,7 @@ import requests
 import json
 from pprint import pprint
 import os
+from common import geolocation
 
 def index(request):
     return render(request, 'destinations/index.html')
@@ -45,11 +46,17 @@ def getPointsOfInterest(location, provider, number_results):
 			
 	elif provider == 'avuxi':
 		api_endpoint = "https://data.avuxiapis.com/v1/POI?"
+		coordinates = geolocation.getGeoCordinates(location)
+		north = coordinates[0]+0.1
+		south = coordinates[0]-0.1
+		west = coordinates[1]-0.3
+		east = coordinates[1]+0.3
+
 		values = {
-			"north": 40.516775,
-			"south": 40.3000,
-			"west": -4.0000,
-			"east": -3.403790,
+			"north": north,
+			"south": south,
+			"west": west,
+			"east": east,
 			"key": getOAuthToken(),
 			"limit": number_results
 		}

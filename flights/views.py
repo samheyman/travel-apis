@@ -12,6 +12,8 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 import urllib.parse
 import urllib.request
 import requests
+import sys
+from common import geolocation
 
 skyscanner_key = os.environ.get("SKYSCANNER_KEY")
 #flights_cache_service = FlightsCache(skyscanner_key)
@@ -190,7 +192,7 @@ def airports(request):
 		form = LocationSearchForm(request.GET)
 		if form.is_valid():
 			location = form.cleaned_data['location']
-			lat,lng = getGeoCordinates(location)
+			lat,lng = geolocation.getGeoCordinates(location)
 			airport_results = getAirports(lat,lng,10)
 
 	else:
@@ -220,33 +222,6 @@ def sandbox_low_fare_search(request):
 	json_data = getLowFareFlights(origin, destination,'2018-08-01','2018-08-10')
 	quotes = json_data["results"]
 	return render(request, 'flights/sandbox-low-fare-search.html', {"quotes":quotes, "from": origin, "to":destination})
-
-def getGeoCordinates(location):
-	# initiating map in Madrid
-
-	url = 'https://maps.googleapis.com/maps/api/geocode/json'
-	params = {
-		'sensor':'true',
-		'apikey': os.environ.get("GOOGLE_MAPS_KEY"),
-		'address': location
-	}
-	query = url+"?sensor="+params['sensor']+"&address="+params['address']+"&key="+params['apikey']
-	print("Query: " + query)
-	try:
-		response = requests.get(query)
-		type = response.headers['content-type']
-		result = response.json()
-		print(result)
-		lat = result['results'][0]['geometry']['location']['lat']
-		print("Latitude: " + str(lat))
-		lng = result['results'][0]['geometry']['location']['lng']
-		print("Longitude: " + str(lng))
-	except:
-		lat,lng = (0,0)
-		result = "Error making the geolocation call: "
-		print(result)
-
-	return (lat,lng)
 
 def getLowFareFlights(origin, destination, departure_date, return_date):
 	api_endpoint = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?"

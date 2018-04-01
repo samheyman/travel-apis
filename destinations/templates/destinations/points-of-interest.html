@@ -41,7 +41,7 @@
     <hr>
     {% if result.points_of_interest %}
     {% with points_of_interest=result.points_of_interest %}
-    <p>{{ rpoints_of_interest|length }} points of interest in {{ location }}</p>
+    <p>{{ points_of_interest|length }} points of interest in {{ location }}</p>
     <pre>{{ points_of_interest }}</pre>
     {% endwith %}
     {% else %}
