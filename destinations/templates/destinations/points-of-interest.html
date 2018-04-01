@@ -32,13 +32,29 @@
       {% csrf_token %}
       <label for="{{ form.location.id_location }}">Location: </label>
       {{ form.location }}
+      <label for="{{ form.number_of_results.id_number_of_results }}">Number of results: </label>
+      {{ form.number_of_results }}
+      <label for="{{ form.provider.id_provider }}">Provider: </label>
+      {{ form.provider }}
       <button type="submit" class="" style="position:relative;top:0;">Search</button>
     </form>
     <hr>
-    <p>{{ result.points_of_interest|length }} points of interest in {{ location }}</p>
-    <pre>{{ result.points_of_interest }}</pre>
+    {% if result.points_of_interest %}
+    {% with points_of_interest=result.points_of_interest %}
+    <p>{{ rpoints_of_interest|length }} points of interest in {{ location }}</p>
+    <pre>{{ points_of_interest }}</pre>
+    {% endwith %}
+    {% else %}
+    {% with points_of_interest=result.POIs %}
+    <p>{{ points_of_interest|length }} points of interest in {{ location }}</p>
+    <pre>{{ points_of_interest }}</pre>
+    {% endwith %}
+    {% endif %}
+    
+
 
     <table>
+      {% if result.points_of_interest %}
       {% for poi in result.points_of_interest %}
       <tr>
         <td><img src="{{ poi.main_image }}" alt="{{ poi.title}}"/></td>
@@ -51,6 +67,17 @@
         </td>
       </tr>
       {% endfor %}
+      {% else %}
+      {% for poi in result.POIs %}
+      <tr>
+        <td>{{ poi.name}}
+            <p>{{ poi.details.description}}</p>
+            <p>Rank: {{ poi.rank }}</p>
+            <p>Lat/lng: {{poi.latlon.0}}, {{poi.latlon.1}}</p>
+        </td>
+      </tr>
+      {% endfor %}
+      {% endif %}
     </table>
     
     {% endblock %}
