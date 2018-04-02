@@ -159,7 +159,7 @@ def travel_insights(request):
 	#flights = pprint(flights_data)
 	return render(request, 'flights/travel_insights.html', {})
 
-def destinations(request):
+def routes(request):
 	airport = ""
 	market = "FR"
 	period = "2016-12"
@@ -183,7 +183,7 @@ def destinations(request):
 			"most_searched_data": most_searched_data,
 			"most_travelled_data": most_travelled_data,
 		}
-	return render(request, 'flights/destinations.html', data)
+	return render(request, 'flights/routes.html', data)
 
 def airports(request):
 	lat,lng = (0,0)

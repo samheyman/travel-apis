@@ -15,14 +15,9 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PROJECT_APP_PATH = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 PROJECT_ROOT = os.path.dirname(PROJECT_APP_PATH)
 
 STATIC_URL = '/static/'
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-# locally:
-# in prod:
 
 STATIC_ROOT = 'static'
 
@@ -141,6 +136,6 @@ USE_TZ = True
 
 
 try:
-    from settings.local import *
+    from .local_settings import *
 except ImportError:
     pass
