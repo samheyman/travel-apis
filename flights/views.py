@@ -160,9 +160,9 @@ def travel_insights(request):
 	return render(request, 'flights/travel_insights.html', {})
 
 def routes(request):
-	airport = ""
-	market = "FR"
-	period = "2016-12"
+	airport = "SFO"
+	market = "US"
+	period = "2017-05"
 
 	if 'airport' in request.GET:
 		form = AirportSearchForm(request.GET)
@@ -197,43 +197,55 @@ def airports(request):
 
 	else:
 		form = LocationSearchForm()
-		location = ""
+		location = "London"
+		lat,lng = geolocation.getGeoCordinates(location)
+		airport_results = getAirports(lat,lng,10)
 
-	return render(request, 'flights/airports.html', {'form': form, 'lat':lat,'lng':lng, 'result': airport_results, 'location': location})
-
-def points_of_interest(request):
-	location = ""
-	points_of_interest = {}
-	if 'location' in request.GET:
-		form = LocationSearchForm(request.GET)
-		if form.is_valid():
-			location = form.cleaned_data['location']
-			points_of_interest = getPointsOfInterest(location,'yapq')
-
-	else:
-		form = LocationSearchForm()
-		location = ""
-
-	return render(request, 'flights/points-of-interest.html', {'form': form, 'result': points_of_interest, 'location': location})
+	return render(request, 'flights/airports.html', {'form': form, 'lat':lat,'lng':lng, 'result': airport_results, 'location': location, 'area':location})
 
 def sandbox_low_fare_search(request):
-	origin = "JFK"
-	destination = "MAD"
-	json_data = getLowFareFlights(origin, destination,'2018-08-01','2018-08-10')
+	origin = "NYC"
+	destination = "WAS"
+	currency = "EUR"
+	json_data = getLowFareFlights(origin, destination,'2018-08-01','2018-08-10', 'sandbox', currency)
 	quotes = json_data["results"]
-	return render(request, 'flights/sandbox-low-fare-search.html', {"quotes":quotes, "from": origin, "to":destination})
+	return render(request, 'flights/flight-low-fare-search.html', {"service": "Innovation Sandbox", "currency": currency, "quotes":quotes, "from": origin, "to":destination})
 
-def getLowFareFlights(origin, destination, departure_date, return_date):
-	api_endpoint = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?"
-	values = {
-		"origin": origin,
-		"destination": destination,
-		"apikey": os.environ.get("AMADEUS_SANDBOX_KEY"),
-		"departure_date": departure_date,
-		"return_date": return_date
-	}
+def flight_low_fare_search(request):
+	origin = "CDG"
+	destination = "YVR"
+	currency="EUR"
+	json_data = getLowFareFlights(origin, destination,'2018-08-01','2018-08-10', 'ama4dev', currency)
+	quotes = json_data["data"]
+	return render(request, 'flights/flight-low-fare-search.html', {"service": "Amadeus for Developers", "currency": currency,"quotes":quotes, "from": origin, "to":destination})
+
+def getLowFareFlights(origin, destination, departure_date, return_date, service, currency):
+	if service == 'sandbox':
+		api_endpoint = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?"
+		headers = {}
+		values = {	
+			"origin": origin,
+			"destination": destination,
+			"apikey": os.environ.get("AMADEUS_SANDBOX_KEY"),
+			"departure_date": departure_date,
+			"return_date": return_date
+		}
+	else:
+		api_endpoint = "https://test.api.amadeus.com/v1/shopping/flight-offers?"
+		headers = {
+			'Authorization': 'Bearer ' + getOAuthToken()
+		}
+		values = {
+			"origin": origin,
+			"destination": destination,
+			# Different date format to Sandbox!
+			"departureDate": departure_date,
+			"returnDate": return_date,
+			"adults": 1,
+			"currency": currency
+		}
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
-	req = urllib.request.Request(api_endpoint)
+	req = urllib.request.Request(api_endpoint, headers= headers)
 	response = urllib.request.urlopen(req)
 	try:
 		json_data = json.load(response)
@@ -242,28 +254,6 @@ def getLowFareFlights(origin, destination, departure_date, return_date):
 		return({'error': "Failed to parse the response."})
 
 	return json_data
-
-def getPointsOfInterest(location, provider):
-	if provider is 'yapq':
-		api_endpoint = "https://api.sandbox.amadeus.com/v1.2/points-of-interest/yapq-search-text?"
-		values = {
-			"city_name": location,
-			"apikey": os.environ.get("AMADEUS_SANDBOX_KEY")
-		}
-		api_endpoint = api_endpoint + urllib.parse.urlencode(values)
-		req = urllib.request.Request(api_endpoint)
-		response = urllib.request.urlopen(req)
-		try:
-			json_data = json.load(response)
-		except:
-			json_data = None
-			
-	elif provider is 'avuxi':
-		json_data = json.loads('{}')
-	else:
-		json_data = None
-	return json_data
-
 
 def getAirports(lat,lng,limit):
 	api_endpoint = "https://test.api.amadeus.com/v1/reference-data/locations/airports?"
@@ -328,12 +318,19 @@ def getMostSearchedData(airport_code, time_period, market):
 		json_data = None
 		most_searched_destinations = {'error': "Failed to get API data."}
 	
-	for data_entry in json_data["data"][0]["numberOfSearches"]["perDestination"].items():
-		searches_xs.append(data_entry[0])
-		searches.append(data_entry[1])
-	most_searched_destinations = {
-			"xs": json.dumps(searches_xs),
-			"searches": json.dumps(searches)
+
+	if json_data:
+		for data_entry in json_data["data"][0]["numberOfSearches"]["perDestination"].items():
+			searches_xs.append(data_entry[0])
+			searches.append(data_entry[1])
+		most_searched_destinations = {
+				"xs": json.dumps(searches_xs),
+				"searches": json.dumps(searches)
+			}
+	else: 
+		most_searched_destinations = {
+			"xs": 0,
+			"searches": 0
 		}
 	return most_searched_destinations
 
@@ -343,7 +340,7 @@ def getMostTraveledData(airport_code, time_period, market):
 	travels_xs = ['x']
 	travels = ['travels']
 
-	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffics?"
+	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/traveled?"
 	headers = {
 		'Authorization': 'Bearer ' + getOAuthToken()
 	}

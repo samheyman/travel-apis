@@ -25,6 +25,15 @@ def points_of_interest(request):
 	else:
 		form = LocationSearchForm()
 		location = ""
+
+	# with open('poi.csv', 'w') as file:
+	# 	for poi in points_of_interest["points_of_interest"]:
+	# 		file.write(str(poi["title"]))
+	# 		file.write("\n")
+	# with open('poi.csv', 'w') as file:
+	# 	for poi in points_of_interest["POIs"]:
+	# 		file.write(str(poi["name"]))
+	# 		file.write("\n")
 	return render(request, 'destinations/points-of-interest.html', {'form': form, 'result': points_of_interest, 'location': location})
 
 
@@ -34,7 +43,8 @@ def getPointsOfInterest(location, provider, number_results):
 		values = {
 			"city_name": location,
 			"apikey": os.environ.get("AMADEUS_SANDBOX_KEY"),
-			"number_of_results": number_results
+			"number_of_results": number_results,
+			"size_of_images": 'small'
 		}
 		api_endpoint = api_endpoint + urllib.parse.urlencode(values)
 		req = urllib.request.Request(api_endpoint)

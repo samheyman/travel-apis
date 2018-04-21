@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block head %}
+{% extends 'base.html' %} 
+
+{% block head %}
 <!-- Map box code -->
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
@@ -15,14 +17,14 @@
 </style>
 {% endblock %}
 
-{% block main %}
-
-<ol class="breadcrumb" style="padding-left:60px">
-  <li><a href="{% url 'home' %}">Home</a></li>
-  <li><a href="{% url 'flights' %}">Flights</a></li>
-  <li class="active">Relevant airports</li>
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li class="active">Airports</li>
 </ol>
+{% endblock %}
 
+{% block main %}
 <script type="text/javascript">
   var airports = [];
 
@@ -35,12 +37,9 @@
     this.properties.title = name;
   }
 </script>
-<div class="container">
-  <div class="row">
 
-    <h1>Relevant airports</h1>
+<h1>Relevant airports</h1>
 
-    <hr>
     <form>
       {% csrf_token %}
       <label for="{{ form.location.id_location }}">Location: </label>
@@ -48,6 +47,7 @@
       <button type="submit" class="" style="position:relative;top:0;">Search</button>
     </form>
     <hr>
+    {% if form.location %}
     <p>{{ result.data|length }} airports within a 500km radius of {{ location }} (Lat {{lat}}, Lng {{lng}})</p>
     <!-- <pre>{{ result.data }}</pre> -->
 
@@ -56,20 +56,18 @@
       airports.push(new Airport("{{ item.name }}", {{ item.geoCode.latitude }}, {{ item.geoCode.longitude }}));
     </script>
     {% endfor %}
+    {% endif %}
 
-    <div class="row">
-      <div id='map' style='position:relative;width: 100%; height: 700px;'></div>
-      <div class='overlay'>
-      </div>
-    </div>
+    <div id='map' style='position:relative;width: 100%; height: 700px;'></div>
+    <div class='overlay'></div>
 
     <script>
       var latitude = {{ lat }};
       var longitude = {{ lng }};
 
-      if ( latitude === 0 || longitude === 0) {
+      if (typeof area !== 'undefined' && (latitude === 0 || longitude === 0)) {
         alert("Geocoding unsuccessful. Please try again.");
-      }
+      } 
       var city = new mapboxgl.LngLat(longitude, latitude);
       mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtaGV5bWFuIiwiYSI6ImNpc2l6NWN4ODAwMjUydHJuMnBpZ3V4eG4ifQ.NgP2zfSjWhIFVG36qbFzeg';
       var map = new mapboxgl.Map({

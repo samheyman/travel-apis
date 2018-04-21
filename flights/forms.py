@@ -13,4 +13,4 @@ class AirportSearchForm(forms.Form):
     airport = forms.CharField(label='Airport', max_length=100, initial='MAD')
 
 class LocationSearchForm(forms.Form):
-    location = forms.CharField(label='Location', max_length=100, initial='Madrid')
+    location = forms.CharField(label='Location', max_length=100, initial='London')

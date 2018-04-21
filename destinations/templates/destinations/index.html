@@ -1,18 +1,18 @@
 {% extends "base.html" %}  
 {% load staticfiles %}
 
-{% block main %}
-
-  <ol class="breadcrumb" style="padding-left:60px">
+{% block breadcrumbs %}
+<ol class="breadcrumb">
     <li><a href="{% url 'home' %}">Home</a></li>
     <li class="active">Destinations</li>
-  </ol>
+</ol>
+{% endblock %}
 
-  <div class="container">
-  <h3>Destinations APIs</h3>
+{% block main %}
+  <h1>Destinations APIs</h1>
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-default" style="border: 1px solid #">
+            <div class="panel panel-default">
               <a class="api-link" href="{% url 'points-of-interest' %}">
               <div class="panel-body">
                 <img id="inspire" src="{% static 'img/poi.png' %}" />       
@@ -20,17 +20,11 @@
 
                 Find interesting things to do in a given location.
               
-                </div>
+              </div>
               </a>
             </div>
-          </div>
+        </div>
     </div>
-
-      
-  </div>
-
-
-
 {% endblock main %}
 
 

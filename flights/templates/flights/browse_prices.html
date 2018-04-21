@@ -1,0 +1,69 @@
+<div id="browse_form" class="hidden" style="margin: 40px 0;">
+        <form action="" method="get" class="form-horizontal">
+            <div class="form-group">
+              <label for="{{ form.origin_field.id_origin_field }}" class="col-sm-3 control-label">Origin:&nbsp;</label>
+              <div class="col-sm-9">
+              {{ form.origin_field }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="{{ form.destination_field.id_destination_field }}" class="col-sm-3 control-label">Destination:&nbsp;</label>
+              <div class="col-sm-9">
+              {{ form.destination_field }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="{{ form.from_date_field.id_from_date_field }}" class="col-sm-3 control-label">From:&nbsp;</label>
+              <div class="col-sm-9">
+              {{ form.from_date_field }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="{{ form.to_date_field.id_to_date_field }}" class="col-sm-3 control-label">To:&nbsp;</label>
+              <div class="col-sm-9">
+              {{ form.to_date_field }}
+              </div>
+            </div>
+            <div class="form-group">
+              {% for service in form.service_field %}
+              <div class="col-sm-3">
+              {{ service }}
+              </div>
+              {% endfor %}
+            </div>
+          <input class="btn btn-primary" href="" role="button" type="submit" value="Search"></input>
+          <span class="form-errors">{{ form.search.errors }}</span>
+        </form>
+        </div>
+    <table class="table table-bordered table-hover table-striped" id="permissions-table">
+        <tbody>
+            {% for quote in flights.Quotes %}
+              {%  if quote.Direct %}
+                <tr>
+                        
+                        <td>
+                              {% for place in flights.Places %}
+                                {% if place.PlaceId == quote.OutboundLeg.DestinationId %}
+                                {{ place.Name }}
+                                {% endif %}
+                              {% endfor %}
+                        </td>
+                        <td >
+                            {{ quote.OutboundLeg.DepartureDate|slice:":10" }}
+                        
+                        </td>
+                        <td >
+                            <a href="http://whitelabeldemo.skyscanner.net/en-GB/flights#/result?originplace={{ from }}&destinationplace=AAL&outbounddate=2017-02-02&inbounddate=2017-02-12&cabinclass=Economy&adults=1&children=0&infants=0" target="_blank">£{{ quote.MinPrice }}</a>
+                        </td>
+                        <td>
+                              {% for carrier in flights.Carriers %}
+                                {% if carrier.CarrierId in quote.OutboundLeg.CarrierIds %}
+                                {{ carrier.Name }}
+                                {% endif %}
+                              {% endfor %}
+                        </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>

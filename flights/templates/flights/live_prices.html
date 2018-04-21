@@ -2,7 +2,37 @@
 
 
 {% block main %}
-    
+<div id="pricing_form" class="hidden" style="margin: 40px 0;">
+        <form action="" method="get" class="form-horizontal">
+            <div class="form-group">
+              <label for="{{ form.origin_field.id_origin_field }}" class="col-sm-3 control-label">Origin airport or city:&nbsp;</label>
+              <div class="col-sm-9">
+              {{ form.origin_field }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="{{ form.destination_field.id_destination_field }}" class="col-sm-3 control-label">Destination airport or city:&nbsp;</label>
+              <div class="col-sm-9">
+              {{ form.destination_field }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="{{ form.from_date_field.id_from_date_field }}" class="col-sm-3 control-label">From:&nbsp;</label>
+              <div class="col-sm-9">
+              {{ form.from_date_field }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="{{ form.to_date_field.id_to_date_field }}" class="col-sm-3 control-label">To:&nbsp;</label>
+              <div class="col-sm-9">
+              {{ form.to_date_field }}
+              </div>
+            </div>
+            
+          <input class="btn btn-primary" href="" role="button" type="submit" value="Search"></input>
+          <span class="form-errors">{{ form.search.errors }}</span>
+        </form>
+        </div>
     
 
     <!-- Results -->

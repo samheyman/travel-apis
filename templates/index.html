@@ -1,26 +1,75 @@
 {% extends 'base.html' %}
 
 {% block head %}
+{% endblock %}
 
+{% block breadcrumbs %}
 {% endblock %}
 
 {% block main %}
+      
+  
+        <div class="row">
+          <div class="col-md-6">
+            <div id="flights-category" class="panel panel-default category-box">
+              <a class="api-link" href="{% url 'flights' %}">
+                <div class="panel-body">
+                  <h4>Flights</h4>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6">
+              <div id="hotels-category" class="panel panel-default category-box">
+                <a class="api-link" href="{% url 'hotels' %}">
+                  <div class="panel-body">
+                    <h4>Hotels</h4>
+                  </div>
+                </a>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div id="destinations-category" class="panel panel-default category-box">
+                <a class="api-link" href="{% url 'destinations' %}">
+                  <div class="panel-body">
+                    <h4>Destinations</h4>
+                  </div>
+                </a>
+              </div>
+          </div>  
+          
+          <div class="col-md-6">
+              <div id="airports-category" class="panel panel-default category-box">
+                <a class="api-link" href="{% url 'airports' %}">
+                  <div class="panel-body">
+                    <h4>Airports</h4>
+                  </div>
+                </a>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div id="ti-category" class="panel panel-default category-box">
+                <a class="api-link" href="{% url 'routes' %}">
+                  <div class="panel-body">
+                    <h4>Travel Intelligence</h4>
+                  </div>
+                </a>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div id="ndc-category" class="panel panel-default category-box">
+                <div class="panel-body">
+                  <h4>NDC &nbsp;&nbsp;<span class="label label-warning">coming soon</span></h4>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div id="loyalty-category" class="panel panel-default category-box">
+                <div class="panel-body">
+                  <h4>Loyalty Programs &nbsp;&nbsp;<span class="label label-warning">coming soon</span></h4>
+                </div>
+              </div>
+          </div>
+        </div>
 
-<div class="container">
-  <div class="row">
-
-    <h1>Travel APIs</h1>
-
-    <ul>
-      <li><a href="{% url 'flights' %}">Flights</a></li>
-      <li><a href="{% url 'hotels' %}">Hotels</a></li>
-      <li><a href="{% url 'destinations' %}">Destinations</a></li>
-      <li>NDC</li>
-      <li>Loyalty programs</li>
-      <li>Airports</li>
-    </ul>
-
-  </div>
-
-</div>
 {% endblock %}

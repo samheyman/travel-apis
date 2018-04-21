@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block head %}
+{% extends 'base.html' %} 
+
+{% block head %}
 <!-- Map box code -->
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
@@ -14,18 +16,16 @@
 </style>
 {% endblock %}
 
-{% block main %}
-
-<ol class="breadcrumb" style="padding-left:60px">
+{% block breadcrumbs %}
+<ol class="breadcrumb">
   <li><a href="{% url 'home' %}">Home</a></li>
   <li><a href="{% url 'destinations' %}">Destinations</a></li>
   <li class="active">Points of Interest</li>
 </ol>
+{% endblock %}
 
-<div class="container">
-  <div class="row">
-
-    <h1>Points of Interest</h1>
+{% block main %}
+<h1>Points of Interest</h1>
 
     <hr>
     <form>

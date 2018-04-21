@@ -5,17 +5,17 @@
    ========================================================================== */
 
 h1 {
-	margin-top: 0;
-    padding: 40px 0 20px 0;
-	font-size: 32px;
-    font-weight: normal;
-    width: 100%;
+	margin:30px 0 20px 0;
+  padding: 0;
+	font-size: 24px;
+  font-weight: normal;
+  width: 100%;
 	line-height: 1.1;
 	font-family: "source_sans_prolight",Arial,Helvetica,sans-serif;
 }
 
 h3 {
-	margin:30px 0 20px 0;
+	margin:30px 0 30px 0;
 }
 
 h4 {
@@ -32,6 +32,36 @@ h3:before {
     position: relative;
     top:7px;
     margin-right: 10px;
+}
+
+.navbar {
+  border-bottom: 1px solid #efefef;
+  background-color: #fff;
+}
+
+.navbar-brand {
+  color: #333;
+}
+
+
+
+.breadcrumb {
+  margin: 20px 0 0 -15px;
+  background-color: transparent;
+  font-size: 12px;
+}
+
+.breadcrumb a {
+  color: #333;
+}
+
+.breadcrumb .active {
+  color: #999;
+}
+
+.main {
+  min-height: 500px;
+  margin-top: 40px;
 }
 
 a.api-link {
@@ -55,8 +85,69 @@ a.api-link {
 	margin: 0px 15px 0 0px;
 }
 
-.panel {
-	
+#flights-category {
+  background-image: url('/static/img/plane.png');
+  background-size: 45px;
+}
+
+#airports-category {
+  background-image: url('/static/img/airport1.png');
+  background-size: 50px;
+}
+
+#ndc-category {
+  background-image: url('/static/img/iata.png');
+  background-size: 55px;
+}
+
+#loyalty-category {
+  background-image: url('/static/img/loyalty.png');
+  background-size: 55px;
+}
+
+#destinations-category {
+  background-image: url('/static/img/magnifier.png');
+  background-size: 35px;
+}
+
+#hotels-category {
+  background-image: url('/static/img/hotel1.png');
+  background-size: 50px;
+}
+
+#ti-category {
+  background-image: url('/static/img/data.png');
+  background-size: 50px;
+}
+
+#browse-flights-category {
+  background-image: url('/static/img/magnifier.png');
+  background-size: 35px;
+}
+
+#live-flights-category {
+  background-image: url('/static/img/direct.png');
+  background-size: 45px;
+}
+
+#flight-route-category {
+  background-image: url('/static/img/map_route.png');
+  background-size: 45px;
+}
+
+.category-box {
+  background-repeat: no-repeat;
+  background-position-x: 30px;
+  background-position-y: 20px;
+}
+
+.category-box h4 {
+  margin: 20px 0 20px 80px ;
+}
+
+.category-box:hover {
+  color: #337ab7;
+  border: 1px solid rgba(0 , 102, 201, 0.25);
 }
 
 .panel-footer {
@@ -106,4 +197,8 @@ table th {
   line-height: 1.3em;
   border-bottom: 1px solid #DFDFDF;
   color: black;
+}
+
+.footer {
+  font-size: 12px;
 }

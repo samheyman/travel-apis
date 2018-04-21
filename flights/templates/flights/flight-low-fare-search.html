@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+
+{% block breadcrumbs %}
+
+    <ol class="breadcrumb">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'flights' %}">Flights</a></li>
+      <li class="active">Low-fare search: {{ service }}</li>
+    </ol>
+
+{% endblock %}
+
+{% block main %}
+<pre>{{ quotes.1.itineraries.0.outbound.flights }}</pre>
+    
+<h1>{{ quotes|length }} Results for '{{ from }}' to '{{ to }}'</h1>
+<br>
+<br>
+
+<div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="routes">
+          <table class="table table-bordered table-hover table-striped" id="permissions-table">
+            <thead>
+              <tr>
+                <td colspan="4"></td>
+                <td colspan="4">Outbound leg</td>
+                <td colspan="4">Inbound leg</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Offer ID</td>
+                <td>Itineraries / Services</td>
+                <td>Price ({{  currency }})</td>
+                <td>Stopovers</td>
+                <td>Departure</td>
+                <td>Carrier</td>
+                <td>Booking code</td>
+                <td>Stopovers</td>
+                <td>Departure</td>
+                <td>Carrier</td>
+                <td>Booking code</td>
+              </tr>
+            </thead>
+            <tbody>
+    
+                {% for quote in quotes %}
+                    <tr>
+                            <td>
+                                {{forloop.counter}}
+                            </td>
+                            <td>
+                                {% if service == 'Innovation Sandbox' %}
+                                --
+                                {% else %}
+                                {{ quote.id }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if service == 'Innovation Sandbox' %}
+                                {{ quote.itineraries|length }}
+                                {% else %}
+                                {{ quote.offerItems.0.services|length }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if service == 'Innovation Sandbox' %}
+                                {{ quote.fare.total_price }}
+                                {% else %}
+                                {{ quote.offerItems.0.price.total }}
+                                {% endif %}
+                            </td>
+    
+                            <td>
+                            
+                            {% if service == 'Innovation Sandbox' %}
+                                {% for itinerary in quote.itineraries %}
+                                    {% if itinerary.outbound.flights|length > 1 %}
+                                            {{ itinerary.outbound.flights|length|add:-1 }} stop ({{ itinerary.outbound.flights.0.destination.airport}})<br>
+                                    {% else %}
+                                        Direct<br>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                {% if quote.offerItems.0.services.0.segments|length > 1 %}
+                                {{ quote.offerItems.0.services.0.segments|length }}
+                                {% else %}
+                                Direct
+                                {% endif %}
+                            {% endif %}
+                            </td>
+                            <td>
+                            {% if service == 'Innovation Sandbox' %}
+                                {% for itinerary in quote.itineraries %}
+                                    {{ itinerary.outbound.flights.0.departs_at }}<br>
+                                {% endfor %}
+                            {% else %}
+                                {% for segment in quote.offerItems.0.services.0.segments %}
+                                    {{ segment.flightSegment.carrierCode }}
+                                {% endfor %}
+                            {% endif %}
+                            </td>
+                            <td>
+                            {% for itinerary in quote.itineraries %}
+    
+                                {% for flight in itinerary.outbound.flights %}
+                                  {{ flight.marketing_airline }} ({{ flight.flight_number }})
+                                {% endfor %}
+                                <br>
+                            {% endfor%}
+                            </td>
+                            <td>
+                            {% if service == 'Innovation Sandbox' %}
+                                {% for itinerary in quote.itineraries %}
+                                    {% for flight in itinerary.outbound.flights %}
+                                        {{ flight.booking_info.booking_code }}
+                                    {% endfor %}
+                                    <br>
+                                {% endfor%}
+                            {% else %}
+                                {% for segment in quote.offerItems.0.services.0.segments %}
+                                    {{ segment.flightSegment.carrierCode }}
+                                {% endfor %}
+                            {% endif %}
+                            </td>
+                            <td>
+                                {% for itinerary in quote.itineraries %}
+    
+                                  {% if itinerary.inbound.flights|length > 1 %}
+                                        {{ itinerary.inbound.flights|length|add:-1 }} stop ({{ itinerary.inbound.flights.0.destination.airport}})<br>
+                                  {% else %}
+                                      Direct<br>
+                                  {% endif %}
+    
+                                {% endfor %}
+                                </td>
+                                <td>
+                                {% for itinerary in quote.itineraries %}
+    
+                                    {{ itinerary.inbound.flights.0.departs_at }}<br>
+    
+                                {% endfor %}
+                                </td>
+                                <td>
+                                {% for itinerary in quote.itineraries %}
+    
+                                    {% for flight in itinerary.inbound.flights %}
+                                      {{ flight.marketing_airline }} ({{ flight.flight_number }})
+                                    {% endfor %}
+                                    <br>
+                                {% endfor%}
+                                </td>
+                                <td>
+                                    {% for itinerary in quote.itineraries %}
+    
+                                        {% for flight in itinerary.inbound.flights %}
+                                          {{ flight.booking_info.booking_code }}
+                                        {% endfor %}
+                                        <br>
+                                    {% endfor%}
+                                </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+        
+
+<div><pre>{{ flights }}</pre></div>
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>
+{% endblock main %}
