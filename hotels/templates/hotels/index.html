@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 
-{% block main %}
-<ol class="breadcrumb" style="padding-left:60px">
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li class="active">Hotels</li>
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li class="active">Hotels</li>
 </ol>
+{% endblock %}
 
-
-<div class="container">
-
+{% block main %}
 <section class="doc-additional-content doc-method-section">
     <h1>Hotels API Test Harness</h1>
     <div id="testharnessresult">
@@ -169,10 +168,6 @@
             </div>
         </div>
     </div>
-    </div>
-
 </div>
 
-
-</div>
 {% endblock main %}
