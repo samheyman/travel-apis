@@ -175,7 +175,10 @@ def routes(request):
 
 	most_searched_data = getMostSearchedData(airport, period, market)
 	most_travelled_data = getMostTraveledData(airport, period, market)
-
+	print("Most Searched Data from {}".format(airport))
+	print(most_searched_data)
+	print("Most Traveled Data from {}".format(airport))
+	print(most_travelled_data)
 	data = {
 			"form": form,
 			"airport": airport,
@@ -212,8 +215,8 @@ def sandbox_low_fare_search(request):
 	return render(request, 'flights/flight-low-fare-search.html', {"service": "Innovation Sandbox", "currency": currency, "quotes":quotes, "from": origin, "to":destination})
 
 def flight_low_fare_search(request):
-	origin = "CDG"
-	destination = "YVR"
+	origin = "MAD"
+	destination = "CDG"
 	currency="EUR"
 	json_data = getLowFareFlights(origin, destination,'2018-08-01','2018-08-10', 'ama4dev', currency)
 	quotes = json_data["data"]
@@ -295,7 +298,7 @@ def getMostSearchedData(airport_code, time_period, market):
 	# Most searched data
 	# ------------------
 	searches_xs=['x']
-	searches = ['searches']
+	searches = ['number of searches']
 
 	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/fare-searches?"
 	headers = {
@@ -335,10 +338,10 @@ def getMostSearchedData(airport_code, time_period, market):
 	return most_searched_destinations
 
 def getMostTraveledData(airport_code, time_period, market):
-	# Most booked data
-	# ----------------
+	# Most Traveled data
+	# -------------------
 	travels_xs = ['x']
-	travels = ['travels']
+	travels = ['number of travels']
 
 	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/traveled?"
 	headers = {

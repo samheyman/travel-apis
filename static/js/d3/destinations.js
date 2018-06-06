@@ -4,24 +4,31 @@
 var chart1 = c3.generate({
     bindto: '#destinations_most_searched_chart',
     data: {
-      x: 'x',
+      //x: 'x',
       columns: [
-        ['x', 'SIN', 'LON', 'NYC', 'TUN', 'BCN'],
-        ['searches', 12300, 11000, 5000, 2000, 500],
+        ['number of searches', 0, 0, 0, 0, 0],
       ],
 
       types: {
-        searches: 'bar'
+        'number of searches': 'bar'
       },
       colors: {
-        searches: '#005EB8',
+        'number of searches': '#005EB8',
       }
     },
-    axis : {
-        x : {
-            type: 'category',
-            categories: ['PAR', 'LON', 'NYC', 'TUN', 'BCN'] 
-        }
+    axis: {
+      rotated: true,
+      y: {
+        show: true,
+        label: 'total search numbers'
+      },
+      x : {
+        type: 'category',
+        categories: ['', '', '', '', '']
+      }     
+    },
+    legend: {
+      hide: true
     }
 });
 
@@ -31,44 +38,100 @@ var chart1 = c3.generate({
 var chart2 = c3.generate({
   bindto: '#destinations_most_travelled_chart',
   data: {
-    x: 'x',
+    //x: 'x',
     columns: [
-      ['x', 'SIN', 'LON', 'NYC', 'TUN', 'BCN'],
-      ['bookings', 1, 0.79, 0.34, 0.22, 0.08],
+      ['number of travels', 0, 0, 0, 0, 0],
     ],
 
     types: {
-      bookings: 'bar'
+      'number of travels': 'bar'
     },
     colors: {
-      bookings: '#9BCAEB',
+      'number of travels': '#9BCAEB',
     }
   },
   axis : {
-      x : {
-          type: 'category',
-          categories: ['PAR', 'LON', 'NYC', 'TUN', 'BCN']
-          
-      }
+    rotated: true,
+    y: {
+      show: true,
+      label: 'total number of check-ins (normalized to a range 0-1)'
+    },
+    
+    x : {
+        type: 'category',
+        categories: ['', '', '', '', '']
+    }
+  },
+  legend: {
+    hide: true
   }
-
 });
 
 
 function load_charts() { 
+  most_searched_data_xs.shift();
+  most_travelled_data_xs.shift();
 
-  chart1.load({
-    columns: [
-      most_searched_data_xs,
-      most_searched_data_values
-    ]
+  chart1 = c3.generate({
+    bindto: '#destinations_most_searched_chart',
+    data: {
+      columns: [
+        most_searched_data_values,
+      ],
+      types: {
+        'number of searches': 'bar'
+      },
+      colors: {
+        'number of searches': '#005EB8',
+      }
+
+        //most_searched_data_xs,
+      // ["x", "RAK", "OPO", "DXB", "UIO", "SDQ"],
+        //["number of searches", 498, 328, 282, 237, 185]
+    },
+    axis: {
+      rotated: true,
+      y: {
+        show: true,
+        label: 'total number of searches'
+      },    
+      x : {
+          type: 'category',
+          categories: most_searched_data_xs
+      }
+    },
+    legend: {
+      hide: true
+    }
   });
 
-  chart2.load({
-    columns: [
-      most_travelled_data_xs,
-      most_travelled_data_values
-    ]
+  chart2 = c3.generate({
+    bindto: '#destinations_most_travelled_chart',
+    data: {
+      columns: [
+        most_travelled_data_values
+      ],
+      types: {
+        'number of travels': 'bar'
+      },
+      colors: {
+        'number of travels': '#9BCAEB',
+      }
+    },
+    axis: {
+      rotated: true,
+      y: {
+        show: true,
+        label: 'number of travelers (normalized to a range 0-100)'
+      },    
+      x : {
+          type: 'category',
+          categories: most_travelled_data_xs
+      }
+    },
+    legend: {
+      hide: true
+    }
   });
 }
 
