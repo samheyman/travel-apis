@@ -30,7 +30,7 @@
       {% if error_message %}
 
       <div class="alert alert-danger" style="margin-top:20px;">
-        No results. {{ error_message }}
+        Invalid origin or no data available.
       </div>
 
       {% else %}
@@ -52,12 +52,8 @@
             <div id="destinations_most_travelled_chart"></div>
 
           <h4>Most Traveled (intent)</h4>
-          <p>Top destinations users from <span class="destinations-results">{{ market }}</span> have <em>traveled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of check-ins and normalized to a range 0-1.</p>
-          <p><em>Based on Amadeus' MIDT data. Excludes passengers who book directly with
-            an airline (online, ATO/CTO, Phone) -
-            many tickets purchased for travel on a Low
-            Cost Carrier (LCC) such as Southwest,
-            JetBlue, etc. fall within this category</em></p>
+          <p>Top destinations users from <span class="destinations-results">{{ market }}</span> have <em>traveled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of check-ins and normalized to a range 0-1.*</p>
+          
 
             <code>{{ most_travelled_data.xs|safe }}</code>
 
@@ -70,6 +66,14 @@
           <code>{{ most_booked_data.xs|safe }}</code>
 
         </div>
+      </div>
+
+      <div>
+          <p><em>* Based on Amadeus' MIDT data. Excludes passengers who book directly with
+              an airline (online, ATO/CTO, Phone) -
+              many tickets purchased for travel on a Low
+              Cost Carrier (LCC) such as Southwest,
+              JetBlue, etc. fall within this category</em></p>
       </div>
 
       <script type="text/javascript">

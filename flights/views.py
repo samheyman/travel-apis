@@ -175,7 +175,7 @@ def routes(request):
 	else:
 		form = AirportSearchForm()
 		airport = "MAD"
-		month = "January"
+		month = "01"
 		year = "2017"
 		period = "2017-01"
 
