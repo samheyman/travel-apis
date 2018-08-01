@@ -21,37 +21,55 @@
         {% csrf_token %}
         <label for="{{ form.airport.id_airport }}">Origin airport </label>
         {{ form.airport }}
+        <label for="{{ form.airport.timeDuration }}">Year </label>
+        {{ form.year }}
+        <label for="{{ form.airport.timeDuration }}">Month </label>
+        {{ form.month }}
         <button type="submit" class="" style="position:relative;top:0;">Search</button>
       </form>
+      {% if error_message %}
+
+      <div class="alert alert-danger" style="margin-top:20px;">
+        No results. {{ error_message }}
+      </div>
+
+      {% else %}
       <hr>
-        <h2>Popular destinations from <span class="destinations-results">{{ airport }}</span></h2>
+        <h2>Popular destinations from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ month }}/{{ year }}</span></h2>
         <br>
        <!-- Search form -->
        <div class="row">
 
-        <div class="col-md-5" style="text-align: center">
+        <div class="col-md-4" style="text-align: center">
           <div id="destinations_most_searched_chart"></div>
 
           <h4>Most Searched (interest)</h4>
           <p>Top destinations users from <span class="destinations-results">{{ market }}</span> have <em>searched for</em> from <span class="destinations-results">{{ airport }}</span>, based on total search numbers.</p><br/>
+        <code>{{ most_searched_data.xs|safe }}</code>
         </div>
-
-        <div class="col-md-5 col-md-offset-1" style="text-align: center">
+<!-- col-md-offset-1 -->
+        <div class="col-md-4 " style="text-align: center">
             <div id="destinations_most_travelled_chart"></div>
 
-          <h4>Most Travelled (intent)</h4>
-          <p>Top destinations users from <span class="destinations-results">{{ market }}</span> have <em>travelled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of check-ins and normalized to a range 0-1.</p>
+          <h4>Most Traveled (intent)</h4>
+          <p>Top destinations users from <span class="destinations-results">{{ market }}</span> have <em>traveled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of check-ins and normalized to a range 0-1.</p>
           <p><em>Based on Amadeus' MIDT data. Excludes passengers who book directly with
             an airline (online, ATO/CTO, Phone) -
             many tickets purchased for travel on a Low
             Cost Carrier (LCC) such as Southwest,
             JetBlue, etc. fall within this category</em></p>
+
+            <code>{{ most_travelled_data.xs|safe }}</code>
+
         </div>
-        <!-- <div class="col-md-4">
+        <div class="col-md-4" style="text-align: center">
+            <div id="destinations_most_booked_chart"></div>
+
           <h4>Most Booked (intent)</h4>
-          <p>Top destinations users have <em>travelled to</em> from <span class="destinations-results">{{ most_travelled_data.origin }}</span>, based on total number of bookings (including cancellations) and normalized to a range 0-1.</p>
-          <div id="destinations_most_travelled_chart"></div>
-        </div> -->
+          <p>Top destinations users have <em>traveled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of bookings (including cancellations) and normalized to a range 0-1.</p>
+          <code>{{ most_booked_data.xs|safe }}</code>
+
+        </div>
       </div>
 
       <script type="text/javascript">
@@ -59,10 +77,14 @@
          var most_searched_data_values = {{ most_searched_data.searches|safe }};
          var most_travelled_data_xs = {{ most_travelled_data.xs|safe }};
          var most_travelled_data_values = {{ most_travelled_data.travels|safe }};
+         var most_booked_data_xs = {{ most_booked_data.xs|safe }};
+         var most_booked_data_values = {{ most_booked_data.bookings|safe }};
       </script>
       <script type="text/javascript" src="{% static 'js/d3/destinations.js' %}"></script>
       <script>
       load_charts();
       </script>
+
+      {% endif %}
 
 {% endblock main %}

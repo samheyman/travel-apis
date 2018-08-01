@@ -160,31 +160,47 @@ def travel_insights(request):
 	return render(request, 'flights/travel_insights.html', {})
 
 def routes(request):
-	airport = "SFO"
 	market = "US"
-	period = "2017-05"
+	airport = 'MAD'
+	period = '2017-01'
 
 	if 'airport' in request.GET:
 		form = AirportSearchForm(request.GET)
 		if form.is_valid():
 			airport = form.cleaned_data['airport']
+			year = form.cleaned_data['year']
+			month = form.cleaned_data['month']
+			period = "{}-{}".format(year, month)
 
 	else:
 		form = AirportSearchForm()
 		airport = "MAD"
+		month = "January"
+		year = "2017"
+		period = "2017-01"
 
 	most_searched_data = getMostSearchedData(airport, period, market)
 	most_travelled_data = getMostTraveledData(airport, period, market)
+	most_booked_data = getMostBookedData(airport, period, market)
 	print("Most Searched Data from {}".format(airport))
 	print(most_searched_data)
 	print("Most Traveled Data from {}".format(airport))
 	print(most_travelled_data)
+	print("Most Booked Data from {}".format(airport))
+	print(most_booked_data)
+
+	error_message = ('error' in most_searched_data) or ('error' in most_travelled_data) or ('error' in most_booked_data)
+
 	data = {
 			"form": form,
 			"airport": airport,
+			"year": year,
+			"month": month,
 			"market": market,
 			"most_searched_data": most_searched_data,
 			"most_travelled_data": most_travelled_data,
+			"most_booked_data": most_booked_data,
+			"error_message": error_message
 		}
 	return render(request, 'flights/routes.html', data)
 
@@ -312,30 +328,31 @@ def getMostSearchedData(airport_code, time_period, market):
 	}
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
 	print("Endpoint: "+api_endpoint)
-	req = urllib.request.Request(api_endpoint, headers= headers)
-	response = urllib.request.urlopen(req)
+	
 	try:
+		req = urllib.request.Request(api_endpoint, headers= headers)
+		response = urllib.request.urlopen(req)
 		json_data = json.load(response)
 		
 	except:
-		json_data = None
-		most_searched_destinations = {'error': "Failed to get API data."}
-	
+		json_data = None	
 
-	if json_data:
+	if json_data and json_data["data"]:
 		for data_entry in json_data["data"][0]["numberOfSearches"]["perDestination"].items():
 			searches_xs.append(data_entry[0])
 			searches.append(data_entry[1])
-		most_searched_destinations = {
+		most_searched_data = {
 				"xs": json.dumps(searches_xs),
 				"searches": json.dumps(searches)
 			}
 	else: 
-		most_searched_destinations = {
+		most_searched_data = {
 			"xs": 0,
-			"searches": 0
+			"searches": 0,
+			"error": "Failed to get API data."
+
 		}
-	return most_searched_destinations
+	return most_searched_data
 
 def getMostTraveledData(airport_code, time_period, market):
 	# Most Traveled data
@@ -350,32 +367,88 @@ def getMostTraveledData(airport_code, time_period, market):
 	values = {
 		"origin": airport_code,
 		"period": time_period,
-		"sort": "analytics.travellers.score",
-		"max": 10,
-		"page[limit]": 5,
+		"sort": "analytics.travelers.score",
+		"max": 5,
+		# "page[limit]": 5,
 	}
 
 	# origin=MAD&period=2015-09&sort=analytics.travellers.score&max=10&page[limit]=5
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
 	print("Endpoint: " + api_endpoint)
-	req = urllib.request.Request(api_endpoint, headers= headers)
-	response = urllib.request.urlopen(req)
+	
 	try:
+		req = urllib.request.Request(api_endpoint, headers= headers)
+		response = urllib.request.urlopen(req)
 		json_data = json.load(response)
 		
 	except:
 		json_data = None
-		most_searched_destinations = {'error': "Failed to get API data."}
 
 	# with open('bookings.json','r') as content:
 	# 	bookings_values = json.load(content)
-	if len(json_data['data']) > 0:
+	if json_data and json_data["data"]:
 		for data_entry in json_data["data"]:
 			travels_xs.append(data_entry["destination"])
-			travels.append(data_entry["analytics"]["travellers"]["score"])
+			travels.append(data_entry["analytics"]["travelers"]["score"])
 
-	most_travelled_data = {
-		"xs": json.dumps(travels_xs),
-		"travels": json.dumps(travels)
-	}
+		most_travelled_data = {
+			"xs": json.dumps(travels_xs),
+			"travels": json.dumps(travels),
+		}
+
+	else:
+		most_travelled_data = {
+			"xs": 0,
+			"travels": 0,
+			"error": "Failed to get API data."
+		}
 	return most_travelled_data
+
+def getMostBookedData(airport_code, time_period, market):
+	# Most Booked data
+	# -------------------
+	bookings_xs = ['x']
+	bookings = ['number of bookings']
+
+	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/booked?"
+	headers = {
+		'Authorization': 'Bearer ' + getOAuthToken()
+	}
+	values = {
+		"origin": airport_code,
+		"period": time_period,
+		"sort": "analytics.travelers.score",
+		"max": 5,
+	}
+
+	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
+	print("Endpoint: " + api_endpoint)
+	
+	try:
+		req = urllib.request.Request(api_endpoint, headers= headers)
+		response = urllib.request.urlopen(req)
+		json_data = json.load(response)
+		
+	except:
+		json_data = None
+
+	# with open('bookings.json','r') as content:
+	# 	bookings_values = json.load(content)
+	if json_data and json_data["data"]:
+		for data_entry in json_data["data"]:
+			bookings_xs.append(data_entry["destination"])
+			bookings.append(data_entry["analytics"]["travelers"]["score"])
+
+		most_booked_data = {
+			"xs": json.dumps(bookings_xs),
+			"bookings": json.dumps(bookings),
+		}
+
+	else:
+		most_booked_data = {
+			"xs": 0,
+			"bookings": 0,
+			"error": "Failed to get API data."
+		}
+
+	return most_booked_data

@@ -67,10 +67,46 @@ var chart2 = c3.generate({
   }
 });
 
+// Most booked destinations - has to be anonymised 
+// Top destinations - flight scores
+// type = air-traffic
+var chart3 = c3.generate({
+  bindto: '#destinations_most_booked_chart',
+  data: {
+    //x: 'x',
+    columns: [
+      ['number of bookings', 0, 0, 0, 0, 0],
+    ],
+
+    types: {
+      'number of bookings': 'bar'
+    },
+    colors: {
+      'number of bookings': '#9BCAEB',
+    }
+  },
+  axis : {
+    rotated: true,
+    y: {
+      show: true,
+      label: 'total number of check-ins (normalized to a range 0-1)'
+    },
+    
+    x : {
+        type: 'category',
+        categories: ['', '', '', '', '']
+    }
+  },
+  legend: {
+    hide: true
+  }
+});
+
 
 function load_charts() { 
   most_searched_data_xs.shift();
   most_travelled_data_xs.shift();
+  most_booked_data_xs.shift();
 
   chart1 = c3.generate({
     bindto: '#destinations_most_searched_chart',
@@ -127,6 +163,35 @@ function load_charts() {
       x : {
           type: 'category',
           categories: most_travelled_data_xs
+      }
+    },
+    legend: {
+      hide: true
+    }
+  });
+
+  chart3 = c3.generate({
+    bindto: '#destinations_most_booked_chart',
+    data: {
+      columns: [
+        most_booked_data_values
+      ],
+      types: {
+        'number of bookings': 'bar'
+      },
+      colors: {
+        'number of bookings': '#9BCAEB',
+      }
+    },
+    axis: {
+      rotated: true,
+      y: {
+        show: true,
+        label: 'number of travelers (normalized to a range 0-100)'
+      },    
+      x : {
+          type: 'category',
+          categories: most_booked_data_xs
       }
     },
     legend: {
