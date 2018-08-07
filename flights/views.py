@@ -14,6 +14,7 @@ import urllib.request
 import requests
 import sys
 from common import geolocation
+from collections import OrderedDict
 
 skyscanner_key = os.environ.get("SKYSCANNER_KEY")
 #flights_cache_service = FlightsCache(skyscanner_key)
@@ -182,14 +183,17 @@ def routes(request):
 	most_searched_data = getMostSearchedData(airport, period, market)
 	most_travelled_data = getMostTraveledData(airport, period, market)
 	most_booked_data = getMostBookedData(airport, period, market)
+	busiest_period_data = getBusiestPeriodData(airport, year, 'ARRIVING')
 	print("Most Searched Data from {}".format(airport))
 	print(most_searched_data)
 	print("Most Traveled Data from {}".format(airport))
 	print(most_travelled_data)
 	print("Most Booked Data from {}".format(airport))
 	print(most_booked_data)
+	print("Busiest Period Data from {}".format(airport))
+	print(busiest_period_data)
 
-	error_message = ('error' in most_searched_data) or ('error' in most_travelled_data) or ('error' in most_booked_data)
+	error_message = (('error' in most_searched_data) or ('error' in most_travelled_data) or ('error' in most_booked_data) or ('error' in busiest_period_data))
 
 	data = {
 			"form": form,
@@ -200,6 +204,7 @@ def routes(request):
 			"most_searched_data": most_searched_data,
 			"most_travelled_data": most_travelled_data,
 			"most_booked_data": most_booked_data,
+			"busiest_period_data": busiest_period_data,
 			"error_message": error_message
 		}
 	return render(request, 'flights/routes.html', data)
@@ -452,3 +457,55 @@ def getMostBookedData(airport_code, time_period, market):
 		}
 
 	return most_booked_data
+
+
+def getBusiestPeriodData(city_code, year, direction):
+	months = ['x']
+	travelers = ['number of travelers']
+
+	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/busiest-period?"
+	headers = {
+		'Authorization': 'Bearer ' + getOAuthToken()
+	}
+	values = {
+		"cityCode": city_code,
+		"period": year,
+		"direction": direction,
+	}
+
+	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
+	print("Endpoint: " + api_endpoint)
+	
+	try:
+		req = urllib.request.Request(api_endpoint, headers= headers)
+		response = urllib.request.urlopen(req)
+		json_data = json.load(response)
+		
+	except:
+		json_data = None
+
+	# with open('bookings.json','r') as content:
+	# 	bookings_values = json.load(content)
+	if json_data and json_data["data"]:
+		for data_entry in json_data["data"]:
+			data_entry["period"] = int(data_entry["period"].split('-')[1])
+		
+		sorted_response = sorted(json_data["data"], key=lambda entry:entry["period"])
+
+		for data_entry in sorted_response:
+			months.append(data_entry["period"])
+			travelers.append(data_entry["analytics"]["travelers"]["score"])
+
+		busiest_period_data = {
+			"months": json.dumps(months),
+			"travelers": json.dumps(travelers),
+		}
+
+	else:
+		busiest_period_data = {
+			"months": 0,
+			"travelers": 0,
+			"error": "Failed to get API data."
+		}
+
+	return busiest_period_data

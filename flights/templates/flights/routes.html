@@ -27,54 +27,60 @@
         {{ form.month }}
         <button type="submit" class="" style="position:relative;top:0;">Search</button>
       </form>
-      {% if error_message %}
+      <hr>
 
+      {% if error_message %}
       <div class="alert alert-danger" style="margin-top:20px;">
         Invalid origin or no data available.
       </div>
 
-      {% else %}
-      <hr>
-        <h2>Popular destinations from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ month }}/{{ year }}</span></h2>
-        <br>
+      {% else %}        
        <!-- Search form -->
        <div class="row">
+        <h2>Popular destinations from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ year }}-{{month}}</span></h2>
+        
+        <div class="col-md-4" style="text-align: center">
+            <h4>Most Searched (interest)</h4>
+            <p>Top destinations users from <span class="destinations-results">{{ market }}</span> have <em>searched for</em> from <span class="destinations-results">{{ airport }}</span>, based on total search numbers.</p><br/>
+            <div id="destinations_most_searched_chart"></div>
+            <code>{{ most_searched_data.xs|safe }}</code>
+        </div>
 
         <div class="col-md-4" style="text-align: center">
-          <div id="destinations_most_searched_chart"></div>
-
-          <h4>Most Searched (interest)</h4>
-          <p>Top destinations users from <span class="destinations-results">{{ market }}</span> have <em>searched for</em> from <span class="destinations-results">{{ airport }}</span>, based on total search numbers.</p><br/>
-        <code>{{ most_searched_data.xs|safe }}</code>
-        </div>
-<!-- col-md-offset-1 -->
-        <div class="col-md-4 " style="text-align: center">
-            <div id="destinations_most_travelled_chart"></div>
-
-          <h4>Most Traveled (intent)</h4>
-          <p>Top destinations users from <span class="destinations-results">{{ market }}</span> have <em>traveled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of check-ins and normalized to a range 0-1.*</p>
-          
-
-            <code>{{ most_travelled_data.xs|safe }}</code>
-
-        </div>
-        <div class="col-md-4" style="text-align: center">
+            <h4>Most Booked (intent)</h4>
+            <p>Top destinations users have <em>booked flights to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of bookings<br>(normalized to a range 0-1)*</p>
             <div id="destinations_most_booked_chart"></div>
+            <code>{{ most_booked_data.xs|safe }}</code>
+        </div>
 
-          <h4>Most Booked (intent)</h4>
-          <p>Top destinations users have <em>traveled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of bookings (including cancellations) and normalized to a range 0-1.</p>
-          <code>{{ most_booked_data.xs|safe }}</code>
-
+        <div class="col-md-4 " style="text-align: center">
+            <h4>Most Traveled (intent)</h4>
+            <p>Top destinations users have <em>traveled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of check-ins<br>(normalized to a range 0-1)*</p>
+            <div id="destinations_most_travelled_chart"></div>
+            <code>{{ most_travelled_data.xs|safe }}</code>
         </div>
       </div>
 
-      <div class="alert alert-info" style="margin-top:30px">
-          <p><em>* Based on Amadeus' MIDT data. Excludes passengers who book directly with
-              an airline (online, ATO/CTO, Phone) -
-              many tickets purchased for travel on a Low
-              Cost Carrier (LCC) such as Southwest,
-              JetBlue, etc. fall within this category</em></p>
+      <div class="row" style="margin-top:20px">  
+        <h2>Busiest traveling period from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ year }}</span></h2>
+        <br>
+        <p>Busiest travel periods for the year broken down per month, based on total number of travelers arriving in the city (normalized to a range 0-1)*</p>
+        <div class="col-md-12" style="text-align: center">
+            <p></p><br/>
+            <div id="busiest_period_chart"></div>
+        </div>
+        <code>{{ busiest_period_data.travelers|safe }}</code>
       </div>
+
+      <div class="row">
+          <div class="well" style="margin-top:30px">
+              <p><em>* Based on Amadeus' MIDT data. Excludes passengers who book directly with
+                  an airline (online, ATO/CTO, Phone) -
+                  many tickets purchased for travel on a Low
+                  Cost Carrier (LCC) such as Southwest,
+                  JetBlue, etc. fall within this category</em></p>
+          </div>
+        </div>
 
       <script type="text/javascript">
          var most_searched_data_xs = {{ most_searched_data.xs|safe }};
@@ -83,6 +89,8 @@
          var most_travelled_data_values = {{ most_travelled_data.travels|safe }};
          var most_booked_data_xs = {{ most_booked_data.xs|safe }};
          var most_booked_data_values = {{ most_booked_data.bookings|safe }};
+         var busiest_period_months = {{ busiest_period_data.months|safe }};
+         var busiest_period_travelers = {{ busiest_period_data.travelers|safe }};
       </script>
       <script type="text/javascript" src="{% static 'js/d3/destinations.js' %}"></script>
       <script>
