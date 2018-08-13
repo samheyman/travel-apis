@@ -14,6 +14,7 @@ def index(request):
 
 def points_of_interest(request):
 	location = ""
+	provider = ""
 	points_of_interest = {}
 	if 'location' in request.GET:
 		form = LocationSearchForm(request.GET)
@@ -21,7 +22,8 @@ def points_of_interest(request):
 			location = form.cleaned_data['location']
 			number_of_results = form.cleaned_data['number_of_results']
 			provider = form.cleaned_data['provider']
-			points_of_interest = getPointsOfInterest(location, provider, number_of_results)
+			category = form.cleaned_data['category']
+			points_of_interest = getPointsOfInterest(location, provider, number_of_results, category)
 	else:
 		form = LocationSearchForm()
 	
@@ -45,7 +47,7 @@ def points_of_interest(request):
 	return render(request, 'destinations/points-of-interest.html', data)
 
 
-def getPointsOfInterest(location, provider, number_results):
+def getPointsOfInterest(location, provider, number_results, category):
 	if provider == 'yapq':
 		api_endpoint = "https://api.sandbox.amadeus.com/v1.2/points-of-interest/yapq-search-text?"
 		values = {
@@ -102,7 +104,8 @@ def getPointsOfInterest(location, provider, number_results):
 			"client_secret": os.environ.get('FOURSQUARE_CLIENT_SECRET'),
 			"v": '20180323',
 			"query": 'coffee',
-			"limit": number_results
+			"limit": number_results,
+			"section": category
 		}
 		request_url = url + urllib.parse.urlencode(params)
 		request_url = request_url +  "&ll=" + str(coordinates[0]) + "," + str(coordinates[1])
