@@ -24,8 +24,16 @@ def points_of_interest(request):
 			points_of_interest = getPointsOfInterest(location, provider, number_of_results)
 	else:
 		form = LocationSearchForm()
-		location = ""
+	
+	error_message = 'error' in points_of_interest
 
+	data = {
+		'form': form,
+		'provider': provider,
+		'location': location,
+		'result': points_of_interest,
+		'error_message': error_message
+	}
 	# with open('poi.csv', 'w') as file:
 	# 	for poi in points_of_interest["points_of_interest"]:
 	# 		file.write(str(poi["title"]))
@@ -34,7 +42,7 @@ def points_of_interest(request):
 	# 	for poi in points_of_interest["POIs"]:
 	# 		file.write(str(poi["name"]))
 	# 		file.write("\n")
-	return render(request, 'destinations/points-of-interest.html', {'form': form, 'result': points_of_interest, 'location': location})
+	return render(request, 'destinations/points-of-interest.html', data)
 
 
 def getPointsOfInterest(location, provider, number_results):
@@ -52,7 +60,10 @@ def getPointsOfInterest(location, provider, number_results):
 		try:
 			json_data = json.load(response)
 		except:
-			json_data = None
+			print("Error")
+			json_data = {
+				"error": "Failed to get API data."
+			}
 			
 	elif provider == 'avuxi':
 		api_endpoint = "https://data.avuxiapis.com/v1/POI?"
@@ -71,15 +82,48 @@ def getPointsOfInterest(location, provider, number_results):
 			"limit": number_results
 		}
 		api_endpoint = api_endpoint + urllib.parse.urlencode(values)
+		print("Calling AVUXI: {}".format(api_endpoint))
 		req = urllib.request.Request(api_endpoint)
 		response = urllib.request.urlopen(req)
 		try:
 			json_data = json.load(response)
 		except:
-			json_data = None
+			print("Error")
+			json_data = {
+				"error": "Failed to get API data."
+			}
+
+	elif provider == 'fourSquare':
+		url = 'https://api.foursquare.com/v2/venues/explore?'
+		coordinates = geolocation.getGeoCordinates(location)
+
+		params = {
+			"client_id": os.environ.get('FOURSQUARE_CLIENT_ID'),
+			"client_secret": os.environ.get('FOURSQUARE_CLIENT_SECRET'),
+			"v": '20180323',
+			"query": 'coffee',
+			"limit": number_results
+		}
+		request_url = url + urllib.parse.urlencode(params)
+		request_url = request_url +  "&ll=" + str(coordinates[0]) + "," + str(coordinates[1])
+		print("Calling FourSquare: {}".format(request_url))
+		req = urllib.request.Request(request_url)
+		response = urllib.request.urlopen(req)
+		try:
+			json_data = json.load(response)
+			print("Response: ")
+			print(json.dumps(json_data))
+		except:
+			print("Error")
+			json_data = {
+				"error": "Failed to get API data."
+			}
+
 	else:
-		print("nope")
-		json_data = None
+		print("Error")
+		json_data = {
+			"error": "Failed to get API data."
+		}
 	return json_data
 
 def getOAuthToken():

@@ -1,0 +1,24 @@
+
+    <pre>{{ result }}</pre>   
+    <div class="row">
+      <div class="col-md-12">
+        
+          {% if result.response.totalResults %}
+          <p>{{ result.response.totalResults }} points of interest in {{ location }}. Showing {{ result.response.groups.0.items|length }}</p>
+          <pre>{{ result.points_of_interest }}</pre>
+          <table>
+          {% for poi in result.response.groups.0.items %}
+          <tr>
+              <td>{{ poi.venue.name}}
+                  <p>{{ poi.reasons.items.0.summary }}</p>
+                  <p>Address: {{ poi.venue.location.address }} </p>
+                  <p>Rank: {{ poi.venue.stats.tipCount }}</p>
+                  <p>Lat/lng: {{poi.venue.location.lat }}, {{poi.venue.location.lng}}</p>
+              </td>
+          </tr>
+          {% endfor %}
+          </table>
+        {% endif %}
+      </div>
+    </div>
+
