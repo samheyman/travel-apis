@@ -1,5 +1,16 @@
 
-    <pre>{{ result }}</pre>   
+    {% load staticfiles %}
+
+    <button id="jsonResponse">View source code</button>
+    <button class="hidden" id="copyButton" onclick="copyJson()">           
+        <img id="copy" src="{% static 'img/copy.png' %}" style="height:18px" />       
+    </button>
+
+    <pre class="hidden" id="jsonCode">{{ result }}</pre> 
+    <textarea class="hidden" id="jsonContent">{{ result }}</textarea>
+
+    <br>
+    <br>
     <div class="row">
       <div class="col-md-12">
         
@@ -20,4 +31,22 @@
         {% endif %}
       </div>
     </div>
+
+    <script>
+    $("#jsonResponse").click(function(){
+        $('#jsonCode').removeClass("hidden");
+        $('#copyButton').removeClass("hidden");
+    });
+
+
+
+    function copyJson() {
+        $('#jsonContent').removeClass("hidden");
+        var copyJson = document.getElementById("jsonContent");
+        copyJson.focus();
+        copyJson.select();
+        document.execCommand("copy");
+        $('#jsonContent').addClass("hidden");
+    }
+    </script>
 
