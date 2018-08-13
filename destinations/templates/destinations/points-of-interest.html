@@ -49,47 +49,21 @@
     </form>
 
     <hr>
-    
-    <div class="row">
-      <div class="col-md-12">
-          {% if result.points_of_interest %}
-          {% if result.points_of_interest|length > 0 %}
-          <p>{{ result.points_of_interest|length }} points of interest in {{ location }}</p>
-          <pre>{{ result.points_of_interest }}</pre>
-          <table>
-          {% for poi in result.points_of_interest %}
-          <tr>
-            <td><img src="{{ poi.main_image }}" alt="{{ poi.title}}"/></td>
-            <td><a href="{{ poi.details.wiki_page_link}}" target="_blank">{{ poi.title}}</a>
-                <p>{{ poi.details.description}}</p>
-                <p>City grade: {{ poi.grades.city_grade }}<br/>YapQ grade: {{poi.grades.yapq_grade}}</p>
-                <p>Lat/lng: {{poi.location.latitude}}, {{poi.location.longitude}} 
-                  (<a href="{{ poi.location.google_maps_link }}" target="_blank">view on Google maps</a>)
-                </p>
-            </td>
-          </tr>
-          {% endfor %}
-          </table>
-          {% endif %}
-        {% else %}
-          {% if result.POIs|length > 0 %}
-            <p>{{ result.POIs|length }} points of interest in {{ location }}</p>
-            <pre>{{ result.POIs }}</pre>
-            <table>
-            {% for poi in result.POIs %}
-            <tr>
-              <td>{{ poi.name}}
-                  <p>{{ poi.details.description}}</p>
-                  <p>Rank: {{ poi.rank }}</p>
-                  <p>Lat/lng: {{poi.latlon.0}}, {{poi.latlon.1}}</p>
-              </td>
-            </tr>
-            {% endfor %}
-            </table>
-          {% endif %}
-        {% endif %}
-      </div>
+
+    {% if error_message %}
+    <div class="alert alert-danger" style="margin-top:20px;">
+      Invalid origin or no data available.
     </div>
-      
+    {% endif %}
+
+    <p>{{ provider }}</p>
+
+    {% if provider == 'avuxi' %}
+      {% include "./avuxi.html" %}
+    {% elif provider == 'fourSquare' %}
+      {% include "./fourSquare.html" %}
+    {% else %}
+      {% include "./yapq.html" %}
+    {% endif %}
     
-    {% endblock %}
+{% endblock %}

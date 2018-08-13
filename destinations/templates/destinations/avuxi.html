@@ -1,0 +1,22 @@
+
+    <code>{{ result }}</code>   
+    <div class="row">
+      <div class="col-md-12">
+          {% if result.POIs|length > 0 %}
+            <p>{{ result.POIs|length }} points of interest in {{ location }}</p>
+            <pre>{{ result.POIs }}</pre>
+            <table>
+            {% for poi in result.POIs %}
+            <tr>
+              <td>{{ poi.name}}
+                  <p>{{ poi.details.description}}</p>
+                  <p>Rank: {{ poi.rank }}</p>
+                  <p>Lat/lng: {{poi.latlon.0}}, {{poi.latlon.1}}</p>
+              </td>
+            </tr>
+            {% endfor %}
+            </table>
+        {% endif %}
+      </div>
+    </div>
+
