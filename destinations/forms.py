@@ -9,7 +9,7 @@ class LocationSearchForm(forms.Form):
             [
                 ('yapq','YapQ'), 
                 ('avuxi', 'Avuxi'),
-                ('fourSquare', 'FourSquare')
+                ('foursquare', 'FourSquare')
             ]),
         widget=forms.Select(attrs={"class":"form-control form-control-sm", "style":"height:26px"}))
     category = forms.ChoiceField(

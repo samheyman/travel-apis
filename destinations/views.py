@@ -95,7 +95,7 @@ def getPointsOfInterest(location, provider, number_results, category):
 				"error": "Failed to get API data."
 			}
 
-	elif provider == 'fourSquare':
+	elif provider == 'foursquare':
 		url = 'https://api.foursquare.com/v2/venues/explore?'
 		coordinates = geolocation.getGeoCordinates(location)
 
