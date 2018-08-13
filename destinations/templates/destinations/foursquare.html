@@ -5,7 +5,6 @@
         
           {% if result.response.totalResults %}
           <p>{{ result.response.totalResults }} points of interest in {{ location }}. Showing {{ result.response.groups.0.items|length }}</p>
-          <pre>{{ result.points_of_interest }}</pre>
           <table>
           {% for poi in result.response.groups.0.items %}
           <tr>

@@ -1,10 +1,9 @@
 
-    <code>{{ result }}</code>   
+    <pre>{{ result }}</pre>   
     <div class="row">
       <div class="col-md-12">
           {% if result.POIs|length > 0 %}
             <p>{{ result.POIs|length }} points of interest in {{ location }}</p>
-            <pre>{{ result.POIs }}</pre>
             <table>
             {% for poi in result.POIs %}
             <tr>
