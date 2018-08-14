@@ -9,7 +9,7 @@ urlpatterns = [
     url('search_results', views.search_results, name='search_results'),
     url('routes', views.routes, name='routes'),
     url('airports', views.airports, name='airports'),
-    url('sandbox_low_fare_search', views.sandbox_low_fare_search, name='sandbox_low_fare_search'),
+    # url('sandbox_low_fare_search', views.sandbox_low_fare_search, name='sandbox_low_fare_search'),
     url('flight_low_fare_search', views.flight_low_fare_search, name='flight_low_fare_search'),
 
 ]

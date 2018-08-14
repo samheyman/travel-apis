@@ -227,32 +227,61 @@ def airports(request):
 
 	return render(request, 'flights/airports.html', {'form': form, 'lat':lat,'lng':lng, 'result': airport_results, 'location': location, 'area':location})
 
-def sandbox_low_fare_search(request):
-	origin = "NYC"
+def flight_low_fare_search(request):
+	# source = "amadeus4dev"
+	origin = "BOS"
 	destination = "WAS"
 	currency = "EUR"
-	json_data = getLowFareFlights(origin, destination,'2018-08-01','2018-08-10', 'sandbox', currency)
-	quotes = json_data["results"]
-	return render(request, 'flights/flight-low-fare-search.html', {"service": "Innovation Sandbox", "currency": currency, "quotes":quotes, "from": origin, "to":destination})
+	departure_date = '2018-10-01',
+	return_date = '2018-10-10',
 
-def flight_low_fare_search(request):
-	origin = "MAD"
-	destination = "CDG"
-	currency="EUR"
-	json_data = getLowFareFlights(origin, destination,'2018-08-01','2018-08-10', 'ama4dev', currency)
-	quotes = json_data["data"]
-	return render(request, 'flights/flight-low-fare-search.html', {"service": "Amadeus for Developers", "currency": currency,"quotes":quotes, "from": origin, "to":destination})
+	if 'origin' in request.GET:
+		form = SearchForm(request.GET)
+		if form.is_valid():
+			origin = form.cleaned_data['origin']
+			destination = form.cleaned_data['destination']
+			departure_date = form.cleaned_data['departure_date']
+			return_date = form.cleaned_data['return_date']
+			response_sandbox = getLowFareFlights(origin, destination, departure_date, return_date, 'sandbox', currency)
+			response_ama4dev = getLowFareFlights(origin, destination, departure_date, return_date, 'ama4dev', currency)
+			quotes_sandbox = response_sandbox["results"]
+			quotes_ama4dev = response_ama4dev["data"]
+
+	else:
+		form = SearchForm()
+		response_sandbox = {}
+		response_ama4dev = {}
+		quotes_sandbox = []
+		quotes_ama4dev = []
+
+	data = {
+		"form": form,
+		"origin": origin,
+		"destination": destination,
+		"departure_date": departure_date,
+		"return_date": return_date,
+		"currency": currency,
+		"response_sandbox": response_sandbox,
+		"response_ama4dev": response_ama4dev,
+		"quotes_sandbox": quotes_sandbox,
+		"quotes_ama4dev": quotes_ama4dev
+	}
+	
+	return render(request, 'flights/flight-low-fare-search.html', data)
+
 
 def getLowFareFlights(origin, destination, departure_date, return_date, service, currency):
+	print("Calling {} API".format(service))
 	if service == 'sandbox':
 		api_endpoint = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?"
 		headers = {}
 		values = {	
 			"origin": origin,
 			"destination": destination,
-			"apikey": os.environ.get("AMADEUS_SANDBOX_KEY"),
+			"apikey": 'c3T1rm9mT1Xjisvt2On2IAQlRnk7ZLSA',
 			"departure_date": departure_date,
-			"return_date": return_date
+			"return_date": return_date,
+			"currency": currency
 		}
 	else:
 		api_endpoint = "https://test.api.amadeus.com/v1/shopping/flight-offers?"
@@ -476,13 +505,132 @@ def getBusiestPeriodData(city_code, year, direction):
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
 	print("Endpoint: " + api_endpoint)
 	
-	try:
-		req = urllib.request.Request(api_endpoint, headers= headers)
-		response = urllib.request.urlopen(req)
-		json_data = json.load(response)
+	# try:
+	# 	req = urllib.request.Request(api_endpoint, headers= headers)
+	# 	response = urllib.request.urlopen(req)
+	# 	json_data = json.load(response)
 		
-	except:
-		json_data = None
+	# except:
+	# 	json_data = None
+
+	json_data = {
+    "meta": {
+        "count": 12,
+        "links": {
+        "self": "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/busiest-period?cityCode=PAR&period=2017&direction=ARRIVING"
+        }
+    },
+    "data": [
+        {
+            "type": "air-traffic",
+            "period": "2017-12",
+            "analytics": {
+                "travelers": {
+                    "score": 20
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-07",
+            "analytics": {
+                "travelers": {
+                    "score": 15
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-08",
+            "analytics": {
+                "travelers": {
+                    "score": 15
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-01",
+            "analytics": {
+                "travelers": {
+                    "score": 10
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-09",
+            "analytics": {
+                "travelers": {
+                    "score": 10
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-02",
+            "analytics": {
+                "travelers": {
+                    "score": 7
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-03",
+            "analytics": {
+                "travelers": {
+                    "score": 6
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-05",
+            "analytics": {
+                "travelers": {
+                    "score": 5
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-06",
+            "analytics": {
+                "travelers": {
+                    "score": 4
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-04",
+            "analytics": {
+                "travelers": {
+                    "score": 3
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-11",
+            "analytics": {
+                "travelers": {
+                    "score": 3
+                }
+            }
+        },
+        {
+            "type": "air-traffic",
+            "period": "2017-10",
+            "analytics": {
+                "travelers": {
+                    "score": 2
+                }
+            }
+        }
+    ]
+    }
 
 	# with open('bookings.json','r') as content:
 	# 	bookings_values = json.load(content)

@@ -2,11 +2,16 @@ from django import forms
 
 
 class SearchForm(forms.Form):
-    origin_field = forms.CharField(label='From', max_length=100, initial='uk')
-    destination_field = forms.CharField(label='To', max_length=100, initial='us')
-    from_date_field = forms.CharField(label='To', max_length=100, initial='2018')
-    to_date_field = forms.CharField(label='To', max_length=100, initial='2018')
-    service_field = forms.ChoiceField(choices=[('browsequotes','Quotes'),('browseroutes','Routes'),('browsedates','Dates'),('browsegrid','Grid')], widget=forms.RadioSelect())
+    origin = forms.CharField(label='Origin', max_length=100, initial='MAD')
+    destination = forms.CharField(label='Destination', max_length=100, initial='BOS')
+    departure_date= forms.CharField(label='Departure date', max_length=100, initial='2018-10-01')
+    return_date = forms.CharField(label='Return date', max_length=100, initial='2018-10-10')
+    #service_field = forms.ChoiceField(choices=[('browsequotes','Quotes'),('browseroutes','Routes'),('browsedates','Dates'),('browsegrid','Grid')], widget=forms.RadioSelect())
+    # source = forms.ChoiceField(choices=(
+    #     [
+    #         ('sandbox', 'Travel Innovation Sandbox'),
+    #         ('amadeus4dev', 'Amadeus for Developers')
+    #     ]))
 
 class AirportSearchForm(forms.Form):
     airport = forms.CharField(label='Airport', max_length=100, initial='MAD')

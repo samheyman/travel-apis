@@ -16,9 +16,7 @@ import os
 PROJECT_APP_PATH = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(PROJECT_APP_PATH)
-
 STATIC_URL = '/static/'
-
 STATIC_ROOT = 'static'
 
 
