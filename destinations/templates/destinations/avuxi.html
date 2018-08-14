@@ -20,10 +20,14 @@
             <table>
             {% for poi in result.POIs %}
             <tr>
-              <td>{{ poi.name}}
-                  <p>{{ poi.details.description}}</p>
-                  <p>Rank: {{ poi.rank }}</p>
-                  <p>Lat/lng: {{poi.latlon.0}}, {{poi.latlon.1}}</p>
+              <td><b>{{ poi.name}}</b>
+                  {{ poi.details.description}}
+                  <br>
+                  <a href="https://www.google.com/search?q={{poi.name}}" target="_blank">More info</a> (Google)
+<br>
+                    <a href="https://www.google.com/maps/place/{{poi.latlon.0}},{{poi.latlon.1}}" target="_blank">View on map</a> 
+                  <br>
+                  Rank: {{ poi.rank }}
               </td>
             </tr>
             {% endfor %}

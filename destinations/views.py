@@ -103,7 +103,6 @@ def getPointsOfInterest(location, provider, number_results, category):
 			"client_id": os.environ.get('FOURSQUARE_CLIENT_ID'),
 			"client_secret": os.environ.get('FOURSQUARE_CLIENT_SECRET'),
 			"v": '20180323',
-			"query": 'coffee',
 			"limit": number_results,
 			"section": category
 		}

@@ -19,11 +19,13 @@
           <table>
           {% for poi in result.response.groups.0.items %}
           <tr>
-              <td>{{ poi.venue.name}}
-                  <p>{{ poi.reasons.items.0.summary }}</p>
-                  <p>Address: {{ poi.venue.location.address }} </p>
-                  <p>Rank: {{ poi.venue.stats.tipCount }}</p>
-                  <p>Lat/lng: {{poi.venue.location.lat }}, {{poi.venue.location.lng}}</p>
+              <td><b>{{ poi.venue.name}}</b><br>
+                <a href="https://www.google.com/search?q={{poi.venue.name}}" target="_blank">More info</a> (Google)<br>
+
+                  <!-- <p>{{ poi.reasons.items.0.summary }}</p> -->
+
+                  <a href="https://www.google.com/maps/place/{{poi.venue.location.lat }},{{poi.venue.location.lng}}" target="_blank">View map</a></p>
+                  <!-- <p>Rank: {{ poi.venue.stats.tipCount }}</p> -->
               </td>
           </tr>
           {% endfor %}

@@ -64,6 +64,10 @@
       {% include "./avuxi.html" %}
     {% elif provider == 'foursquare' %}
       {% include "./foursquare.html" %}
+      {% elif provider == 'foursquare,avuxi' %}
+      {% include "./foursquare.html" %}
+      {% include "./avuxi.html" %}
+
     {% else %}
       {% include "./yapq.html" %}
     {% endif %}

@@ -7,9 +7,9 @@ class LocationSearchForm(forms.Form):
     provider = forms.ChoiceField(
         choices=(
             [
-                ('yapq','YapQ'), 
                 ('avuxi', 'Avuxi'),
-                ('foursquare', 'FourSquare')
+                ('foursquare', 'FourSquare'),
+                ('yapq','YapQ')
             ]),
         widget=forms.Select(attrs={"class":"form-control form-control-sm", "style":"height:26px"}))
     category = forms.ChoiceField(
