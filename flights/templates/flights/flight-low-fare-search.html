@@ -39,7 +39,7 @@
     <div class="tab-content">
         <div id="sandbox" class="tab-pane fade in active">
 
-            <button id="jsonResponse">View source code</button>
+            <button id="jsonResponse">View json response</button>
             <button class="hidden" id="copyButton" onclick="copyJson()">           
                 <img id="copy" src="{% static 'img/copy.png' %}" style="height:18px" />       
             </button>
@@ -85,7 +85,7 @@
                                 <td>
                                     {{ quote.fare.total_price }}
                                 </td>
-                                <td>
+                                <!-- <td>
                                     {% for itinerary in quote.itineraries %}
                                         {{ itinerary.outbound.flights.0.departs_at|slice:"11:" }}<br>
                                     {% endfor %}
@@ -143,15 +143,23 @@
                                         {% endfor %}
                                         <br>
                                     {% endfor%}
-                                    </td>
+                                    </td> -->
             
                         </tr>
                     {% endfor %}
                 </tbody>
                 </table>
-            </div>
+        </div>
     
-            <div id="ama4dev" class="tab-pane fade">
+        <div id="ama4dev" class="tab-pane fade">
+            <button id="jsonResponse">View json response</button>
+            <button class="hidden" id="copyButton" onclick="copyJson()">           
+                <img id="copy" src="{% static 'img/copy.png' %}" style="height:18px" />       
+            </button>
+        
+            <pre class="hidden" id="jsonCode">{{ response_ama4dev }}</pre> 
+            <textarea class="hidden" id="jsonContent">{{ response_ama4dev }}</textarea>
+                
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                 <tr>
@@ -271,7 +279,7 @@
                     {% endfor %}
                 </tbody>
                 </table>
-            </div>
+        </div>
     </div>
 
     <!-- <div><pre>{{ flights }}</pre></div> -->
