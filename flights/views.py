@@ -248,6 +248,7 @@ def flight_low_fare_search(request):
 			return_date = form.cleaned_data['return_date']
 			response_sandbox = getLowFareFlights(origin, destination, departure_date, return_date, 'sandbox', currency)
 			response_ama4dev = getLowFareFlights(origin, destination, departure_date, return_date, 'ama4dev', currency)
+			response_ama4dev = convertPriceToNumber(response_ama4dev)
 			quotes_sandbox = response_sandbox["response"]["results"]
 			quotes_ama4dev = response_ama4dev["response"]["data"]
 			response_time_sandbox = response_sandbox["response_time"]
@@ -260,8 +261,6 @@ def flight_low_fare_search(request):
 		quotes_ama4dev = []
 		response_time_sandbox = 0
 		response_time_ama4dev = 0
-
-	response_ama4dev = convertPriceToNumber(response_ama4dev)
 
 	data = {
 		"form": form,
