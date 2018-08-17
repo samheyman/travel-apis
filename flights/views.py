@@ -1,4 +1,6 @@
 import os
+import time
+import datetime
 from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import SearchForm
@@ -234,6 +236,8 @@ def flight_low_fare_search(request):
 	currency = "EUR"
 	departure_date = '2018-10-01',
 	return_date = '2018-10-10',
+	response_sandbox = {}
+	response_ama4dev = {}
 
 	if 'origin' in request.GET:
 		form = SearchForm(request.GET)
@@ -244,15 +248,20 @@ def flight_low_fare_search(request):
 			return_date = form.cleaned_data['return_date']
 			response_sandbox = getLowFareFlights(origin, destination, departure_date, return_date, 'sandbox', currency)
 			response_ama4dev = getLowFareFlights(origin, destination, departure_date, return_date, 'ama4dev', currency)
-			quotes_sandbox = response_sandbox["results"]
-			quotes_ama4dev = response_ama4dev["data"]
-
+			quotes_sandbox = response_sandbox["response"]["results"]
+			quotes_ama4dev = response_ama4dev["response"]["data"]
+			response_time_sandbox = response_sandbox["response_time"]
+			response_time_ama4dev = response_ama4dev["response_time"]
 	else:
 		form = SearchForm()
-		response_sandbox = {}
-		response_ama4dev = {}
+		response_sandbox['response'] = {}
+		response_ama4dev['response'] = {}
 		quotes_sandbox = []
 		quotes_ama4dev = []
+		response_time_sandbox = 0
+		response_time_ama4dev = 0
+
+	response_ama4dev = convertPriceToNumber(response_ama4dev)
 
 	data = {
 		"form": form,
@@ -261,8 +270,10 @@ def flight_low_fare_search(request):
 		"departure_date": departure_date,
 		"return_date": return_date,
 		"currency": currency,
-		"response_sandbox": response_sandbox,
-		"response_ama4dev": response_ama4dev,
+		"response_sandbox": response_sandbox['response'],
+		"response_ama4dev": response_ama4dev['response'],
+		"response_time_sandbox": response_time_sandbox,
+		"response_time_ama4dev": response_time_ama4dev,
 		"quotes_sandbox": quotes_sandbox,
 		"quotes_ama4dev": quotes_ama4dev
 	}
@@ -272,6 +283,7 @@ def flight_low_fare_search(request):
 
 def getLowFareFlights(origin, destination, departure_date, return_date, service, currency):
 	print("Calling {} API".format(service))
+	json_data = {}
 	if service == 'sandbox':
 		api_endpoint = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?"
 		headers = {}
@@ -298,14 +310,22 @@ def getLowFareFlights(origin, destination, departure_date, return_date, service,
 			"currency": currency
 		}
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
+	start = time.time()
+	print("Start time:{}".format(start))
 	req = urllib.request.Request(api_endpoint, headers= headers)
 	response = urllib.request.urlopen(req)
+	end = time.time()
+	response_time = (end - start)
+	print("End time:{}".format(end))
+	print("API call time: {0:.2f}s".format(response_time))
 	try:
-		json_data = json.load(response)
+		response_data = json.load(response)
 	except:
-		json_data = None
-		return({'error': "Failed to parse the response."})
-
+		response_data = {'error': "Failed to parse the response."}
+	
+	json_data['response'] = response_data
+	json_data['response_time'] = response_time
+	print("Response format: {}".format(type(json_data['response'])))
 	return json_data
 
 def getAirports(lat,lng,limit):
@@ -657,3 +677,14 @@ def getBusiestPeriodData(city_code, year, direction):
 		}
 
 	return busiest_period_data
+
+
+
+def convertPriceToNumber(data):
+	print(json.dumps(data))
+	for item in data['response']['data']:
+		try:
+			item['offerItems'][0]['price']['total'] = float(item['offerItems'][0]['price']['total'])
+		except:
+			print("Error converting the price to number.")
+	return data
