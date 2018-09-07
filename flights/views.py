@@ -162,6 +162,9 @@ def travel_insights(request):
 	#flights = pprint(flights_data)
 	return render(request, 'flights/travel_insights.html', {})
 
+def ba(request):
+	return render(request, 'flights/ba.html', {})
+
 def routes(request):
 	market = "US"
 	airport = 'MAD'
@@ -289,13 +292,13 @@ def getLowFareFlights(origin, destination, departure_date, return_date, service,
 		values = {	
 			"origin": origin,
 			"destination": destination,
-			"apikey": 'c3T1rm9mT1Xjisvt2On2IAQlRnk7ZLSA',
+			"apikey": os.environ.get("AMADEUS_SANDBOX_KEY"),
 			"departure_date": departure_date,
 			"return_date": return_date,
 			"currency": currency
 		}
 	else:
-		api_endpoint = "https://test.api.amadeus.com/v1/shopping/flight-offers?"
+		api_endpoint = "https://test.api.amadeus.com/v1/shopping/flight-offers?max=300&"
 		headers = {
 			'Authorization': 'Bearer ' + getOAuthToken()
 		}
@@ -310,6 +313,7 @@ def getLowFareFlights(origin, destination, departure_date, return_date, service,
 		}
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
 	start = time.time()
+	print(api_endpoint)
 	print("Start time:{}".format(start))
 	req = urllib.request.Request(api_endpoint, headers= headers)
 	response = urllib.request.urlopen(req)
