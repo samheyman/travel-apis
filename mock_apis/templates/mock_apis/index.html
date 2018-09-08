@@ -1,0 +1,32 @@
+{% extends "base.html" %}  
+{% load staticfiles %}
+
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li class="active">Mock APIs</li>
+</ol>
+{% endblock %}
+
+{% block main %}
+  <h1>Mock APIs</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+              <a class="api-link" href="{% url 'mock_apis' %}">
+              <div class="panel-body">
+                <img id="inspire" src="{% static 'img/taxi.png' %}" />       
+                <h4>Taxis</h4>
+                <ul>
+                    <li><a href="https://mock-travel-apis.herokuapp.com/taxis"><code>GET /taxis</code></a></li>
+                    <li><code>GET /taxis/&lt;city&gt;</code></li>
+                    <li><code>GET /taxis/&lt;city&gt;/&lt;taxi_id&gt;</code></li>
+                </ul>
+              </div>
+              </a>
+            </div>
+        </div>
+    </div>
+{% endblock main %}
+
+

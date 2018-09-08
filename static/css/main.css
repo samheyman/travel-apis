@@ -100,8 +100,8 @@ a.api-link {
   background-size: 55px;
 }
 
-#loyalty-category {
-  background-image: url('/static/img/loyalty.png');
+#mock-apis-category {
+  background-image: url('/static/img/JSON.png');
   background-size: 55px;
 }
 
@@ -133,6 +133,13 @@ a.api-link {
 #flight-route-category {
   background-image: url('/static/img/map_route.png');
   background-size: 45px;
+}
+
+#flight-ba-category {
+  background-image: url('/static/img/BA_logo.png');
+  background-size: 119px;
+  background-position-x: -10px;
+  background-position-y: -3px;
 }
 
 .category-box {

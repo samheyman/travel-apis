@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^$', views.index, name='home'),
     url(r'^flights/', include('flights.urls'), name='flights'),
     url(r'^hotels/', include('hotels.urls'), name='hotels'),
-    url(r'^destinations/', include('destinations.urls'), name='destinations')
+    url(r'^destinations/', include('destinations.urls'), name='destinations'),
+    url(r'^mock_apis/', include('mock_apis.urls'), name='mock_apis')
 ]
