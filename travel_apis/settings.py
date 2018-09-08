@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'flights',
     'hotels',
-    'destinations'
+    'destinations',
+    'mock_apis'
 ]
 
 MIDDLEWARE = [
