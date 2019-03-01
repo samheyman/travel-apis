@@ -360,11 +360,11 @@ def getOAuthToken():
         'grant_type': 'client_credentials'
     }
 	ACCESS_TOKEN_URL = "https://test.api.amadeus.com/v1/security/oauth2/token"
-
 	authorization_response = (requests.post(
 		ACCESS_TOKEN_URL,
 		data=secrets
 	)).json()
+	print("Fetching access token {}".format(authorization_response['access_token']))
 	return authorization_response['access_token']
 
 def getMostSearchedData(airport_code, time_period, market):
@@ -395,9 +395,9 @@ def getMostSearchedData(airport_code, time_period, market):
 		json_data = None	
 
 	if json_data and json_data["data"]:
-		for data_entry in json_data["data"][0]["numberOfSearches"]["perDestination"].items():
-			searches_xs.append(data_entry[0])
-			searches.append(data_entry[1])
+		for data_entry in json_data["data"]:
+			searches_xs.append(data_entry["destination"])
+			searches.append(data_entry["analytics"]["searches"]["score"])
 		most_searched_data = {
 				"xs": json.dumps(searches_xs),
 				"searches": json.dumps(searches)
