@@ -373,15 +373,15 @@ def getMostSearchedData(airport_code, time_period, market):
 	searches_xs=['x']
 	searches = ['number of searches']
 
-	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/fare-searches?"
+	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/searched?"
 	headers = {
 		'Authorization': 'Bearer ' + getOAuthToken()
 	}
 	values = {
-		"origin": airport_code,
-		"sourceCountry": market,
-		"period": time_period,
-		"maxDestinations": 5
+		"originCityCode": airport_code,
+		"marketCountryCode": market,
+		"searchPeriod": time_period,
+		"max": 5
 	}
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
 	print("Endpoint: "+api_endpoint)
@@ -422,7 +422,7 @@ def getMostTraveledData(airport_code, time_period, market):
 		'Authorization': 'Bearer ' + getOAuthToken()
 	}
 	values = {
-		"origin": airport_code,
+		"originCityCode": airport_code,
 		"period": time_period,
 		"sort": "analytics.travelers.score",
 		"max": 5,
@@ -472,7 +472,7 @@ def getMostBookedData(airport_code, time_period, market):
 		'Authorization': 'Bearer ' + getOAuthToken()
 	}
 	values = {
-		"origin": airport_code,
+		"originCityCode": airport_code,
 		"period": time_period,
 		"sort": "analytics.travelers.score",
 		"max": 5,
