@@ -4,8 +4,8 @@ from django import forms
 class SearchForm(forms.Form):
     origin = forms.CharField(label='Origin', max_length=100, initial='MAD')
     destination = forms.CharField(label='Destination', max_length=100, initial='BOS')
-    departure_date= forms.CharField(label='Departure date', max_length=100, initial='2018-10-01')
-    return_date = forms.CharField(label='Return date', max_length=100, initial='2018-10-10')
+    departure_date= forms.CharField(label='Departure date', max_length=100, initial='2019-10-01')
+    return_date = forms.CharField(label='Return date', max_length=100, initial='2019-10-10')
     #service_field = forms.ChoiceField(choices=[('browsequotes','Quotes'),('browseroutes','Routes'),('browsedates','Dates'),('browsegrid','Grid')], widget=forms.RadioSelect())
     # source = forms.ChoiceField(choices=(
     #     [

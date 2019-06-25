@@ -233,13 +233,11 @@ def airports(request):
 	return render(request, 'flights/airports.html', {'form': form, 'lat':lat,'lng':lng, 'result': airport_results, 'location': location, 'area':location})
 
 def flight_low_fare_search(request):
-	# source = "amadeus4dev"
 	origin = "BOS"
 	destination = "WAS"
 	currency = "EUR"
-	departure_date = '2018-10-01',
-	return_date = '2018-10-10',
-	response_sandbox = {}
+	departure_date = '2019-10-01',
+	return_date = '2019-10-10',
 	response_ama4dev = {}
 
 	if 'origin' in request.GET:
@@ -249,21 +247,20 @@ def flight_low_fare_search(request):
 			destination = form.cleaned_data['destination']
 			departure_date = form.cleaned_data['departure_date']
 			return_date = form.cleaned_data['return_date']
-			response_sandbox = getLowFareFlights(origin, destination, departure_date, return_date, 'sandbox', currency)
-			response_ama4dev = getLowFareFlights(origin, destination, departure_date, return_date, 'ama4dev', currency)
-			response_ama4dev = convertPriceToNumber(response_ama4dev)
-			quotes_sandbox = response_sandbox["response"]["results"]
-			quotes_ama4dev = response_ama4dev["response"]["data"]
-			response_time_sandbox = response_sandbox["response_time"]
+			response_ama4dev = getLowFareFlights(origin, destination, departure_date, return_date, currency)
+			print("THIS IS THE ERROR........ {}".format(response_ama4dev['response_error']))
+			if response_ama4dev['response_error'] == "":
+				response_ama4dev = convertPriceToNumber(response_ama4dev)
+				quotes_ama4dev = response_ama4dev["response"]["data"]
+			else:
+				quotes_ama4dev = []
 			response_time_ama4dev = response_ama4dev["response_time"]
 	else:
 		form = SearchForm()
-		response_sandbox['response'] = {}
 		response_ama4dev['response'] = {}
-		quotes_sandbox = []
 		quotes_ama4dev = []
-		response_time_sandbox = 0
 		response_time_ama4dev = 0
+		response_ama4dev['response_error'] = ""
 
 	data = {
 		"form": form,
@@ -272,63 +269,59 @@ def flight_low_fare_search(request):
 		"departure_date": departure_date,
 		"return_date": return_date,
 		"currency": currency,
-		"response_sandbox": response_sandbox['response'],
 		"response_ama4dev": response_ama4dev['response'],
-		"response_time_sandbox": response_time_sandbox,
 		"response_time_ama4dev": response_time_ama4dev,
-		"quotes_sandbox": quotes_sandbox,
-		"quotes_ama4dev": quotes_ama4dev
+		"quotes_ama4dev": quotes_ama4dev,
+		"response_error": response_ama4dev['response_error']
 	}
 	
 	return render(request, 'flights/flight-low-fare-search.html', data)
 
 
-def getLowFareFlights(origin, destination, departure_date, return_date, service, currency):
-	print("Calling {} API".format(service))
+def getLowFareFlights(origin, destination, departure_date, return_date, currency):
 	json_data = {}
-	if service == 'sandbox':
-		api_endpoint = "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?"
-		headers = {}
-		values = {	
-			"origin": origin,
-			"destination": destination,
-			"apikey": os.environ.get("AMADEUS_SANDBOX_KEY"),
-			"departure_date": departure_date,
-			"return_date": return_date,
-			"currency": currency
-		}
-	else:
-		api_endpoint = "https://test.api.amadeus.com/v1/shopping/flight-offers?max=300&"
-		headers = {
-			'Authorization': 'Bearer ' + getOAuthToken()
-		}
-		values = {
-			"origin": origin,
-			"destination": destination,
-			# Different date format to Sandbox!
-			"departureDate": departure_date,
-			"returnDate": return_date,
-			"adults": 1,
-			"currency": currency
-		}
+	
+	api_endpoint = "https://test.api.amadeus.com/v1/shopping/flight-offers?max=300&"
+	headers = {
+		'Authorization': 'Bearer ' + getOAuthToken(),
+		'Accept': 'application/vnd.amadeus+json',
+	}
+	values = {
+		"origin": origin,
+		"destination": destination,
+		"departureDate": departure_date,
+		"returnDate": return_date,
+		"adults": 1,
+		"currency": currency
+	}
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
 	start = time.time()
 	print(api_endpoint)
 	print("Start time:{}".format(start))
-	req = urllib.request.Request(api_endpoint, headers= headers)
-	response = urllib.request.urlopen(req)
-	end = time.time()
-	response_time = (end - start)
-	print("End time:{}".format(end))
-	print("API call time: {0:.2f}s".format(response_time))
+	req = urllib.request.Request(api_endpoint, headers=headers)
+	# print("RESPONSE {} >>>>>>>>>".format(response.read()))
 	try:
+		response = urllib.request.urlopen(req)
 		response_data = json.load(response)
-	except:
-		response_data = {'error': "Failed to parse the response."}
-	
+		response_error = ""
+	except urllib.error.URLError as e:
+		response_data = []
+		error_message = json.loads(e.read().decode("utf8", 'ignore'))
+		print ("REASON: {}".format(error_message['errors'][0]['title']))
+		response_error = error_message['errors'][0]['title'] + "\n\n" + error_message['errors'][0]['detail']
+	except urllib.error.HTTPError as e:
+		response_data = []
+		error_message = json.loads(e.read().decode("utf8", 'ignore'))
+		print ("REASON: {}".format(error_message['errors'][0]['title']))
+		response_error = error_message['errors'][0]['title'] + "\n\n" + error_message['errors'][0]['detail']
+	end = time.time()
+	print("End time:{}".format(end))
+	response_time = (end - start)
+	print("API call time: {0:.2f}s".format(response_time))
 	json_data['response'] = response_data
 	json_data['response_time'] = response_time
-	print("Response format: {}".format(type(json_data['response'])))
+	json_data['response_error'] = response_error
+	# print("Response format: {}".format(type(json_data['response'])))
 	return json_data
 
 def getAirports(lat,lng,limit):

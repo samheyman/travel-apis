@@ -13,154 +13,41 @@
 {% endblock %}
 
 {% block main %}
-
-<form>
-    {% csrf_token %}
-    <label>Origin </label>
-    {{ form.origin }}
-    <label>Destination </label>
-    {{ form.destination  }}
-    <label>Departure date </label>
-    {{ form.departure_date }}
-    <label>Return date </label>
-    {{ form.return_date }}
-    <button type="submit" class="" style="position:relative;top:0;">Search</button>
-  </form>
-  <hr>
+<div class="row">
+    <div class="col-xs-12" style="margin-bottom:20px;">
+        This flight search demo uses the 
+        <a href="https://developers.amadeus.com/self-service/category/air/api-doc/flight-low-fare-search/api-reference" target="_blank">Amadeus Low-fare Search API</a>. 
+        The request may take up to 20s.
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <form>
+            {% csrf_token %}
+            <label>Origin </label>
+            {{ form.origin }}
+            <label>Destination </label>
+            {{ form.destination  }}
+            <label>Departure date </label>
+            {{ form.departure_date }}
+            <label>Return date </label>
+            {{ form.return_date }}
+            <button type="submit" class="" style="position:relative;top:0;">Search</button>
+        </form>
+    </div>
+</div>
 
 
 <div class="row">
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#sandbox">Innovation Sandbox ({{ quotes_sandbox|length }})</a></li>
-        <li><a data-toggle="tab" href="#ama4dev">Amadeus for developers ({{ quotes_ama4dev|length }})</a></li>
-    </ul>
-    <br>
 
     <div class="tab-content">
-        <div id="sandbox" class="tab-pane fade in active">
-            <div class="alert">
-                <img id="timer" src="{% static 'img/timer.png' %}" style="height:18px;margin-bottom:4px;" />       
-                API response time {{ response_time_sandbox|floatformat:2 }}s
-                <br><br>
-                <button id="jsonResponse">View json response</button>
-                <button class="hidden" id="copyButton" onclick="copyJson()">           
-                    <img id="copy" src="{% static 'img/copy.png' %}" style="height:18px" />       
-                </button>
-            
-                <pre class="hidden" id="jsonCode">{{ response_sandbox }}</pre> 
-                <textarea class="hidden" id="jsonContent">{{ response_sandbox }}</textarea>
-            </div>   
-
-            <table class="table table-bordered table-hover table-striped">
-                
-                <tbody>
-        
-                    {% for quote in quotes_sandbox %}
-                        <tr>
-                                <td>
-                                    {{forloop.counter}}
-                                </td>
-                                <td>
-                                    <table cellspacing="10">
-                                    {% for itinerary in quote.itineraries %}
-                                    <tr>
-                                        <td>
-                                        <b>{{ itinerary.outbound.flights.0.marketing_airline }}</b>
-                                        {{ itinerary.outbound.flights.0.departs_at|slice:"11:" }} ----> 
-                                        {{ itinerary.outbound.flights.0.arrives_at|slice:"11:" }}
-                                        ({{ itinerary.outbound.duration|slice:"0:2" }}h {{ itinerary.outbound.duration|slice:"3:5" }})
-                                        <br>
-                                        {% if itinerary.outbound.flights|length > 1 %}
-                                                {{ itinerary.outbound.flights|length|add:-1 }} stop ({{ itinerary.outbound.flights.0.destination.airport}})<br>
-                                        {% else %}
-                                            Direct<br>
-                                        {% endif %}
-                                        <hr>
-                                        <b>{{ itinerary.inbound.flights.0.marketing_airline }}</b>
-                                        {{ itinerary.inbound.flights.0.departs_at|slice:"11:" }} ----> 
-                                        {{ itinerary.outbound.flights.0.arrives_at|slice:"11:" }}
-                                        ({{ itinerary.inbound.duration|slice:"0:2" }}h {{ itinerary.inbound.duration|slice:"3:5" }})
-                                        <br>
-                                        {% if itinerary.inbound.flights|length > 1 %}
-                                                {{ itinerary.inbound.flights|length|add:-1 }} stop ({{ itinerary.inbound.flights.0.destination.airport}})<br>
-                                        {% else %}
-                                            Direct<br>
-                                        {% endif %}
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
-                                    </table>
-                                </td>
-                                <td>
-                                    {{ quote.fare.total_price }}
-                                </td>
-                                <!-- <td>
-                                    {% for itinerary in quote.itineraries %}
-                                        {{ itinerary.outbound.flights.0.departs_at|slice:"11:" }}<br>
-                                    {% endfor %}
-                                </td>
-                                <td>
-                                    {% for itinerary in quote.itineraries %}
-                                        {% if itinerary.outbound.flights|length > 1 %}
-                                                {{ itinerary.outbound.flights|length|add:-1 }} stop ({{ itinerary.outbound.flights.0.destination.airport}})<br>
-                                        {% else %}
-                                            Direct<br>
-                                        {% endif %}
-                                    {% endfor %}
-                                </td>
-                                <td>
-                                    {% for itinerary in quote.itineraries %}
-                                        {{ itinerary.outbound.duration }} <br>
-                                    {% endfor %}
-                                </td>
-                                
-                                <td>
-                                {% for itinerary in quote.itineraries %}
-                                    {% for flight in itinerary.outbound.flights %}
-                                    {{ flight.marketing_airline }},
-                                    {% endfor %}
-                                    <br>
-                                {% endfor%}
-                                </td>
-                                <td>
-                                    {% for itinerary in quote.itineraries %}
-        
-                                        {{ itinerary.inbound.flights.0.departs_at|slice:"11:" }}<br>
-        
-                                    {% endfor %}
-                                </td>
-                                <td>
-                                    {% for itinerary in quote.itineraries %}
-        
-                                    {% if itinerary.inbound.flights|length > 1 %}
-                                            {{ itinerary.inbound.flights|length|add:-1 }} stop ({{ itinerary.inbound.flights.0.destination.airport}})<br>
-                                    {% else %}
-                                        Direct<br>
-                                    {% endif %}
-        
-                                    {% endfor %}
-                                </td>
-                                <td>
-                                    {% for itinerary in quote.itineraries %}
-                                        {{ itinerary.inbound.duration }} <br>
-                                    {% endfor %}
-                                </td>
-                                <td>
-                                    {% for itinerary in quote.itineraries %}
-                                        {% for flight in itinerary.inbound.flights %}
-                                        {{ flight.marketing_airline }},
-                                        {% endfor %}
-                                        <br>
-                                    {% endfor%}
-                                    </td> -->
-            
-                        </tr>
-                    {% endfor %}
-                </tbody>
-                </table>
-        </div>
     
-        <div id="ama4dev" class="tab-pane fade">
+        <div id="ama4dev" class=" ">
+            {% if response_error != "" %}
+            <div class="alert alert-warning" style="margin: 20px">
+                Error: {{ response_error }}
+            </div>
+            {% else %}
             <div class="alert">
                 <img id="timer" src="{% static 'img/timer.png' %}" style="height:18px;margin-bottom:4px;" />               
                 API response time {{ response_time_ama4dev|floatformat:2 }}s
@@ -224,7 +111,8 @@
                         </tr>
                     {% endfor %}
                 </tbody>
-                </table>
+            </table>
+            {% endif %}
         </div>
     </div>
 
