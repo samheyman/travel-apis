@@ -1,36 +1,36 @@
 // fare search history
 // actual numbers
 // type=fare-search
-var chart1 = c3.generate({
-    bindto: '#destinations_most_searched_chart',
-    data: {
-      //x: 'x',
-      columns: [
-        ['number of searches', 0, 0, 0, 0, 0],
-      ],
+// var chart1 = c3.generate({
+//     bindto: '#destinations_most_searched_chart',
+//     data: {
+//       //x: 'x',
+//       columns: [
+//         ['number of searches', 0, 0, 0, 0, 0],
+//       ],
 
-      types: {
-        'number of searches': 'bar'
-      },
-      colors: {
-        'number of searches': '#005EB8',
-      }
-    },
-    axis: {
-      rotated: true,
-      y: {
-        show: true,
-        label: 'total search numbers'
-      },
-      x : {
-        type: 'category',
-        categories: ['', '', '', '', '']
-      }     
-    },
-    legend: {
-      hide: true
-    }
-});
+//       types: {
+//         'number of searches': 'bar'
+//       },
+//       colors: {
+//         'number of searches': '#005EB8',
+//       }
+//     },
+//     axis: {
+//       rotated: true,
+//       y: {
+//         show: true,
+//         label: 'total search numbers'
+//       },
+//       x : {
+//         type: 'category',
+//         categories: ['', '', '', '', '']
+//       }     
+//     },
+//     legend: {
+//       hide: true
+//     }
+// });
 
 // Most travelled destinations - has to be anonymised 
 // Top destinations - flight scores
@@ -102,7 +102,7 @@ var chart3 = c3.generate({
   }
 });
 
-var chart4 = c3.generate({
+var chart4 = c4.generate({
   bindto: '#busiest_period_chart',
   data: {
     //x: 'x',
@@ -136,43 +136,43 @@ var chart4 = c3.generate({
 
 
 function load_charts() { 
-  most_searched_data_xs.shift();
+  // most_searched_data_xs.shift();
   most_travelled_data_xs.shift();
   most_booked_data_xs.shift();
   busiest_period_months.shift();
 
-  chart1 = c3.generate({
-    bindto: '#destinations_most_searched_chart',
-    data: {
-      columns: [
-        most_searched_data_values,
-      ],
-      types: {
-        'number of searches': 'bar'
-      },
-      colors: {
-        'number of searches': '#005EB8',
-      }
+  // chart1 = c3.generate({
+  //   bindto: '#destinations_most_searched_chart',
+  //   data: {
+  //     columns: [
+  //       most_searched_data_values,
+  //     ],
+  //     types: {
+  //       'number of searches': 'bar'
+  //     },
+  //     colors: {
+  //       'number of searches': '#005EB8',
+  //     }
 
-        //most_searched_data_xs,
-      // ["x", "RAK", "OPO", "DXB", "UIO", "SDQ"],
-        //["number of searches", 498, 328, 282, 237, 185]
-    },
-    axis: {
-      rotated: true,
-      y: {
-        show: true,
-        label: 'total number of searches'
-      },    
-      x : {
-          type: 'category',
-          categories: most_searched_data_xs
-      }
-    },
-    legend: {
-      hide: true
-    }
-  });
+  //       //most_searched_data_xs,
+  //     // ["x", "RAK", "OPO", "DXB", "UIO", "SDQ"],
+  //       //["number of searches", 498, 328, 282, 237, 185]
+  //   },
+  //   axis: {
+  //     rotated: true,
+  //     y: {
+  //       show: true,
+  //       label: 'total number of searches'
+  //     },    
+  //     x : {
+  //         type: 'category',
+  //         categories: most_searched_data_xs
+  //     }
+  //   },
+  //   legend: {
+  //     hide: true
+  //   }
+  // });
 
   chart2 = c3.generate({
     bindto: '#destinations_most_travelled_chart',

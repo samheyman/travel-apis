@@ -185,12 +185,12 @@ def routes(request):
 		year = "2017"
 		period = "2017-01"
 
-	most_searched_data = getMostSearchedData(airport, period, market)
+	# most_searched_data = getMostSearchedData(airport, period, market)
 	most_travelled_data = getMostTraveledData(airport, period, market)
 	most_booked_data = getMostBookedData(airport, period, market)
 	busiest_period_data = getBusiestPeriodData(airport, year, 'ARRIVING')
-	print("Most Searched Data from {}".format(airport))
-	print(most_searched_data)
+	# print("Most Searched Data from {}".format(airport))
+	# print(most_searched_data)
 	print("Most Traveled Data from {}".format(airport))
 	print(most_travelled_data)
 	print("Most Booked Data from {}".format(airport))
@@ -198,7 +198,7 @@ def routes(request):
 	print("Busiest Period Data from {}".format(airport))
 	print(busiest_period_data)
 
-	error_message = (('error' in most_searched_data) or ('error' in most_travelled_data) or ('error' in most_booked_data) or ('error' in busiest_period_data))
+	# error_message = (('error' in most_searched_data) or ('error' in most_travelled_data) or ('error' in most_booked_data) or ('error' in busiest_period_data))
 
 	data = {
 			"form": form,
@@ -206,11 +206,11 @@ def routes(request):
 			"year": year,
 			"month": month,
 			"market": market,
-			"most_searched_data": most_searched_data,
+			# "most_searched_data": most_searched_data,
 			"most_travelled_data": most_travelled_data,
 			"most_booked_data": most_booked_data,
 			"busiest_period_data": busiest_period_data,
-			"error_message": error_message
+			# "error_message": error_message
 		}
 	return render(request, 'flights/routes.html', data)
 

@@ -16,7 +16,30 @@
 {% endblock %}
 
 {% block main %}  
+<h2>Travel Intelligence</h2>
 
+      <div class="row">
+        <div class="col-xs-12">
+            <p>This demo uses the <a href="https://d3js.org/" target="_blank">D3.js</a> javascript library and the following Amadeus Travel Intelligence APIs to visualise past travel intelligence data:
+                <ul>
+                  <li>
+                    <a href="https://developers.amadeus.com/self-service/category/air/api-doc/flight-most-booked-destinations/api-reference" target="_blank">Flight Most Booked Destinations
+     </a>
+                 </li>
+                 <li>
+                   <a href="https://developers.amadeus.com/self-service/category/air/api-doc/flight-most-traveled-destinations/api-reference" target="_blank">Flight Most Traveled Destinations
+                       </a>
+                 </li>
+                 <li>
+                     <a href="https://developers.amadeus.com/self-service/category/air/api-doc/flight-busiest-traveling-period/api-reference" target="_blank">Flight Busiest Traveling Period
+                         </a>
+                   </li>
+               </ul>
+                 
+     </p>
+        </div>
+      </div>
+      <br>
       <form>
         {% csrf_token %}
         <label for="{{ form.airport.id_airport }}">Origin airport </label>
@@ -27,7 +50,6 @@
         {{ form.month }}
         <button type="submit" class="" style="position:relative;top:0;">Search</button>
       </form>
-      <hr>
 
       {% if error_message %}
       <div class="alert alert-danger" style="margin-top:20px;">
@@ -37,15 +59,16 @@
       {% else %}        
        <!-- Search form -->
        <div class="row">
-        <h2>Popular destinations from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ year }}-{{month}}</span></h2>
+         <div class="col-xs-12">
+          <h3>Popular destinations from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ year }}-{{month}}</span></h3>
         
-        <div class="col-md-4" style="text-align: center">
+        <!-- <div class="col-md-4" style="text-align: center">
             <h4>Most Searched (interest)</h4>
             <p>Top destinations users from <span class="destinations-results">{{ market }}</span> have <em>searched for</em> from <span class="destinations-results">{{ airport }}</span>, based on total search numbers.</p><br/>
             <div id="destinations_most_searched_chart"></div>
             <code>{{ most_searched_data.xs|safe }}</code>
-        </div>
-
+        </div> -->
+         </div>
         <div class="col-md-4" style="text-align: center">
             <h4>Most Booked (intent)</h4>
             <p>Top destinations users have <em>booked flights to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of bookings<br>(normalized to a range 0-1)*</p>
@@ -60,9 +83,9 @@
             <code>{{ most_travelled_data.xs|safe }}</code>
         </div>
       </div>
-
       <div class="row" style="margin-top:20px">  
-        <h2>Busiest traveling period from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ year }}</span></h2>
+          <div class="col-md-12">
+        <h3>Busiest traveling period from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ year }}</span></h3>
         <br>
         <p>Busiest travel periods for the year broken down per month, based on total number of travelers arriving in the city (normalized to a range 0-1)*</p>
         <div class="col-md-12" style="text-align: center">
@@ -70,6 +93,7 @@
             <div id="busiest_period_chart"></div>
         </div>
         <code>{{ busiest_period_data.travelers|safe }}</code>
+      </div>
       </div>
 
       <div class="row">
@@ -83,8 +107,7 @@
         </div>
 
       <script type="text/javascript">
-         var most_searched_data_xs = {{ most_searched_data.xs|safe }};
-         var most_searched_data_values = {{ most_searched_data.searches|safe }};
+
          var most_travelled_data_xs = {{ most_travelled_data.xs|safe }};
          var most_travelled_data_values = {{ most_travelled_data.travels|safe }};
          var most_booked_data_xs = {{ most_booked_data.xs|safe }};
