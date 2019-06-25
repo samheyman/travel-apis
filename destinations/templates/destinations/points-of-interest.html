@@ -27,8 +27,10 @@
 {% block main %}
 <h1>Points of Interest</h1>
 
-    <hr>
-
+    <p>Use the test harness below to query Point of Interest APIs from either <a href="https://developer.foursquare.com/places-api" target="_blank">FourSquare</a>, 
+      <a href="https://www.avuxi.com/topplace" target="blank">Avuxi</a> 
+      or <a href="http://www.yapq.com/urbanhi" target="blank">YapQ</a> to get a list of interesting things to visit in a given location.</p>
+    <div class="alert alert-warning">YapQ are in the process of decommissioning their API. I will however keep the option available for reference.</div>
     <form>
     {% csrf_token %}
     <div class="row">
