@@ -7,7 +7,7 @@ class LocationSearchForm(forms.Form):
     provider = forms.ChoiceField(
         choices=(
             [
-                ('foursquare', 'FourSquare'),
+                ('foursquare', 'Foursquare'),
                 ('avuxi', 'Avuxi'),
                 ('yapq','YapQ')
             ]),
@@ -16,16 +16,16 @@ class LocationSearchForm(forms.Form):
         choices=(
             [
                 ('all', 'All'),
-                ('food', 'Food (FourSquare)'), 
-                ('drinks', 'Drinks (FourSquare)'), 
-                ('coffee', 'Coffee (FourSquare)'), 
-                ('shops', 'Shops (FourSquare)'), 
-                ('arts', 'Arts (FourSquare)'), 
-                ('outdoors', 'Outdoors (FourSquare)'), 
-                ('sights', 'Sights (FourSquare)'), 
-                ('trending', 'Trending (FourSquare)'), 
-                ('nextVenues', 'Next venues (FourSquare)'), 
-                ('topPicks', 'Top picks (FourSquare)'), 
+                ('food', 'Food (Foursquare)'), 
+                ('drinks', 'Drinks (Foursquare)'), 
+                ('coffee', 'Coffee (Foursquare)'), 
+                ('shops', 'Shops (Foursquare)'), 
+                ('arts', 'Arts (Foursquare)'), 
+                ('outdoors', 'Outdoors (Foursquare)'), 
+                ('sights', 'Sights (Foursquare)'), 
+                ('trending', 'Trending (Foursquare)'), 
+                ('nextVenues', 'Next venues (Foursquare)'), 
+                ('topPicks', 'Top picks (Foursquare)'), 
             ]),
         widget=forms.Select(attrs={"class":"form-control form-control-sm", "style":"height:26px"}))
 
