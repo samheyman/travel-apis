@@ -39,7 +39,8 @@
 </script>
 
 <h1>Nearby airports</h1>
-
+    <p>The following Goolge Map demo uses the <a href="https://developers.amadeus.com/self-service/category/air/api-doc/airport-nearest-relevant/api-reference" target="_blank">Amadeus Airport Nearest Relevant API</a> to display a list of relevant airports within a radius of 500 km of a given point. </em></p>
+    <div class="alert alert-info"><em>The Amadeus API key used only has access to the developer sandbox, which limits the functionality to USA, UK, Spain and Germany</em></div>
     <form>
       {% csrf_token %}
       <label for="{{ form.location.id_location }}">Location: </label>
