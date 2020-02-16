@@ -3,9 +3,10 @@
 
 {% block head %}
 <!-- D3 charts -->
-<script src="{% static 'js/d3/d3.min.js' %}"></script>
-<link href="{% static 'css/c3.css' %}" rel="stylesheet">
-<script src="{% static 'js/d3/c3.min.js' %}"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<!-- <script src="{% static 'js/d3/d3.min.js' %}"></script> -->
+<!-- <link href="{% static 'css/c3.css' %}" rel="stylesheet"> -->
+<!-- <script src="{% static 'js/d3/c3.min.js' %}"></script> -->
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -70,17 +71,20 @@
         </div> -->
          </div>
         <div class="col-md-4" style="text-align: center">
-            <h4>Most Booked (intent)</h4>
+            <h4>Most Booked</h4>
             <p>Top destinations users have <em>booked flights to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of bookings<br>(normalized to a range 0-1)*</p>
+            <svg id="most_booked" width="300" height="250"></svg>
             <div id="destinations_most_booked_chart"></div>
-            <code>{{ most_booked_data.xs|safe }}</code>
+            <!-- <code>{{ most_booked_data.xs|safe }}</code> -->
         </div>
 
         <div class="col-md-4 " style="text-align: center">
-            <h4>Most Traveled (intent)</h4>
+            <h4>Most Traveled</h4>
             <p>Top destinations users have <em>traveled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of check-ins<br>(normalized to a range 0-1)*</p>
-            <div id="destinations_most_travelled_chart"></div>
-            <code>{{ most_travelled_data.xs|safe }}</code>
+            <svg id="most_traveled" width="300" height="250"></svg>
+
+            <!-- <div id="destinations_most_travelled_chart"></div> -->
+            <!-- <code>{{ most_travelled_data.xs|safe }}</code> -->
         </div>
       </div>
       <div class="row" style="margin-top:20px">  
@@ -92,7 +96,7 @@
             <p></p><br/>
             <div id="busiest_period_chart"></div>
         </div>
-        <code>{{ busiest_period_data.travelers|safe }}</code>
+        <!-- <code>{{ busiest_period_data.travelers|safe }}</code> -->
       </div>
       </div>
 
@@ -106,7 +110,7 @@
           </div>
         </div>
 
-      <script type="text/javascript">
+      <!-- <script type="text/javascript">
 
          var most_travelled_data_xs = {{ most_travelled_data.xs|safe }};
          var most_travelled_data_values = {{ most_travelled_data.travels|safe }};
@@ -114,11 +118,14 @@
          var most_booked_data_values = {{ most_booked_data.bookings|safe }};
          var busiest_period_months = {{ busiest_period_data.months|safe }};
          var busiest_period_travelers = {{ busiest_period_data.travelers|safe }};
-      </script>
-      <script type="text/javascript" src="{% static 'js/d3/destinations.js' %}"></script>
-      <script>
-      load_charts();
-      </script>
+      </script> -->
+      <script src="{% static 'js/d3/bundle.js' %}" type="module"></script>
+      <script src="{% static 'js/d3/d3mostTraveled.js' %}"></script>
+      <script src="{% static 'js/d3/d3mostBooked.js' %}"></script>
+
+      <!-- <script> -->
+      <!-- // load_charts(); -->
+      <!-- </script> -->
 
       {% endif %}
 

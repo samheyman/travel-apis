@@ -102,7 +102,7 @@ var chart3 = c3.generate({
   }
 });
 
-var chart4 = c4.generate({
+var chart4 = c3.generate({
   bindto: '#busiest_period_chart',
   data: {
     //x: 'x',
