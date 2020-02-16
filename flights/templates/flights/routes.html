@@ -119,6 +119,10 @@
          var busiest_period_months = {{ busiest_period_data.months|safe }};
          var busiest_period_travelers = {{ busiest_period_data.travelers|safe }};
       </script> -->
+      <script>
+        var mostTraveled = '{% static "js/d3/mostTraveled.csv" %}'
+        var mostBooked = '{% static "js/d3/mostBooked.csv" %}'
+    </script>
       <script src="{% static 'js/d3/bundle.js' %}" type="module"></script>
       <script src="{% static 'js/d3/d3mostTraveled.js' %}"></script>
       <script src="{% static 'js/d3/d3mostBooked.js' %}"></script>

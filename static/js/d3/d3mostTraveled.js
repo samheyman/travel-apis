@@ -42,7 +42,7 @@ const renderMostTraveled = data => {
     .attr("height", yScale.bandwidth());
 };
 
-d3.csv("http://127.0.0.1:8000/static/js/d3/mostTraveled.csv").then(data => {
+d3.csv(mostTraveled).then(data => {
   data.forEach(element => {
     element.travels = +element.travels;
   });
