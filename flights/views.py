@@ -1,6 +1,7 @@
 import os
 import time
 import datetime
+import csv
 from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import SearchForm
@@ -208,7 +209,7 @@ def routes(request):
 			"market": market,
 			# "most_searched_data": most_searched_data,
 			"most_travelled_data": most_travelled_data,
-			"most_booked_data": most_booked_data,
+			"most_booked_data": json.dumps(most_booked_data),
 			"busiest_period_data": busiest_period_data,
 			# "error_message": error_message
 		}
@@ -407,8 +408,11 @@ def getMostSearchedData(airport_code, time_period, market):
 def getMostTraveledData(airport_code, time_period, market):
 	# Most Traveled data
 	# -------------------
-	travels_xs = ['x']
-	travels = ['number of travels']
+
+	most_travelled_data = ['destination,travels']
+	
+	# travels_xs = ['x']
+	# travels = ['number of travels']
 
 	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/traveled?"
 	headers = {
@@ -424,7 +428,7 @@ def getMostTraveledData(airport_code, time_period, market):
 
 	# origin=MAD&period=2015-09&sort=analytics.travellers.score&max=10&page[limit]=5
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
-	print("Endpoint: " + api_endpoint)
+	# print("Endpoint: " + api_endpoint)
 	
 	try:
 		req = urllib.request.Request(api_endpoint, headers= headers)
@@ -438,27 +442,34 @@ def getMostTraveledData(airport_code, time_period, market):
 	# 	bookings_values = json.load(content)
 	if json_data and json_data["data"]:
 		for data_entry in json_data["data"]:
-			travels_xs.append(data_entry["destination"])
-			travels.append(data_entry["analytics"]["travelers"]["score"])
+			most_travelled_data.append(data_entry["destination"]+','+str(data_entry["analytics"]["travelers"]["score"]))
 
-		most_travelled_data = {
-			"xs": json.dumps(travels_xs),
-			"travels": json.dumps(travels),
-		}
+	# 	most_travelled_data = {
+	# 		"xs": json.dumps(travels_xs),
+	# 		"travels": json.dumps(travels),
+	# 	}
 
-	else:
-		most_travelled_data = {
-			"xs": 0,
-			"travels": 0,
-			"error": "Failed to get API data."
-		}
+	# else:
+	# 	most_travelled_data = {
+	# 		"xs": 0,
+	# 		"travels": 0,
+	# 		"error": "Failed to get API data."
+	# 	}
+	with open("static/js/d3/mostTraveled.csv","w") as mycsv:
+		# writer = csv.writer(mycsv)
+		for row in most_travelled_data:
+			mycsv.write(row + '\n')
+
 	return most_travelled_data
+	# return ','.join(most_travelled_data) + '\n'
 
 def getMostBookedData(airport_code, time_period, market):
 	# Most Booked data
 	# -------------------
-	bookings_xs = ['x']
-	bookings = ['number of bookings']
+	most_booked_data = ["destination,travels"]
+
+	# bookings_xs = ['x']
+	# bookings = ['number of bookings']
 
 	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/booked?"
 	headers = {
@@ -472,7 +483,7 @@ def getMostBookedData(airport_code, time_period, market):
 	}
 
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
-	print("Endpoint: " + api_endpoint)
+	# print("Endpoint: " + api_endpoint)
 	
 	try:
 		req = urllib.request.Request(api_endpoint, headers= headers)
@@ -482,26 +493,29 @@ def getMostBookedData(airport_code, time_period, market):
 	except:
 		json_data = None
 
-	# with open('bookings.json','r') as content:
-	# 	bookings_values = json.load(content)
 	if json_data and json_data["data"]:
 		for data_entry in json_data["data"]:
-			bookings_xs.append(data_entry["destination"])
-			bookings.append(data_entry["analytics"]["travelers"]["score"])
+			most_booked_data.append(data_entry["destination"] + ',' + str(data_entry["analytics"]["travelers"]["score"]))
 
-		most_booked_data = {
-			"xs": json.dumps(bookings_xs),
-			"bookings": json.dumps(bookings),
-		}
+	# 	most_booked_data = {
+	# 		"xs": json.dumps(bookings_xs),
+	# 		"bookings": json.dumps(bookings),
+	# 	}
 
-	else:
-		most_booked_data = {
-			"xs": 0,
-			"bookings": 0,
-			"error": "Failed to get API data."
-		}
+	# else:
+	# 	most_booked_data = {
+	# 		"xs": 0,
+	# 		"bookings": 0,
+	# 		"error": "Failed to get API data."
+	# 	}
+	with open("static/js/d3/mostBooked.csv","w") as mycsv:
+		# writer = csv.writer(mycsv)
+		for row in most_booked_data:
+			print(row)
+			mycsv.write(row + '\n')
 
 	return most_booked_data
+	# return '\n'.join(most_booked_data)
 
 
 def getBusiestPeriodData(city_code, year, direction):

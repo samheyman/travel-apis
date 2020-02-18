@@ -43,6 +43,8 @@ const renderMostBooked = data => {
 };
 
 d3.csv(mostBooked).then(data => {
+  // most_booked_data.forEach(row => console.log(row));
+
   data.forEach(element => {
     element.travels = +element.travels;
   });

@@ -112,16 +112,16 @@
 
       <!-- <script type="text/javascript">
 
-         var most_travelled_data_xs = {{ most_travelled_data.xs|safe }};
-         var most_travelled_data_values = {{ most_travelled_data.travels|safe }};
-         var most_booked_data_xs = {{ most_booked_data.xs|safe }};
-         var most_booked_data_values = {{ most_booked_data.bookings|safe }};
-         var busiest_period_months = {{ busiest_period_data.months|safe }};
-         var busiest_period_travelers = {{ busiest_period_data.travelers|safe }};
+         var most_travelled_data = {{ most_travelled_data|safe }};
+        //  var most_travelled_data_values = {{ most_travelled_data.travels|safe }};
+        //  var most_booked_data_values = {{ most_booked_data.bookings|safe }};
+        //  var busiest_period_months = {{ busiest_period_data.months|safe }};
+        //  var busiest_period_travelers = {{ busiest_period_data.travelers|safe }};
       </script> -->
-      <script>
+      <script type="text/javascript">
         var mostTraveled = '{% static "js/d3/mostTraveled.csv" %}'
         var mostBooked = '{% static "js/d3/mostBooked.csv" %}'
+
     </script>
       <script src="{% static 'js/d3/bundle.js' %}" type="module"></script>
       <script src="{% static 'js/d3/d3mostTraveled.js' %}"></script>
