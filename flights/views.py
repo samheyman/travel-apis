@@ -172,6 +172,7 @@ def routes(request):
 	period = '2017-01'
 
 	if 'airport' in request.GET:
+		print("Fetching data for {}".format(request.GET))
 		form = AirportSearchForm(request.GET)
 		if form.is_valid():
 			airport = form.cleaned_data['airport']
@@ -192,12 +193,12 @@ def routes(request):
 	busiest_period_data = getBusiestPeriodData(airport, year, 'ARRIVING')
 	# print("Most Searched Data from {}".format(airport))
 	# print(most_searched_data)
-	print("Most Traveled Data from {}".format(airport))
+	# print("Most Traveled Data from {}".format(airport))
 	print(most_travelled_data)
-	print("Most Booked Data from {}".format(airport))
-	print(most_booked_data)
-	print("Busiest Period Data from {}".format(airport))
-	print(busiest_period_data)
+	# print("Most Booked Data from {}".format(airport))
+	# print(most_booked_data)
+	# print("Busiest Period Data from {}".format(airport))
+	# print(busiest_period_data)
 
 	# error_message = (('error' in most_searched_data) or ('error' in most_travelled_data) or ('error' in most_booked_data) or ('error' in busiest_period_data))
 
@@ -358,7 +359,7 @@ def getOAuthToken():
 		ACCESS_TOKEN_URL,
 		data=secrets
 	)).json()
-	print("Fetching access token {}".format(authorization_response['access_token']))
+	# print("Fetching access token {}".format(authorization_response['access_token']))
 	return authorization_response['access_token']
 
 def getMostSearchedData(airport_code, time_period, market):
@@ -428,7 +429,7 @@ def getMostTraveledData(airport_code, time_period, market):
 
 	# origin=MAD&period=2015-09&sort=analytics.travellers.score&max=10&page[limit]=5
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
-	# print("Endpoint: " + api_endpoint)
+	print("Endpoint: " + api_endpoint)
 	
 	try:
 		req = urllib.request.Request(api_endpoint, headers= headers)
@@ -448,7 +449,7 @@ def getMostTraveledData(airport_code, time_period, market):
 	# 		"xs": json.dumps(travels_xs),
 	# 		"travels": json.dumps(travels),
 	# 	}
-
+	print("Response: {}".format(json_data["data"]))
 	# else:
 	# 	most_travelled_data = {
 	# 		"xs": 0,
@@ -533,7 +534,7 @@ def getBusiestPeriodData(city_code, year, direction):
 	}
 
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
-	print("Endpoint: " + api_endpoint)
+	# print("Endpoint: " + api_endpoint)
 	
 	# try:
 	# 	req = urllib.request.Request(api_endpoint, headers= headers)

@@ -6,7 +6,7 @@ const renderMostTraveled = data => {
   const width = +svg.attr("width");
   const xValue = d => d.travels;
   const yValue = d => d.destination;
-  const margin = { top: 20, right: 20, bottom: 20, left: 30 };
+  const margin = { top: 20, right: 20, bottom: 20, left: 40 };
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
@@ -42,7 +42,7 @@ const renderMostTraveled = data => {
     .attr("height", yScale.bandwidth());
 };
 
-d3.csv(mostTraveled).then(data => {
+d3.csv(most_travelled_data).then(data => {
   data.forEach(element => {
     element.travels = +element.travels;
   });
