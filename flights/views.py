@@ -18,6 +18,7 @@ import requests
 import sys
 from common import geolocation
 from collections import OrderedDict
+from django.http import JsonResponse
 
 skyscanner_key = os.environ.get("SKYSCANNER_KEY")
 #flights_cache_service = FlightsCache(skyscanner_key)
@@ -188,13 +189,13 @@ def routes(request):
 		period = "2017-01"
 
 	# most_searched_data = getMostSearchedData(airport, period, market)
-	most_travelled_data = getMostTraveledData(airport, period, market)
-	most_booked_data = getMostBookedData(airport, period, market)
+	most_traveled_data = fetch_most_traveled_data(airport, period, market)
+	most_booked_data = fetch_most_booked_data(airport, period, market)
 	busiest_period_data = getBusiestPeriodData(airport, year, 'ARRIVING')
 	# print("Most Searched Data from {}".format(airport))
 	# print(most_searched_data)
 	# print("Most Traveled Data from {}".format(airport))
-	print(most_travelled_data)
+	# print(most_travelled_data)
 	# print("Most Booked Data from {}".format(airport))
 	# print(most_booked_data)
 	# print("Busiest Period Data from {}".format(airport))
@@ -209,8 +210,8 @@ def routes(request):
 			"month": month,
 			"market": market,
 			# "most_searched_data": most_searched_data,
-			"most_travelled_data": most_travelled_data,
-			"most_booked_data": json.dumps(most_booked_data),
+			"most_traveled_data": most_traveled_data,
+			"most_booked_data": most_booked_data,
 			"busiest_period_data": busiest_period_data,
 			# "error_message": error_message
 		}
@@ -406,11 +407,69 @@ def getMostSearchedData(airport_code, time_period, market):
 		}
 	return most_searched_data
 
+def fetch_most_traveled_data(airport_code, time_period, market):
+	most_traveled_data = []
+	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/traveled?"
+	headers = {
+		'Authorization': 'Bearer ' + getOAuthToken()
+	}
+	values = {
+		"originCityCode": airport_code,
+		"period": time_period,
+		"sort": "analytics.travelers.score",
+		"max": 5,
+		# "page[limit]": 5,
+	}
+	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
+	try:
+		req = urllib.request.Request(api_endpoint, headers= headers)
+		response = urllib.request.urlopen(req)
+		json_data = json.load(response)
+		
+	except:
+		json_data = None
+	if json_data and json_data["data"]:
+		for data_entry in json_data["data"]:
+			most_traveled_data.append({"destination": data_entry["destination"],
+			"travels": str(data_entry["analytics"]["travelers"]["score"])})
+	# print("Response: {}".format(most_traveled_data))
+
+	return json.dumps({"data": most_traveled_data})
+
+def fetch_most_booked_data(airport_code, time_period, market):
+	most_booked_data = []
+	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/booked?"
+	headers = {
+		'Authorization': 'Bearer ' + getOAuthToken()
+	}
+	values = {
+		"originCityCode": airport_code,
+		"period": time_period,
+		"sort": "analytics.travelers.score",
+		"max": 5,
+		# "page[limit]": 5,
+	}
+	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
+	try:
+		req = urllib.request.Request(api_endpoint, headers= headers)
+		response = urllib.request.urlopen(req)
+		json_data = json.load(response)
+		
+	except:
+		json_data = None
+	if json_data and json_data["data"]:
+		for data_entry in json_data["data"]:
+			most_booked_data.append({"destination": data_entry["destination"],
+			"travels": str(data_entry["analytics"]["travelers"]["score"])})
+	# print("Response: {}".format(most_booked_data))
+
+	return json.dumps({"data": most_booked_data})
+
 def getMostTraveledData(airport_code, time_period, market):
 	# Most Traveled data
 	# -------------------
 
-	most_travelled_data = ['destination,travels']
+	most_travelled_data = {"data":[]}
 	
 	# travels_xs = ['x']
 	# travels = ['number of travels']
@@ -443,25 +502,27 @@ def getMostTraveledData(airport_code, time_period, market):
 	# 	bookings_values = json.load(content)
 	if json_data and json_data["data"]:
 		for data_entry in json_data["data"]:
-			most_travelled_data.append(data_entry["destination"]+','+str(data_entry["analytics"]["travelers"]["score"]))
+			most_travelled_data["data"].append({"destination": data_entry["destination"],
+			"travels": str(data_entry["analytics"]["travelers"]["score"])})
 
 	# 	most_travelled_data = {
 	# 		"xs": json.dumps(travels_xs),
 	# 		"travels": json.dumps(travels),
 	# 	}
-	print("Response: {}".format(json_data["data"]))
+	# print("Response: {}".format(most_travelled_data["data"]))
 	# else:
 	# 	most_travelled_data = {
 	# 		"xs": 0,
 	# 		"travels": 0,
 	# 		"error": "Failed to get API data."
 	# 	}
-	with open("static/js/d3/mostTraveled.csv","w") as mycsv:
-		# writer = csv.writer(mycsv)
-		for row in most_travelled_data:
-			mycsv.write(row + '\n')
+	# with open("static/js/d3/mostTraveled.csv","w") as mycsv:
+	# 	# writer = csv.writer(mycsv)
+	# 	for row in most_travelled_data:
+	# 		mycsv.write(row + '\n')
+	return json.dumps(most_travelled_data["data"])
 
-	return most_travelled_data
+	# return most_travelled_data
 	# return ','.join(most_travelled_data) + '\n'
 
 def getMostBookedData(airport_code, time_period, market):
@@ -509,11 +570,11 @@ def getMostBookedData(airport_code, time_period, market):
 	# 		"bookings": 0,
 	# 		"error": "Failed to get API data."
 	# 	}
-	with open("static/js/d3/mostBooked.csv","w") as mycsv:
-		# writer = csv.writer(mycsv)
-		for row in most_booked_data:
-			print(row)
-			mycsv.write(row + '\n')
+	# with open("static/js/d3/mostBooked.csv","w") as mycsv:
+	# 	# writer = csv.writer(mycsv)
+	# 	for row in most_booked_data:
+	# 		print(row)
+	# 		mycsv.write(row + '\n')
 
 	return most_booked_data
 	# return '\n'.join(most_booked_data)

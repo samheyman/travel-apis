@@ -119,8 +119,10 @@
         //  var busiest_period_travelers = {{ busiest_period_data.travelers|safe }};
       </script> -->
       <script type="text/javascript">
-        var most_travelled_data = '{% static "js/d3/mostTraveled.csv" %}'
-        var mostBooked = '{% static "js/d3/mostBooked.csv" %}'
+        var most_booked_data = '{{ most_booked_data|safe }}'
+        var most_traveled_data = '{{ most_traveled_data|safe }}'
+        // var most_travelled_data = '{% static "js/d3/mostTraveled.csv" %}'
+        // var mostBooked = '{% static "js/d3/mostBooked.csv" %}'
       </script>
       <script src="{% static 'js/d3/bundle.js' %}" type="module"></script>
       <script src="{% static 'js/d3/d3mostTraveled.js' %}"></script>
@@ -133,3 +135,7 @@
       {% endif %}
 
 {% endblock main %}
+
+<!-- 
+d3.json("{% url "playAround" %}", function(error, data) {}
+d3.json("{% url "playAround" %}", function(error, data) {    -->

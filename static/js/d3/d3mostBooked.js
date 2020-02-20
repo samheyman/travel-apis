@@ -1,6 +1,7 @@
 // import { csv } from "./bundle.js";
 
 const renderMostBooked = data => {
+  console.log(data);
   const most_booked = d3.select("#most_booked");
   const height = +most_booked.attr("height");
   const width = +most_booked.attr("width");
@@ -42,11 +43,12 @@ const renderMostBooked = data => {
     .attr("height", yScale.bandwidth());
 };
 
-d3.csv(mostBooked).then(data => {
-  // most_booked_data.forEach(row => console.log(row));
+// d3.json("most_booked_data").then(data => {
+// most_booked_data.forEach(row => console.log(row));
 
-  data.forEach(element => {
-    element.travels = +element.travels;
-  });
-  renderMostBooked(data);
-});
+// data.forEach(element => {
+//   element.travels = +element.travels;
+// });
+// console.log("Most booked data:", data);
+renderMostBooked(JSON.parse(most_booked_data).data);
+// });

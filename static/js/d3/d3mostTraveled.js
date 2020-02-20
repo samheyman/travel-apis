@@ -42,9 +42,11 @@ const renderMostTraveled = data => {
     .attr("height", yScale.bandwidth());
 };
 
-d3.csv(most_travelled_data).then(data => {
-  data.forEach(element => {
-    element.travels = +element.travels;
-  });
-  renderMostTraveled(data);
-});
+// d3.csv(most_travelled_data).then(data => {
+//   data.forEach(element => {
+//     element.travels = +element.travels;
+//   });
+renderMostTraveled(JSON.parse(most_traveled_data).data);
+
+// renderMostTraveled(data);
+// });
