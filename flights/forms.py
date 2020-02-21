@@ -14,7 +14,18 @@ class SearchForm(forms.Form):
     #     ]))
 
 class AirportSearchForm(forms.Form):
-    airport = forms.CharField(label='Airport', max_length=100, initial='MAD')
+    # airport = forms.CharField(label='Airport', max_length=100, initial='MAD')
+    airport = forms.ChoiceField(choices=(
+        [
+            ('BCN', 'Barcelona'),
+            ('FRA', 'Frankfort'),
+            ('LON', 'London'),
+            ('MAD', 'Madrid'),
+            ('NYO', 'New York'),
+            ('PAR', 'Paris'),
+            ('SIN', 'Singapore'),
+        ]
+    ))
     year = forms.ChoiceField(choices=(
         [            
             ('2019','2019'), 

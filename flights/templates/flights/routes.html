@@ -43,12 +43,20 @@
       <br>
       <form>
         {% csrf_token %}
-        <label for="{{ form.airport.id_airport }}">Origin airport </label>
+        <label for="{{ form.airport.id_airport }}">Origin&nbsp;&nbsp;</label>
         {{ form.airport }}
-        <label for="{{ form.airport.timeDuration }}">Year </label>
+        <br/><br />
+        <label for="{{ form.airport.timeDuration }}">
+          Year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </label>
+        
         {{ form.year }}
-        <label for="{{ form.airport.timeDuration }}">Month </label>
+        <label for="{{ form.airport.timeDuration }}">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Month&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </label>
         {{ form.month }}
+        <br />
+        <br />
         <button type="submit" class="" style="position:relative;top:0;">Search</button>
       </form>
 
@@ -61,7 +69,9 @@
        <!-- Search form -->
        <div class="row">
          <div class="col-xs-12">
-          <h3>Popular destinations from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ year }}-{{month}}</span></h3>
+          <h3>Most popular destinations 
+            <!-- from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ year }}-{{month}}</span> -->
+          </h3>
         
         <!-- <div class="col-md-4" style="text-align: center">
             <h4>Most Searched (interest)</h4>
@@ -71,17 +81,22 @@
         </div> -->
          </div>
         <div class="col-md-4" style="text-align: center">
-            <h4>Most Booked</h4>
-            <p>Top destinations users have <em>booked flights to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of bookings<br>(normalized to a range 0-1)*</p>
+            <h4>By bookings</h4>
             <svg id="most_booked" width="300" height="250"></svg>
-            <div id="destinations_most_booked_chart"></div>
+            <br/><br/>
+            <hr/>
+            <p>Shows the top destinations, based on number of bookings (normalized to a range 0-1)*</p>
+
+            <!-- <div id="destinations_most_booked_chart"></div> -->
             <!-- <code>{{ most_booked_data.xs|safe }}</code> -->
         </div>
 
         <div class="col-md-4 " style="text-align: center">
-            <h4>Most Traveled</h4>
-            <p>Top destinations users have <em>traveled to</em> from <span class="destinations-results">{{ airport }}</span>, based on total number of check-ins<br>(normalized to a range 0-1)*</p>
+            <h4>By check-ins</h4>
             <svg id="most_traveled" width="300" height="250"></svg>
+            <br/><br/>
+            <hr/>
+            <p>Shows the top destinations, based on total number of check-ins (normalized to a range 0-1)*</p>
 
             <!-- <div id="destinations_most_travelled_chart"></div> -->
             <!-- <code>{{ most_travelled_data.xs|safe }}</code> -->
@@ -89,24 +104,27 @@
       </div>
       <div class="row" style="margin-top:20px">  
           <div class="col-md-12">
-        <h3>Busiest traveling period from <span class="destinations-results">{{ airport }}</span> in <span class="destinations-results">{{ year }}</span></h3>
+        <h3>Busiest traveling period</h3>
         <br>
-        <p>Busiest travel periods for the year broken down per month, based on total number of travelers arriving in the city (normalized to a range 0-1)*</p>
-        <div class="col-md-12" style="text-align: center">
+        <!-- <div class="col-md-12" style="text-align: center">
             <p></p><br/>
             <div id="busiest_period_chart"></div>
-        </div>
+        </div> -->
+        <svg id="busiest_period" width="600" height="250"></svg>
+<br/><br/>
+<hr/>
+<p>Busiest traveling periods of the year, based on number of travelers arriving in the city (normalized to a range 0-1)*</p>
+
         <!-- <code>{{ busiest_period_data.travelers|safe }}</code> -->
       </div>
       </div>
 
       <div class="row">
           <div class="well" style="margin-top:30px">
-              <p><em>* Based on Amadeus' MIDT data. Excludes passengers who book directly with
-                  an airline (online, ATO/CTO, Phone) -
-                  many tickets purchased for travel on a Low
-                  Cost Carrier (LCC) such as Southwest,
-                  JetBlue, etc. fall within this category</em></p>
+              <p><em>* Data based on Amadeus MIDT data. Excludes travelers who booked directly with
+                  an airline, in particular Low
+                  Cost Carriers (LCCs) such as Southwest,
+                  JetBlue, Ryanair, etc.</em></p>
           </div>
         </div>
 
@@ -121,12 +139,15 @@
       <script type="text/javascript">
         var most_booked_data = '{{ most_booked_data|safe }}'
         var most_traveled_data = '{{ most_traveled_data|safe }}'
+        var busiest_period_data = '{{ busiest_period_data|safe }}'
+
         // var most_travelled_data = '{% static "js/d3/mostTraveled.csv" %}'
         // var mostBooked = '{% static "js/d3/mostBooked.csv" %}'
       </script>
       <script src="{% static 'js/d3/bundle.js' %}" type="module"></script>
       <script src="{% static 'js/d3/d3mostTraveled.js' %}"></script>
       <script src="{% static 'js/d3/d3mostBooked.js' %}"></script>
+      <script src="{% static 'js/d3/d3busiestPeriod.js' %}"></script>
 
       <!-- <script> -->
       <!-- // load_charts(); -->

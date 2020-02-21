@@ -191,7 +191,7 @@ def routes(request):
 	# most_searched_data = getMostSearchedData(airport, period, market)
 	most_traveled_data = fetch_most_traveled_data(airport, period, market)
 	most_booked_data = fetch_most_booked_data(airport, period, market)
-	busiest_period_data = getBusiestPeriodData(airport, year, 'ARRIVING')
+	busiest_period_data = fetch_busiest_period_data(airport, year, 'ARRIVING')
 	# print("Most Searched Data from {}".format(airport))
 	# print(most_searched_data)
 	# print("Most Traveled Data from {}".format(airport))
@@ -417,7 +417,7 @@ def fetch_most_traveled_data(airport_code, time_period, market):
 		"originCityCode": airport_code,
 		"period": time_period,
 		"sort": "analytics.travelers.score",
-		"max": 5,
+		# "max": 5,
 		# "page[limit]": 5,
 	}
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
@@ -446,7 +446,7 @@ def fetch_most_booked_data(airport_code, time_period, market):
 		"originCityCode": airport_code,
 		"period": time_period,
 		"sort": "analytics.travelers.score",
-		"max": 5,
+		# "max": 5,
 		# "page[limit]": 5,
 	}
 	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
@@ -464,6 +464,66 @@ def fetch_most_booked_data(airport_code, time_period, market):
 	# print("Response: {}".format(most_booked_data))
 
 	return json.dumps({"data": most_booked_data})
+
+def fetch_busiest_period_data(city_code, year, direction):
+	busiest_period_data = []
+	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/busiest-period?"
+	headers = {
+		'Authorization': 'Bearer ' + getOAuthToken()
+	}
+	values = {
+		"cityCode": city_code,
+		"period": year,
+		"direction": direction,
+	}
+	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
+	try:
+		req = urllib.request.Request(api_endpoint, headers= headers)
+		response = urllib.request.urlopen(req)
+		json_data = json.load(response)
+		
+	except:
+		json_data = None
+	if json_data and json_data["data"]:
+		for data_entry in json_data["data"]:
+			busiest_period_data.append(
+				{
+					"period": data_entry["period"].split('-')[1],
+					"travels": data_entry["analytics"]["travelers"]["score"]*10
+				})
+	busiest_period_data = sortResultsByMonth(busiest_period_data)
+	print("Response: {}".format(busiest_period_data))
+
+	busiest_period_data = applyMonthName(busiest_period_data)
+# .sort(key=lambda x: x.count, reverse=True)
+	return json.dumps({"data": busiest_period_data})
+
+def sortResultsByMonth(list):
+	list.sort(key=lambda x: x.get('period'), reverse=False)
+	return list
+
+def applyMonthName(list):
+	print(list)
+	switcher = {
+        '01': "Jan",
+        '02': "Feb",
+        '03': "Mar",
+        '04': "Apr",
+        '05': "May",
+        '06': "Jun",
+        '07': "Jul",
+        '08': "Aug",
+        '09': "Sep",
+        '10': "Oct",
+        '11': "Nov",
+        '12': "Dec"
+    }
+	for item in list:
+		monthNum = item.get('period','-')
+		print(switcher.get(monthNum, '-'))
+		item['period'] = switcher.get(monthNum, '-')
+	return list
+
 
 def getMostTraveledData(airport_code, time_period, market):
 	# Most Traveled data
