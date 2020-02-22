@@ -357,7 +357,7 @@ def getOAuthToken():
         'client_secret': os.environ.get("AMADEUS_CLIENT_SECRET"),
         'grant_type': 'client_credentials'
     }
-	ACCESS_TOKEN_URL = "https://test.api.amadeus.com/v1/security/oauth2/token"
+	ACCESS_TOKEN_URL = "https://" + AMADEUS_BASE_URL+ "/v1/security/oauth2/token"
 	authorization_response = (requests.post(
 		ACCESS_TOKEN_URL,
 		data=secrets
@@ -483,9 +483,10 @@ def fetch_busiest_period_data(city_code, year, direction):
 		req = urllib.request.Request(api_endpoint, headers= headers)
 		response = urllib.request.urlopen(req)
 		json_data = json.load(response)
-		
+		print(json_data)
 	except:
 		json_data = None
+		
 	if json_data and json_data["data"]:
 		for data_entry in json_data["data"]:
 			busiest_period_data.append(
@@ -493,8 +494,9 @@ def fetch_busiest_period_data(city_code, year, direction):
 					"period": data_entry["period"].split('-')[1],
 					"travels": data_entry["analytics"]["travelers"]["score"]*10
 				})
-	busiest_period_data = sortResultsByMonth(busiest_period_data)
 	print("Response: {}".format(busiest_period_data))
+
+	busiest_period_data = sortResultsByMonth(busiest_period_data)
 
 	busiest_period_data = applyMonthName(busiest_period_data)
 # .sort(key=lambda x: x.count, reverse=True)
