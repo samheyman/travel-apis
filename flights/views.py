@@ -315,7 +315,7 @@ def getLowFareFlights(origin, destination, departure_date, return_date, currency
 	return json_data
 
 def getAirports(lat,lng,limit):
-	api_endpoint = "https://test.api.amadeus.com/v1/reference-data/locations/airports?"
+	api_endpoint = "https://" + AMADEUS_BASE_URL + "/v1/reference-data/locations/airports?"
 	headers = {
 		'Authorization': 'Bearer ' + getOAuthToken()
 	}
