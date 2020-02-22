@@ -20,6 +20,8 @@ from common import geolocation
 from collections import OrderedDict
 from django.http import JsonResponse
 
+AMADEUS_BASE_URL = 'api.amadeus.com'
+AMADEUS_TEST_BASE_URL = 'test.api.amadeus.com'
 skyscanner_key = os.environ.get("SKYSCANNER_KEY")
 #flights_cache_service = FlightsCache(skyscanner_key)
 #flights_service = Flights(skyscanner_key)
@@ -409,7 +411,7 @@ def getMostSearchedData(airport_code, time_period, market):
 
 def fetch_most_traveled_data(airport_code, time_period, market):
 	most_traveled_data = []
-	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/traveled?"
+	api_endpoint = "https://" + AMADEUS_BASE_URL + "/v1/travel/analytics/air-traffic/traveled?"
 	headers = {
 		'Authorization': 'Bearer ' + getOAuthToken()
 	}
@@ -438,7 +440,7 @@ def fetch_most_traveled_data(airport_code, time_period, market):
 
 def fetch_most_booked_data(airport_code, time_period, market):
 	most_booked_data = []
-	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/booked?"
+	api_endpoint = "https://" + AMADEUS_BASE_URL + "/v1/travel/analytics/air-traffic/traveled?"
 	headers = {
 		'Authorization': 'Bearer ' + getOAuthToken()
 	}
@@ -467,7 +469,7 @@ def fetch_most_booked_data(airport_code, time_period, market):
 
 def fetch_busiest_period_data(city_code, year, direction):
 	busiest_period_data = []
-	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/busiest-period?"
+	api_endpoint = "https://" + AMADEUS_BASE_URL + "/v1/travel/analytics/air-traffic/traveled?"
 	headers = {
 		'Authorization': 'Bearer ' + getOAuthToken()
 	}
