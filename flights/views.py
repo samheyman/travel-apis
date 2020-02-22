@@ -169,13 +169,12 @@ def travel_insights(request):
 def ba(request):
 	return render(request, 'flights/ba.html', {})
 
-def routes(request):
+def travel_intelligence(request):
 	market = "US"
 	airport = 'MAD'
 	period = '2017-01'
 
 	if 'airport' in request.GET:
-		print("Fetching data for {}".format(request.GET))
 		form = AirportSearchForm(request.GET)
 		if form.is_valid():
 			airport = form.cleaned_data['airport']
@@ -190,21 +189,9 @@ def routes(request):
 		year = "2017"
 		period = "2017-01"
 
-	# most_searched_data = getMostSearchedData(airport, period, market)
 	most_traveled_data = fetch_most_traveled_data(airport, period, market)
 	most_booked_data = fetch_most_booked_data(airport, period, market)
 	busiest_period_data = fetch_busiest_period_data(airport, year, 'ARRIVING')
-	# print("Most Searched Data from {}".format(airport))
-	# print(most_searched_data)
-	# print("Most Traveled Data from {}".format(airport))
-	# print(most_travelled_data)
-	# print("Most Booked Data from {}".format(airport))
-	# print(most_booked_data)
-	# print("Busiest Period Data from {}".format(airport))
-	# print(busiest_period_data)
-
-	# error_message = (('error' in most_searched_data) or ('error' in most_travelled_data) or ('error' in most_booked_data) or ('error' in busiest_period_data))
-
 	data = {
 			"form": form,
 			"airport": airport,
@@ -304,7 +291,6 @@ def getLowFareFlights(origin, destination, departure_date, return_date, currency
 	print(api_endpoint)
 	print("Start time:{}".format(start))
 	req = urllib.request.Request(api_endpoint, headers=headers)
-	# print("RESPONSE {} >>>>>>>>>".format(response.read()))
 	try:
 		response = urllib.request.urlopen(req)
 		response_data = json.load(response)
@@ -326,7 +312,6 @@ def getLowFareFlights(origin, destination, departure_date, return_date, currency
 	json_data['response'] = response_data
 	json_data['response_time'] = response_time
 	json_data['response_error'] = response_error
-	# print("Response format: {}".format(type(json_data['response'])))
 	return json_data
 
 def getAirports(lat,lng,limit):
@@ -357,57 +342,12 @@ def getOAuthToken():
         'client_secret': os.environ.get("AMADEUS_CLIENT_SECRET"),
         'grant_type': 'client_credentials'
     }
-	ACCESS_TOKEN_URL = "https://" + AMADEUS_BASE_URL+ "/v1/security/oauth2/token"
+	ACCESS_TOKEN_URL = "https://" + AMADEUS_BASE_URL + "/v1/security/oauth2/token"
 	authorization_response = (requests.post(
 		ACCESS_TOKEN_URL,
 		data=secrets
 	)).json()
-	# print("Fetching access token {}".format(authorization_response['access_token']))
 	return authorization_response['access_token']
-
-def getMostSearchedData(airport_code, time_period, market):
-	# Most searched data
-	# ------------------
-	searches_xs=['x']
-	searches = ['number of searches']
-
-	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/searched?"
-	headers = {
-		'Authorization': 'Bearer ' + getOAuthToken()
-	}
-	values = {
-		"originCityCode": airport_code,
-		"marketCountryCode": market,
-		"searchPeriod": time_period,
-		"max": 5
-	}
-	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
-	print("Endpoint: "+api_endpoint)
-	
-	try:
-		req = urllib.request.Request(api_endpoint, headers= headers)
-		response = urllib.request.urlopen(req)
-		json_data = json.load(response)
-		
-	except:
-		json_data = None	
-
-	if json_data and json_data["data"]:
-		for data_entry in json_data["data"]:
-			searches_xs.append(data_entry["destination"])
-			searches.append(data_entry["analytics"]["searches"]["score"])
-		most_searched_data = {
-				"xs": json.dumps(searches_xs),
-				"searches": json.dumps(searches)
-			}
-	else: 
-		most_searched_data = {
-			"xs": 0,
-			"searches": 0,
-			"error": "Failed to get API data."
-
-		}
-	return most_searched_data
 
 def fetch_most_traveled_data(airport_code, time_period, market):
 	most_traveled_data = []
@@ -434,13 +374,11 @@ def fetch_most_traveled_data(airport_code, time_period, market):
 		for data_entry in json_data["data"]:
 			most_traveled_data.append({"destination": data_entry["destination"],
 			"travels": str(data_entry["analytics"]["travelers"]["score"])})
-	# print("Response: {}".format(most_traveled_data))
-
 	return json.dumps({"data": most_traveled_data})
 
 def fetch_most_booked_data(airport_code, time_period, market):
 	most_booked_data = []
-	api_endpoint = "https://" + AMADEUS_BASE_URL + "/v1/travel/analytics/air-traffic/traveled?"
+	api_endpoint = "https://" + AMADEUS_BASE_URL + "/v1/travel/analytics/air-traffic/booked?"
 	headers = {
 		'Authorization': 'Bearer ' + getOAuthToken()
 	}
@@ -463,13 +401,11 @@ def fetch_most_booked_data(airport_code, time_period, market):
 		for data_entry in json_data["data"]:
 			most_booked_data.append({"destination": data_entry["destination"],
 			"travels": str(data_entry["analytics"]["travelers"]["score"])})
-	# print("Response: {}".format(most_booked_data))
-
 	return json.dumps({"data": most_booked_data})
 
 def fetch_busiest_period_data(city_code, year, direction):
 	busiest_period_data = []
-	api_endpoint = "https://" + AMADEUS_BASE_URL + "/v1/travel/analytics/air-traffic/traveled?"
+	api_endpoint = "https://" + AMADEUS_BASE_URL + "/v1/travel/analytics/air-traffic/busiest-period?"
 	headers = {
 		'Authorization': 'Bearer ' + getOAuthToken()
 	}
@@ -483,10 +419,9 @@ def fetch_busiest_period_data(city_code, year, direction):
 		req = urllib.request.Request(api_endpoint, headers= headers)
 		response = urllib.request.urlopen(req)
 		json_data = json.load(response)
-		print(json_data)
+		
 	except:
 		json_data = None
-		
 	if json_data and json_data["data"]:
 		for data_entry in json_data["data"]:
 			busiest_period_data.append(
@@ -494,12 +429,8 @@ def fetch_busiest_period_data(city_code, year, direction):
 					"period": data_entry["period"].split('-')[1],
 					"travels": data_entry["analytics"]["travelers"]["score"]*10
 				})
-	print("Response: {}".format(busiest_period_data))
-
 	busiest_period_data = sortResultsByMonth(busiest_period_data)
-
 	busiest_period_data = applyMonthName(busiest_period_data)
-# .sort(key=lambda x: x.count, reverse=True)
 	return json.dumps({"data": busiest_period_data})
 
 def sortResultsByMonth(list):
@@ -507,7 +438,6 @@ def sortResultsByMonth(list):
 	return list
 
 def applyMonthName(list):
-	print(list)
 	switcher = {
         '01': "Jan",
         '02': "Feb",
@@ -524,300 +454,11 @@ def applyMonthName(list):
     }
 	for item in list:
 		monthNum = item.get('period','-')
-		print(switcher.get(monthNum, '-'))
 		item['period'] = switcher.get(monthNum, '-')
 	return list
 
 
-def getMostTraveledData(airport_code, time_period, market):
-	# Most Traveled data
-	# -------------------
-
-	most_travelled_data = {"data":[]}
-	
-	# travels_xs = ['x']
-	# travels = ['number of travels']
-
-	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/traveled?"
-	headers = {
-		'Authorization': 'Bearer ' + getOAuthToken()
-	}
-	values = {
-		"originCityCode": airport_code,
-		"period": time_period,
-		"sort": "analytics.travelers.score",
-		"max": 5,
-		# "page[limit]": 5,
-	}
-
-	# origin=MAD&period=2015-09&sort=analytics.travellers.score&max=10&page[limit]=5
-	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
-	print("Endpoint: " + api_endpoint)
-	
-	try:
-		req = urllib.request.Request(api_endpoint, headers= headers)
-		response = urllib.request.urlopen(req)
-		json_data = json.load(response)
-		
-	except:
-		json_data = None
-
-	# with open('bookings.json','r') as content:
-	# 	bookings_values = json.load(content)
-	if json_data and json_data["data"]:
-		for data_entry in json_data["data"]:
-			most_travelled_data["data"].append({"destination": data_entry["destination"],
-			"travels": str(data_entry["analytics"]["travelers"]["score"])})
-
-	# 	most_travelled_data = {
-	# 		"xs": json.dumps(travels_xs),
-	# 		"travels": json.dumps(travels),
-	# 	}
-	# print("Response: {}".format(most_travelled_data["data"]))
-	# else:
-	# 	most_travelled_data = {
-	# 		"xs": 0,
-	# 		"travels": 0,
-	# 		"error": "Failed to get API data."
-	# 	}
-	# with open("static/js/d3/mostTraveled.csv","w") as mycsv:
-	# 	# writer = csv.writer(mycsv)
-	# 	for row in most_travelled_data:
-	# 		mycsv.write(row + '\n')
-	return json.dumps(most_travelled_data["data"])
-
-	# return most_travelled_data
-	# return ','.join(most_travelled_data) + '\n'
-
-def getMostBookedData(airport_code, time_period, market):
-	# Most Booked data
-	# -------------------
-	most_booked_data = ["destination,travels"]
-
-	# bookings_xs = ['x']
-	# bookings = ['number of bookings']
-
-	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/booked?"
-	headers = {
-		'Authorization': 'Bearer ' + getOAuthToken()
-	}
-	values = {
-		"originCityCode": airport_code,
-		"period": time_period,
-		"sort": "analytics.travelers.score",
-		"max": 5,
-	}
-
-	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
-	# print("Endpoint: " + api_endpoint)
-	
-	try:
-		req = urllib.request.Request(api_endpoint, headers= headers)
-		response = urllib.request.urlopen(req)
-		json_data = json.load(response)
-		
-	except:
-		json_data = None
-
-	if json_data and json_data["data"]:
-		for data_entry in json_data["data"]:
-			most_booked_data.append(data_entry["destination"] + ',' + str(data_entry["analytics"]["travelers"]["score"]))
-
-	# 	most_booked_data = {
-	# 		"xs": json.dumps(bookings_xs),
-	# 		"bookings": json.dumps(bookings),
-	# 	}
-
-	# else:
-	# 	most_booked_data = {
-	# 		"xs": 0,
-	# 		"bookings": 0,
-	# 		"error": "Failed to get API data."
-	# 	}
-	# with open("static/js/d3/mostBooked.csv","w") as mycsv:
-	# 	# writer = csv.writer(mycsv)
-	# 	for row in most_booked_data:
-	# 		print(row)
-	# 		mycsv.write(row + '\n')
-
-	return most_booked_data
-	# return '\n'.join(most_booked_data)
-
-
-def getBusiestPeriodData(city_code, year, direction):
-	months = ['x']
-	travelers = ['number of travelers']
-
-	api_endpoint = "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/busiest-period?"
-	headers = {
-		'Authorization': 'Bearer ' + getOAuthToken()
-	}
-	values = {
-		"cityCode": city_code,
-		"period": year,
-		"direction": direction,
-	}
-
-	api_endpoint = api_endpoint + urllib.parse.urlencode(values)
-	# print("Endpoint: " + api_endpoint)
-	
-	# try:
-	# 	req = urllib.request.Request(api_endpoint, headers= headers)
-	# 	response = urllib.request.urlopen(req)
-	# 	json_data = json.load(response)
-		
-	# except:
-	# 	json_data = None
-
-	json_data = {
-    "meta": {
-        "count": 12,
-        "links": {
-        "self": "https://test.api.amadeus.com/v1/travel/analytics/air-traffic/busiest-period?cityCode=PAR&period=2017&direction=ARRIVING"
-        }
-    },
-    "data": [
-        {
-            "type": "air-traffic",
-            "period": "2017-12",
-            "analytics": {
-                "travelers": {
-                    "score": 20
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-07",
-            "analytics": {
-                "travelers": {
-                    "score": 15
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-08",
-            "analytics": {
-                "travelers": {
-                    "score": 15
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-01",
-            "analytics": {
-                "travelers": {
-                    "score": 10
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-09",
-            "analytics": {
-                "travelers": {
-                    "score": 10
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-02",
-            "analytics": {
-                "travelers": {
-                    "score": 7
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-03",
-            "analytics": {
-                "travelers": {
-                    "score": 6
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-05",
-            "analytics": {
-                "travelers": {
-                    "score": 5
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-06",
-            "analytics": {
-                "travelers": {
-                    "score": 4
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-04",
-            "analytics": {
-                "travelers": {
-                    "score": 3
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-11",
-            "analytics": {
-                "travelers": {
-                    "score": 3
-                }
-            }
-        },
-        {
-            "type": "air-traffic",
-            "period": "2017-10",
-            "analytics": {
-                "travelers": {
-                    "score": 2
-                }
-            }
-        }
-    ]
-    }
-
-	# with open('bookings.json','r') as content:
-	# 	bookings_values = json.load(content)
-	if json_data and json_data["data"]:
-		for data_entry in json_data["data"]:
-			data_entry["period"] = int(data_entry["period"].split('-')[1])
-		
-		sorted_response = sorted(json_data["data"], key=lambda entry:entry["period"])
-
-		for data_entry in sorted_response:
-			months.append(data_entry["period"])
-			travelers.append(data_entry["analytics"]["travelers"]["score"])
-
-		busiest_period_data = {
-			"months": json.dumps(months),
-			"travelers": json.dumps(travelers),
-		}
-
-	else:
-		busiest_period_data = {
-			"months": 0,
-			"travelers": 0,
-			"error": "Failed to get API data."
-		}
-
-	return busiest_period_data
-
-
-
 def convertPriceToNumber(data):
-	print(json.dumps(data))
 	for item in data['response']['data']:
 		try:
 			item['offerItems'][0]['price']['total'] = float(item['offerItems'][0]['price']['total'])
